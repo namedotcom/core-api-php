@@ -1,0 +1,42 @@
+<?php
+
+namespace Namecom\Refunds\Requests;
+
+use Namecom\Core\Json\JsonSerializableType;
+use Namecom\Core\Json\JsonProperty;
+use Namecom\Core\Types\ArrayType;
+
+class RefundRequest extends JsonSerializableType
+{
+    /**
+     * @var ?string $idempotencyKey A unique string (e.g., a UUID v4) to make the request idempotent. This key ensures that if the request is retried, the operation will not be performed multiple times. Subsequent requests with the same key will return the original result. Idempotency keys are valid for 12 hours.
+     */
+    public ?string $idempotencyKey;
+
+    /**
+     * @var int $orderId The unique identifier of the order containing the item(s) to be refunded. Use the List Orders endpoint to retrieve order IDs.
+     */
+    #[JsonProperty('orderId')]
+    public int $orderId;
+
+    /**
+     * @var array<int> $orderItemIds An array of order item IDs to be refunded. All items must belong to the specified order. Use the List Orders endpoint to retrieve order item IDs.
+     */
+    #[JsonProperty('orderItemIds'), ArrayType(['integer'])]
+    public array $orderItemIds;
+
+    /**
+     * @param array{
+     *   orderId: int,
+     *   orderItemIds: array<int>,
+     *   idempotencyKey?: ?string,
+     * } $values
+     */
+    public function __construct(
+        array $values,
+    ) {
+        $this->idempotencyKey = $values['idempotencyKey'] ?? null;
+        $this->orderId = $values['orderId'];
+        $this->orderItemIds = $values['orderItemIds'];
+    }
+}

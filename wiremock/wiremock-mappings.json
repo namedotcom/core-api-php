@@ -1,0 +1,2619 @@
+{
+  "mappings": [
+    {
+      "id": "2778762f-a49d-4749-9294-d904cef064b0",
+      "name": "Check Account Balance - default",
+      "request": {
+        "urlPathTemplate": "/core/v1/accountinfo/balance",
+        "method": "GET",
+        "headers": {
+          "Authorization": {
+            "equalTo": "Basic dGVzdC11c2VybmFtZTp0ZXN0LXBhc3N3b3Jk"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"balance\": 103.35\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "2778762f-a49d-4749-9294-d904cef064b0",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      },
+      "postServeActions": []
+    },
+    {
+      "id": "070eb913-b243-4a09-8439-b6eaae404a51",
+      "name": "Create Account - default",
+      "request": {
+        "urlPathTemplate": "/core/v1/accounts",
+        "method": "POST",
+        "headers": {
+          "Authorization": {
+            "equalTo": "Basic dGVzdC11c2VybmFtZTp0ZXN0LXBhc3N3b3Jk"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"accountName\": \"new_reseller_account\",\n  \"apiToken\": \"a1b2c3d4-e5f6-7890-abcd-ef1234567890\",\n  \"apiTokenName\": \"my_reseller_token\"\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "070eb913-b243-4a09-8439-b6eaae404a51",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "37bede31-347d-4cff-b1f8-cc0dcf89451d",
+      "name": "List Domains - default",
+      "request": {
+        "urlPathTemplate": "/core/v1/domains",
+        "method": "GET",
+        "headers": {
+          "Authorization": {
+            "equalTo": "Basic dGVzdC11c2VybmFtZTp0ZXN0LXBhc3N3b3Jk"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"domains\": [\n    {\n      \"domainName\": \"example.com\",\n      \"createDate\": \"2023-01-15T14:30:00Z\",\n      \"expireDate\": \"2025-01-15T14:30:00Z\",\n      \"autorenewEnabled\": true,\n      \"locked\": true,\n      \"locks\": [\n        \"clientTransferProhibited\",\n        \"clientHold\"\n      ],\n      \"transferLockExpiresAt\": \"2023-03-16T14:30:00Z\",\n      \"privacyEnabled\": true,\n      \"contacts\": {\n        \"admin\": {\n          \"firstName\": \"John\",\n          \"lastName\": \"Doe\",\n          \"companyName\": \"Example Inc.\",\n          \"address1\": \"123 Main Street\",\n          \"address2\": \"Suite 400\",\n          \"city\": \"New York\",\n          \"state\": \"NY\",\n          \"zip\": \"10001\",\n          \"country\": \"US\",\n          \"email\": \"john.doe@example.com\",\n          \"phone\": \"+15551234567\",\n          \"fax\": \"+15557654321\",\n          \"isVerified\": true,\n          \"verificationId\": 12345\n        },\n        \"billing\": {\n          \"firstName\": \"John\",\n          \"lastName\": \"Doe\",\n          \"companyName\": \"Example Inc.\",\n          \"address1\": \"123 Main Street\",\n          \"address2\": \"Suite 400\",\n          \"city\": \"New York\",\n          \"state\": \"NY\",\n          \"zip\": \"10001\",\n          \"country\": \"US\",\n          \"email\": \"john.doe@example.com\",\n          \"phone\": \"+15551234567\",\n          \"fax\": \"+15557654321\",\n          \"isVerified\": true,\n          \"verificationId\": 12345\n        },\n        \"registrant\": {\n          \"firstName\": \"John\",\n          \"lastName\": \"Doe\",\n          \"companyName\": \"Example Inc.\",\n          \"address1\": \"123 Main Street\",\n          \"address2\": \"Suite 400\",\n          \"city\": \"New York\",\n          \"state\": \"NY\",\n          \"zip\": \"10001\",\n          \"country\": \"US\",\n          \"email\": \"john.doe@example.com\",\n          \"phone\": \"+15551234567\",\n          \"fax\": \"+15557654321\",\n          \"isVerified\": true,\n          \"verificationId\": 12345\n        },\n        \"tech\": {\n          \"firstName\": \"John\",\n          \"lastName\": \"Doe\",\n          \"companyName\": \"Example Inc.\",\n          \"address1\": \"123 Main Street\",\n          \"address2\": \"Suite 400\",\n          \"city\": \"New York\",\n          \"state\": \"NY\",\n          \"zip\": \"10001\",\n          \"country\": \"US\",\n          \"email\": \"john.doe@example.com\",\n          \"phone\": \"+15551234567\",\n          \"fax\": \"+15557654321\",\n          \"isVerified\": true,\n          \"verificationId\": 12345\n        }\n      },\n      \"nameservers\": [\n        \"ns1.example.com\",\n        \"ns2.example.com\"\n      ],\n      \"renewalPrice\": 12.99\n    }\n  ],\n  \"from\": 1,\n  \"lastPage\": 1,\n  \"nextPage\": 1,\n  \"to\": 1,\n  \"totalCount\": 1\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "37bede31-347d-4cff-b1f8-cc0dcf89451d",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      },
+      "postServeActions": []
+    },
+    {
+      "id": "f6f0464d-4d65-430d-9f2a-f40f2d5c386c",
+      "name": "Create Domain - Creating a domain without contacts.",
+      "request": {
+        "urlPathTemplate": "/core/v1/domains",
+        "method": "POST",
+        "headers": {
+          "Authorization": {
+            "equalTo": "Basic dGVzdC11c2VybmFtZTp0ZXN0LXBhc3N3b3Jk"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"domain\": {\n    \"domainName\": \"example.com\",\n    \"createDate\": \"2023-01-15T14:30:00Z\",\n    \"expireDate\": \"2025-01-15T14:30:00Z\",\n    \"autorenewEnabled\": true,\n    \"locked\": true,\n    \"locks\": [\n      \"clientTransferProhibited\",\n      \"clientHold\"\n    ],\n    \"transferLockExpiresAt\": \"2023-03-16T14:30:00Z\",\n    \"privacyEnabled\": true,\n    \"contacts\": {\n      \"admin\": {\n        \"firstName\": \"John\",\n        \"lastName\": \"Doe\",\n        \"companyName\": \"Example Inc.\",\n        \"address1\": \"123 Main Street\",\n        \"address2\": \"Suite 400\",\n        \"city\": \"New York\",\n        \"state\": \"NY\",\n        \"zip\": \"10001\",\n        \"country\": \"US\",\n        \"email\": \"john.doe@example.com\",\n        \"phone\": \"+15551234567\",\n        \"fax\": \"+15557654321\",\n        \"isVerified\": true,\n        \"verificationId\": 12345\n      },\n      \"billing\": {\n        \"firstName\": \"John\",\n        \"lastName\": \"Doe\",\n        \"companyName\": \"Example Inc.\",\n        \"address1\": \"123 Main Street\",\n        \"address2\": \"Suite 400\",\n        \"city\": \"New York\",\n        \"state\": \"NY\",\n        \"zip\": \"10001\",\n        \"country\": \"US\",\n        \"email\": \"john.doe@example.com\",\n        \"phone\": \"+15551234567\",\n        \"fax\": \"+15557654321\",\n        \"isVerified\": true,\n        \"verificationId\": 12345\n      },\n      \"registrant\": {\n        \"firstName\": \"John\",\n        \"lastName\": \"Doe\",\n        \"companyName\": \"Example Inc.\",\n        \"address1\": \"123 Main Street\",\n        \"address2\": \"Suite 400\",\n        \"city\": \"New York\",\n        \"state\": \"NY\",\n        \"zip\": \"10001\",\n        \"country\": \"US\",\n        \"email\": \"john.doe@example.com\",\n        \"phone\": \"+15551234567\",\n        \"fax\": \"+15557654321\",\n        \"isVerified\": true,\n        \"verificationId\": 12345\n      },\n      \"tech\": {\n        \"firstName\": \"John\",\n        \"lastName\": \"Doe\",\n        \"companyName\": \"Example Inc.\",\n        \"address1\": \"123 Main Street\",\n        \"address2\": \"Suite 400\",\n        \"city\": \"New York\",\n        \"state\": \"NY\",\n        \"zip\": \"10001\",\n        \"country\": \"US\",\n        \"email\": \"john.doe@example.com\",\n        \"phone\": \"+15551234567\",\n        \"fax\": \"+15557654321\",\n        \"isVerified\": true,\n        \"verificationId\": 12345\n      }\n    },\n    \"nameservers\": [\n      \"ns1.example.com\",\n      \"ns2.example.com\"\n    ],\n    \"renewalPrice\": 12.99\n  },\n  \"order\": 1,\n  \"totalPaid\": 1.1\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "f6f0464d-4d65-430d-9f2a-f40f2d5c386c",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "2f369392-b49c-42e7-aea2-ad4e7eec309f",
+      "name": "Get Domain - default",
+      "request": {
+        "urlPathTemplate": "/core/v1/domains/{domainName}",
+        "method": "GET",
+        "headers": {
+          "Authorization": {
+            "equalTo": "Basic dGVzdC11c2VybmFtZTp0ZXN0LXBhc3N3b3Jk"
+          }
+        },
+        "pathParameters": {
+          "domainName": {
+            "equalTo": "example.com"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"domainName\": \"example.com\",\n  \"createDate\": \"2023-01-15T14:30:00Z\",\n  \"expireDate\": \"2025-01-15T14:30:00Z\",\n  \"autorenewEnabled\": true,\n  \"locked\": true,\n  \"locks\": [\n    \"clientTransferProhibited\",\n    \"clientHold\"\n  ],\n  \"transferLockExpiresAt\": \"2023-03-16T14:30:00Z\",\n  \"privacyEnabled\": true,\n  \"contacts\": {\n    \"admin\": {\n      \"firstName\": \"John\",\n      \"lastName\": \"Doe\",\n      \"companyName\": \"Example Inc.\",\n      \"address1\": \"123 Main Street\",\n      \"address2\": \"Suite 400\",\n      \"city\": \"New York\",\n      \"state\": \"NY\",\n      \"zip\": \"10001\",\n      \"country\": \"US\",\n      \"email\": \"john.doe@example.com\",\n      \"phone\": \"+15551234567\",\n      \"fax\": \"+15557654321\",\n      \"isVerified\": true,\n      \"verificationId\": 12345\n    },\n    \"billing\": {\n      \"firstName\": \"John\",\n      \"lastName\": \"Doe\",\n      \"companyName\": \"Example Inc.\",\n      \"address1\": \"123 Main Street\",\n      \"address2\": \"Suite 400\",\n      \"city\": \"New York\",\n      \"state\": \"NY\",\n      \"zip\": \"10001\",\n      \"country\": \"US\",\n      \"email\": \"john.doe@example.com\",\n      \"phone\": \"+15551234567\",\n      \"fax\": \"+15557654321\",\n      \"isVerified\": true,\n      \"verificationId\": 12345\n    },\n    \"registrant\": {\n      \"firstName\": \"John\",\n      \"lastName\": \"Doe\",\n      \"companyName\": \"Example Inc.\",\n      \"address1\": \"123 Main Street\",\n      \"address2\": \"Suite 400\",\n      \"city\": \"New York\",\n      \"state\": \"NY\",\n      \"zip\": \"10001\",\n      \"country\": \"US\",\n      \"email\": \"john.doe@example.com\",\n      \"phone\": \"+15551234567\",\n      \"fax\": \"+15557654321\",\n      \"isVerified\": true,\n      \"verificationId\": 12345\n    },\n    \"tech\": {\n      \"firstName\": \"John\",\n      \"lastName\": \"Doe\",\n      \"companyName\": \"Example Inc.\",\n      \"address1\": \"123 Main Street\",\n      \"address2\": \"Suite 400\",\n      \"city\": \"New York\",\n      \"state\": \"NY\",\n      \"zip\": \"10001\",\n      \"country\": \"US\",\n      \"email\": \"john.doe@example.com\",\n      \"phone\": \"+15551234567\",\n      \"fax\": \"+15557654321\",\n      \"isVerified\": true,\n      \"verificationId\": 12345\n    }\n  },\n  \"nameservers\": [\n    \"ns1.example.com\",\n    \"ns2.example.com\"\n  ],\n  \"renewalPrice\": 12.99\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "2f369392-b49c-42e7-aea2-ad4e7eec309f",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "382c6abb-eff5-463a-8cf6-5924ed060ac3",
+      "name": "Update a domain - default",
+      "request": {
+        "urlPathTemplate": "/core/v1/domains/{domainName}",
+        "method": "PATCH",
+        "headers": {
+          "Authorization": {
+            "equalTo": "Basic dGVzdC11c2VybmFtZTp0ZXN0LXBhc3N3b3Jk"
+          }
+        },
+        "pathParameters": {
+          "domainName": {
+            "equalTo": "domainName"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"domainName\": \"example.com\",\n  \"createDate\": \"2023-01-15T14:30:00Z\",\n  \"expireDate\": \"2025-01-15T14:30:00Z\",\n  \"autorenewEnabled\": true,\n  \"locked\": true,\n  \"locks\": [\n    \"clientTransferProhibited\",\n    \"clientHold\"\n  ],\n  \"transferLockExpiresAt\": \"2023-03-16T14:30:00Z\",\n  \"privacyEnabled\": true,\n  \"contacts\": {\n    \"admin\": {\n      \"firstName\": \"John\",\n      \"lastName\": \"Doe\",\n      \"companyName\": \"Example Inc.\",\n      \"address1\": \"123 Main Street\",\n      \"address2\": \"Suite 400\",\n      \"city\": \"New York\",\n      \"state\": \"NY\",\n      \"zip\": \"10001\",\n      \"country\": \"US\",\n      \"email\": \"john.doe@example.com\",\n      \"phone\": \"+15551234567\",\n      \"fax\": \"+15557654321\",\n      \"isVerified\": true,\n      \"verificationId\": 12345\n    },\n    \"billing\": {\n      \"firstName\": \"John\",\n      \"lastName\": \"Doe\",\n      \"companyName\": \"Example Inc.\",\n      \"address1\": \"123 Main Street\",\n      \"address2\": \"Suite 400\",\n      \"city\": \"New York\",\n      \"state\": \"NY\",\n      \"zip\": \"10001\",\n      \"country\": \"US\",\n      \"email\": \"john.doe@example.com\",\n      \"phone\": \"+15551234567\",\n      \"fax\": \"+15557654321\",\n      \"isVerified\": true,\n      \"verificationId\": 12345\n    },\n    \"registrant\": {\n      \"firstName\": \"John\",\n      \"lastName\": \"Doe\",\n      \"companyName\": \"Example Inc.\",\n      \"address1\": \"123 Main Street\",\n      \"address2\": \"Suite 400\",\n      \"city\": \"New York\",\n      \"state\": \"NY\",\n      \"zip\": \"10001\",\n      \"country\": \"US\",\n      \"email\": \"john.doe@example.com\",\n      \"phone\": \"+15551234567\",\n      \"fax\": \"+15557654321\",\n      \"isVerified\": true,\n      \"verificationId\": 12345\n    },\n    \"tech\": {\n      \"firstName\": \"John\",\n      \"lastName\": \"Doe\",\n      \"companyName\": \"Example Inc.\",\n      \"address1\": \"123 Main Street\",\n      \"address2\": \"Suite 400\",\n      \"city\": \"New York\",\n      \"state\": \"NY\",\n      \"zip\": \"10001\",\n      \"country\": \"US\",\n      \"email\": \"john.doe@example.com\",\n      \"phone\": \"+15551234567\",\n      \"fax\": \"+15557654321\",\n      \"isVerified\": true,\n      \"verificationId\": 12345\n    }\n  },\n  \"nameservers\": [\n    \"ns1.example.com\",\n    \"ns2.example.com\"\n  ],\n  \"renewalPrice\": 12.99\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "382c6abb-eff5-463a-8cf6-5924ed060ac3",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "b33b1e75-dbc1-45e9-ab29-345b44ffc2af",
+      "name": "Disable Autorenew - default",
+      "request": {
+        "urlPathTemplate": "/core/v1/domains/{domainName}:disableAutorenew",
+        "method": "POST",
+        "headers": {
+          "Authorization": {
+            "equalTo": "Basic dGVzdC11c2VybmFtZTp0ZXN0LXBhc3N3b3Jk"
+          }
+        },
+        "pathParameters": {
+          "domainName": {
+            "equalTo": "example.com"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"domainName\": \"example.com\",\n  \"createDate\": \"2023-01-15T14:30:00Z\",\n  \"expireDate\": \"2025-01-15T14:30:00Z\",\n  \"autorenewEnabled\": true,\n  \"locked\": true,\n  \"locks\": [\n    \"clientTransferProhibited\",\n    \"clientHold\"\n  ],\n  \"transferLockExpiresAt\": \"2023-03-16T14:30:00Z\",\n  \"privacyEnabled\": true,\n  \"contacts\": {\n    \"admin\": {\n      \"firstName\": \"John\",\n      \"lastName\": \"Doe\",\n      \"companyName\": \"Example Inc.\",\n      \"address1\": \"123 Main Street\",\n      \"address2\": \"Suite 400\",\n      \"city\": \"New York\",\n      \"state\": \"NY\",\n      \"zip\": \"10001\",\n      \"country\": \"US\",\n      \"email\": \"john.doe@example.com\",\n      \"phone\": \"+15551234567\",\n      \"fax\": \"+15557654321\",\n      \"isVerified\": true,\n      \"verificationId\": 12345\n    },\n    \"billing\": {\n      \"firstName\": \"John\",\n      \"lastName\": \"Doe\",\n      \"companyName\": \"Example Inc.\",\n      \"address1\": \"123 Main Street\",\n      \"address2\": \"Suite 400\",\n      \"city\": \"New York\",\n      \"state\": \"NY\",\n      \"zip\": \"10001\",\n      \"country\": \"US\",\n      \"email\": \"john.doe@example.com\",\n      \"phone\": \"+15551234567\",\n      \"fax\": \"+15557654321\",\n      \"isVerified\": true,\n      \"verificationId\": 12345\n    },\n    \"registrant\": {\n      \"firstName\": \"John\",\n      \"lastName\": \"Doe\",\n      \"companyName\": \"Example Inc.\",\n      \"address1\": \"123 Main Street\",\n      \"address2\": \"Suite 400\",\n      \"city\": \"New York\",\n      \"state\": \"NY\",\n      \"zip\": \"10001\",\n      \"country\": \"US\",\n      \"email\": \"john.doe@example.com\",\n      \"phone\": \"+15551234567\",\n      \"fax\": \"+15557654321\",\n      \"isVerified\": true,\n      \"verificationId\": 12345\n    },\n    \"tech\": {\n      \"firstName\": \"John\",\n      \"lastName\": \"Doe\",\n      \"companyName\": \"Example Inc.\",\n      \"address1\": \"123 Main Street\",\n      \"address2\": \"Suite 400\",\n      \"city\": \"New York\",\n      \"state\": \"NY\",\n      \"zip\": \"10001\",\n      \"country\": \"US\",\n      \"email\": \"john.doe@example.com\",\n      \"phone\": \"+15551234567\",\n      \"fax\": \"+15557654321\",\n      \"isVerified\": true,\n      \"verificationId\": 12345\n    }\n  },\n  \"nameservers\": [\n    \"ns1.example.com\",\n    \"ns2.example.com\"\n  ],\n  \"renewalPrice\": 12.99\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "b33b1e75-dbc1-45e9-ab29-345b44ffc2af",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "f4f7ca77-06c3-499f-956d-10056df15c39",
+      "name": "Disable Whois Privacy - default",
+      "request": {
+        "urlPathTemplate": "/core/v1/domains/{domainName}:disableWhoisPrivacy",
+        "method": "POST",
+        "headers": {
+          "Authorization": {
+            "equalTo": "Basic dGVzdC11c2VybmFtZTp0ZXN0LXBhc3N3b3Jk"
+          }
+        },
+        "pathParameters": {
+          "domainName": {
+            "equalTo": "example.com"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"domainName\": \"example.com\",\n  \"createDate\": \"2023-01-15T14:30:00Z\",\n  \"expireDate\": \"2025-01-15T14:30:00Z\",\n  \"autorenewEnabled\": true,\n  \"locked\": true,\n  \"locks\": [\n    \"clientTransferProhibited\",\n    \"clientHold\"\n  ],\n  \"transferLockExpiresAt\": \"2023-03-16T14:30:00Z\",\n  \"privacyEnabled\": true,\n  \"contacts\": {\n    \"admin\": {\n      \"firstName\": \"John\",\n      \"lastName\": \"Doe\",\n      \"companyName\": \"Example Inc.\",\n      \"address1\": \"123 Main Street\",\n      \"address2\": \"Suite 400\",\n      \"city\": \"New York\",\n      \"state\": \"NY\",\n      \"zip\": \"10001\",\n      \"country\": \"US\",\n      \"email\": \"john.doe@example.com\",\n      \"phone\": \"+15551234567\",\n      \"fax\": \"+15557654321\",\n      \"isVerified\": true,\n      \"verificationId\": 12345\n    },\n    \"billing\": {\n      \"firstName\": \"John\",\n      \"lastName\": \"Doe\",\n      \"companyName\": \"Example Inc.\",\n      \"address1\": \"123 Main Street\",\n      \"address2\": \"Suite 400\",\n      \"city\": \"New York\",\n      \"state\": \"NY\",\n      \"zip\": \"10001\",\n      \"country\": \"US\",\n      \"email\": \"john.doe@example.com\",\n      \"phone\": \"+15551234567\",\n      \"fax\": \"+15557654321\",\n      \"isVerified\": true,\n      \"verificationId\": 12345\n    },\n    \"registrant\": {\n      \"firstName\": \"John\",\n      \"lastName\": \"Doe\",\n      \"companyName\": \"Example Inc.\",\n      \"address1\": \"123 Main Street\",\n      \"address2\": \"Suite 400\",\n      \"city\": \"New York\",\n      \"state\": \"NY\",\n      \"zip\": \"10001\",\n      \"country\": \"US\",\n      \"email\": \"john.doe@example.com\",\n      \"phone\": \"+15551234567\",\n      \"fax\": \"+15557654321\",\n      \"isVerified\": true,\n      \"verificationId\": 12345\n    },\n    \"tech\": {\n      \"firstName\": \"John\",\n      \"lastName\": \"Doe\",\n      \"companyName\": \"Example Inc.\",\n      \"address1\": \"123 Main Street\",\n      \"address2\": \"Suite 400\",\n      \"city\": \"New York\",\n      \"state\": \"NY\",\n      \"zip\": \"10001\",\n      \"country\": \"US\",\n      \"email\": \"john.doe@example.com\",\n      \"phone\": \"+15551234567\",\n      \"fax\": \"+15557654321\",\n      \"isVerified\": true,\n      \"verificationId\": 12345\n    }\n  },\n  \"nameservers\": [\n    \"ns1.example.com\",\n    \"ns2.example.com\"\n  ],\n  \"renewalPrice\": 12.99\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "f4f7ca77-06c3-499f-956d-10056df15c39",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "83e9cb2f-1e55-4724-bb3e-c2aa906d88e3",
+      "name": "Enable Autorenew - default",
+      "request": {
+        "urlPathTemplate": "/core/v1/domains/{domainName}:enableAutorenew",
+        "method": "POST",
+        "headers": {
+          "Authorization": {
+            "equalTo": "Basic dGVzdC11c2VybmFtZTp0ZXN0LXBhc3N3b3Jk"
+          }
+        },
+        "pathParameters": {
+          "domainName": {
+            "equalTo": "example.com"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"domainName\": \"example.com\",\n  \"createDate\": \"2023-01-15T14:30:00Z\",\n  \"expireDate\": \"2025-01-15T14:30:00Z\",\n  \"autorenewEnabled\": true,\n  \"locked\": true,\n  \"locks\": [\n    \"clientTransferProhibited\",\n    \"clientHold\"\n  ],\n  \"transferLockExpiresAt\": \"2023-03-16T14:30:00Z\",\n  \"privacyEnabled\": true,\n  \"contacts\": {\n    \"admin\": {\n      \"firstName\": \"John\",\n      \"lastName\": \"Doe\",\n      \"companyName\": \"Example Inc.\",\n      \"address1\": \"123 Main Street\",\n      \"address2\": \"Suite 400\",\n      \"city\": \"New York\",\n      \"state\": \"NY\",\n      \"zip\": \"10001\",\n      \"country\": \"US\",\n      \"email\": \"john.doe@example.com\",\n      \"phone\": \"+15551234567\",\n      \"fax\": \"+15557654321\",\n      \"isVerified\": true,\n      \"verificationId\": 12345\n    },\n    \"billing\": {\n      \"firstName\": \"John\",\n      \"lastName\": \"Doe\",\n      \"companyName\": \"Example Inc.\",\n      \"address1\": \"123 Main Street\",\n      \"address2\": \"Suite 400\",\n      \"city\": \"New York\",\n      \"state\": \"NY\",\n      \"zip\": \"10001\",\n      \"country\": \"US\",\n      \"email\": \"john.doe@example.com\",\n      \"phone\": \"+15551234567\",\n      \"fax\": \"+15557654321\",\n      \"isVerified\": true,\n      \"verificationId\": 12345\n    },\n    \"registrant\": {\n      \"firstName\": \"John\",\n      \"lastName\": \"Doe\",\n      \"companyName\": \"Example Inc.\",\n      \"address1\": \"123 Main Street\",\n      \"address2\": \"Suite 400\",\n      \"city\": \"New York\",\n      \"state\": \"NY\",\n      \"zip\": \"10001\",\n      \"country\": \"US\",\n      \"email\": \"john.doe@example.com\",\n      \"phone\": \"+15551234567\",\n      \"fax\": \"+15557654321\",\n      \"isVerified\": true,\n      \"verificationId\": 12345\n    },\n    \"tech\": {\n      \"firstName\": \"John\",\n      \"lastName\": \"Doe\",\n      \"companyName\": \"Example Inc.\",\n      \"address1\": \"123 Main Street\",\n      \"address2\": \"Suite 400\",\n      \"city\": \"New York\",\n      \"state\": \"NY\",\n      \"zip\": \"10001\",\n      \"country\": \"US\",\n      \"email\": \"john.doe@example.com\",\n      \"phone\": \"+15551234567\",\n      \"fax\": \"+15557654321\",\n      \"isVerified\": true,\n      \"verificationId\": 12345\n    }\n  },\n  \"nameservers\": [\n    \"ns1.example.com\",\n    \"ns2.example.com\"\n  ],\n  \"renewalPrice\": 12.99\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "83e9cb2f-1e55-4724-bb3e-c2aa906d88e3",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "0edc504a-45ca-4aad-8474-cb9d9c31684e",
+      "name": "Enable Whois Privacy - default",
+      "request": {
+        "urlPathTemplate": "/core/v1/domains/{domainName}:enableWhoisPrivacy",
+        "method": "POST",
+        "headers": {
+          "Authorization": {
+            "equalTo": "Basic dGVzdC11c2VybmFtZTp0ZXN0LXBhc3N3b3Jk"
+          }
+        },
+        "pathParameters": {
+          "domainName": {
+            "equalTo": "domainName"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"domainName\": \"example.com\",\n  \"createDate\": \"2023-01-15T14:30:00Z\",\n  \"expireDate\": \"2025-01-15T14:30:00Z\",\n  \"autorenewEnabled\": true,\n  \"locked\": true,\n  \"locks\": [\n    \"clientTransferProhibited\",\n    \"clientHold\"\n  ],\n  \"transferLockExpiresAt\": \"2023-03-16T14:30:00Z\",\n  \"privacyEnabled\": true,\n  \"contacts\": {\n    \"admin\": {\n      \"firstName\": \"John\",\n      \"lastName\": \"Doe\",\n      \"companyName\": \"Example Inc.\",\n      \"address1\": \"123 Main Street\",\n      \"address2\": \"Suite 400\",\n      \"city\": \"New York\",\n      \"state\": \"NY\",\n      \"zip\": \"10001\",\n      \"country\": \"US\",\n      \"email\": \"john.doe@example.com\",\n      \"phone\": \"+15551234567\",\n      \"fax\": \"+15557654321\",\n      \"isVerified\": true,\n      \"verificationId\": 12345\n    },\n    \"billing\": {\n      \"firstName\": \"John\",\n      \"lastName\": \"Doe\",\n      \"companyName\": \"Example Inc.\",\n      \"address1\": \"123 Main Street\",\n      \"address2\": \"Suite 400\",\n      \"city\": \"New York\",\n      \"state\": \"NY\",\n      \"zip\": \"10001\",\n      \"country\": \"US\",\n      \"email\": \"john.doe@example.com\",\n      \"phone\": \"+15551234567\",\n      \"fax\": \"+15557654321\",\n      \"isVerified\": true,\n      \"verificationId\": 12345\n    },\n    \"registrant\": {\n      \"firstName\": \"John\",\n      \"lastName\": \"Doe\",\n      \"companyName\": \"Example Inc.\",\n      \"address1\": \"123 Main Street\",\n      \"address2\": \"Suite 400\",\n      \"city\": \"New York\",\n      \"state\": \"NY\",\n      \"zip\": \"10001\",\n      \"country\": \"US\",\n      \"email\": \"john.doe@example.com\",\n      \"phone\": \"+15551234567\",\n      \"fax\": \"+15557654321\",\n      \"isVerified\": true,\n      \"verificationId\": 12345\n    },\n    \"tech\": {\n      \"firstName\": \"John\",\n      \"lastName\": \"Doe\",\n      \"companyName\": \"Example Inc.\",\n      \"address1\": \"123 Main Street\",\n      \"address2\": \"Suite 400\",\n      \"city\": \"New York\",\n      \"state\": \"NY\",\n      \"zip\": \"10001\",\n      \"country\": \"US\",\n      \"email\": \"john.doe@example.com\",\n      \"phone\": \"+15551234567\",\n      \"fax\": \"+15557654321\",\n      \"isVerified\": true,\n      \"verificationId\": 12345\n    }\n  },\n  \"nameservers\": [\n    \"ns1.example.com\",\n    \"ns2.example.com\"\n  ],\n  \"renewalPrice\": 12.99\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "0edc504a-45ca-4aad-8474-cb9d9c31684e",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "3f9ddfd5-392d-400c-82b2-e3bf21e6c285",
+      "name": "Get Auth Code For Domain - default",
+      "request": {
+        "urlPathTemplate": "/core/v1/domains/{domainName}:getAuthCode",
+        "method": "GET",
+        "headers": {
+          "Authorization": {
+            "equalTo": "Basic dGVzdC11c2VybmFtZTp0ZXN0LXBhc3N3b3Jk"
+          }
+        },
+        "pathParameters": {
+          "domainName": {
+            "equalTo": "domainName"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"authCode\": \"authCode\"\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "3f9ddfd5-392d-400c-82b2-e3bf21e6c285",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "fe44d82a-aef8-4484-bc06-e75e3dcde5c2",
+      "name": "Get Pricing For Domain - default",
+      "request": {
+        "urlPathTemplate": "/core/v1/domains/{domainName}:getPricing",
+        "method": "GET",
+        "headers": {
+          "Authorization": {
+            "equalTo": "Basic dGVzdC11c2VybmFtZTp0ZXN0LXBhc3N3b3Jk"
+          }
+        },
+        "pathParameters": {
+          "domainName": {
+            "equalTo": "domainName"
+          }
+        },
+        "queryParameters": {
+          "years": {
+            "equalTo": "2"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"premium\": true,\n  \"purchasePrice\": 24.99,\n  \"renewalPrice\": 24.99,\n  \"transferPrice\": 24.99\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "fe44d82a-aef8-4484-bc06-e75e3dcde5c2",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "9eec0b06-7015-4e0d-8fe3-d900a4120ccd",
+      "name": "Lock Domain - default",
+      "request": {
+        "urlPathTemplate": "/core/v1/domains/{domainName}:lock",
+        "method": "POST",
+        "headers": {
+          "Authorization": {
+            "equalTo": "Basic dGVzdC11c2VybmFtZTp0ZXN0LXBhc3N3b3Jk"
+          }
+        },
+        "pathParameters": {
+          "domainName": {
+            "equalTo": "example.com"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"domainName\": \"example.com\",\n  \"createDate\": \"2023-01-15T14:30:00Z\",\n  \"expireDate\": \"2025-01-15T14:30:00Z\",\n  \"autorenewEnabled\": true,\n  \"locked\": true,\n  \"locks\": [\n    \"clientTransferProhibited\",\n    \"clientHold\"\n  ],\n  \"transferLockExpiresAt\": \"2023-03-16T14:30:00Z\",\n  \"privacyEnabled\": true,\n  \"contacts\": {\n    \"admin\": {\n      \"firstName\": \"John\",\n      \"lastName\": \"Doe\",\n      \"companyName\": \"Example Inc.\",\n      \"address1\": \"123 Main Street\",\n      \"address2\": \"Suite 400\",\n      \"city\": \"New York\",\n      \"state\": \"NY\",\n      \"zip\": \"10001\",\n      \"country\": \"US\",\n      \"email\": \"john.doe@example.com\",\n      \"phone\": \"+15551234567\",\n      \"fax\": \"+15557654321\",\n      \"isVerified\": true,\n      \"verificationId\": 12345\n    },\n    \"billing\": {\n      \"firstName\": \"John\",\n      \"lastName\": \"Doe\",\n      \"companyName\": \"Example Inc.\",\n      \"address1\": \"123 Main Street\",\n      \"address2\": \"Suite 400\",\n      \"city\": \"New York\",\n      \"state\": \"NY\",\n      \"zip\": \"10001\",\n      \"country\": \"US\",\n      \"email\": \"john.doe@example.com\",\n      \"phone\": \"+15551234567\",\n      \"fax\": \"+15557654321\",\n      \"isVerified\": true,\n      \"verificationId\": 12345\n    },\n    \"registrant\": {\n      \"firstName\": \"John\",\n      \"lastName\": \"Doe\",\n      \"companyName\": \"Example Inc.\",\n      \"address1\": \"123 Main Street\",\n      \"address2\": \"Suite 400\",\n      \"city\": \"New York\",\n      \"state\": \"NY\",\n      \"zip\": \"10001\",\n      \"country\": \"US\",\n      \"email\": \"john.doe@example.com\",\n      \"phone\": \"+15551234567\",\n      \"fax\": \"+15557654321\",\n      \"isVerified\": true,\n      \"verificationId\": 12345\n    },\n    \"tech\": {\n      \"firstName\": \"John\",\n      \"lastName\": \"Doe\",\n      \"companyName\": \"Example Inc.\",\n      \"address1\": \"123 Main Street\",\n      \"address2\": \"Suite 400\",\n      \"city\": \"New York\",\n      \"state\": \"NY\",\n      \"zip\": \"10001\",\n      \"country\": \"US\",\n      \"email\": \"john.doe@example.com\",\n      \"phone\": \"+15551234567\",\n      \"fax\": \"+15557654321\",\n      \"isVerified\": true,\n      \"verificationId\": 12345\n    }\n  },\n  \"nameservers\": [\n    \"ns1.example.com\",\n    \"ns2.example.com\"\n  ],\n  \"renewalPrice\": 12.99\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "9eec0b06-7015-4e0d-8fe3-d900a4120ccd",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "045f2d5d-56ad-4957-850b-4dfa679c3aec",
+      "name": "Purchase Privacy - default",
+      "request": {
+        "urlPathTemplate": "/core/v1/domains/{domainName}:purchasePrivacy",
+        "method": "POST",
+        "headers": {
+          "Authorization": {
+            "equalTo": "Basic dGVzdC11c2VybmFtZTp0ZXN0LXBhc3N3b3Jk"
+          }
+        },
+        "pathParameters": {
+          "domainName": {
+            "equalTo": "domainName"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"domain\": {\n    \"domainName\": \"example.com\",\n    \"createDate\": \"2023-01-15T14:30:00Z\",\n    \"expireDate\": \"2025-01-15T14:30:00Z\",\n    \"autorenewEnabled\": true,\n    \"locked\": true,\n    \"locks\": [\n      \"clientTransferProhibited\",\n      \"clientHold\"\n    ],\n    \"transferLockExpiresAt\": \"2023-03-16T14:30:00Z\",\n    \"privacyEnabled\": true,\n    \"contacts\": {\n      \"admin\": {\n        \"firstName\": \"John\",\n        \"lastName\": \"Doe\",\n        \"companyName\": \"Example Inc.\",\n        \"address1\": \"123 Main Street\",\n        \"address2\": \"Suite 400\",\n        \"city\": \"New York\",\n        \"state\": \"NY\",\n        \"zip\": \"10001\",\n        \"country\": \"US\",\n        \"email\": \"john.doe@example.com\",\n        \"phone\": \"+15551234567\",\n        \"fax\": \"+15557654321\",\n        \"isVerified\": true,\n        \"verificationId\": 12345\n      },\n      \"billing\": {\n        \"firstName\": \"John\",\n        \"lastName\": \"Doe\",\n        \"companyName\": \"Example Inc.\",\n        \"address1\": \"123 Main Street\",\n        \"address2\": \"Suite 400\",\n        \"city\": \"New York\",\n        \"state\": \"NY\",\n        \"zip\": \"10001\",\n        \"country\": \"US\",\n        \"email\": \"john.doe@example.com\",\n        \"phone\": \"+15551234567\",\n        \"fax\": \"+15557654321\",\n        \"isVerified\": true,\n        \"verificationId\": 12345\n      },\n      \"registrant\": {\n        \"firstName\": \"John\",\n        \"lastName\": \"Doe\",\n        \"companyName\": \"Example Inc.\",\n        \"address1\": \"123 Main Street\",\n        \"address2\": \"Suite 400\",\n        \"city\": \"New York\",\n        \"state\": \"NY\",\n        \"zip\": \"10001\",\n        \"country\": \"US\",\n        \"email\": \"john.doe@example.com\",\n        \"phone\": \"+15551234567\",\n        \"fax\": \"+15557654321\",\n        \"isVerified\": true,\n        \"verificationId\": 12345\n      },\n      \"tech\": {\n        \"firstName\": \"John\",\n        \"lastName\": \"Doe\",\n        \"companyName\": \"Example Inc.\",\n        \"address1\": \"123 Main Street\",\n        \"address2\": \"Suite 400\",\n        \"city\": \"New York\",\n        \"state\": \"NY\",\n        \"zip\": \"10001\",\n        \"country\": \"US\",\n        \"email\": \"john.doe@example.com\",\n        \"phone\": \"+15551234567\",\n        \"fax\": \"+15557654321\",\n        \"isVerified\": true,\n        \"verificationId\": 12345\n      }\n    },\n    \"nameservers\": [\n      \"ns1.example.com\",\n      \"ns2.example.com\"\n    ],\n    \"renewalPrice\": 12.99\n  },\n  \"order\": 1,\n  \"totalPaid\": 4.99\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "045f2d5d-56ad-4957-850b-4dfa679c3aec",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "fbd31b3e-0374-4c05-b40b-eb41a5ef8505",
+      "name": "Renew Domain - default",
+      "request": {
+        "urlPathTemplate": "/core/v1/domains/{domainName}:renew",
+        "method": "POST",
+        "headers": {
+          "Authorization": {
+            "equalTo": "Basic dGVzdC11c2VybmFtZTp0ZXN0LXBhc3N3b3Jk"
+          }
+        },
+        "pathParameters": {
+          "domainName": {
+            "equalTo": "domainName"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"domain\": {\n    \"domainName\": \"example.com\",\n    \"createDate\": \"2023-01-15T14:30:00Z\",\n    \"expireDate\": \"2025-01-15T14:30:00Z\",\n    \"autorenewEnabled\": true,\n    \"locked\": true,\n    \"locks\": [\n      \"clientTransferProhibited\",\n      \"clientHold\"\n    ],\n    \"transferLockExpiresAt\": \"2023-03-16T14:30:00Z\",\n    \"privacyEnabled\": true,\n    \"contacts\": {\n      \"admin\": {\n        \"firstName\": \"John\",\n        \"lastName\": \"Doe\",\n        \"companyName\": \"Example Inc.\",\n        \"address1\": \"123 Main Street\",\n        \"address2\": \"Suite 400\",\n        \"city\": \"New York\",\n        \"state\": \"NY\",\n        \"zip\": \"10001\",\n        \"country\": \"US\",\n        \"email\": \"john.doe@example.com\",\n        \"phone\": \"+15551234567\",\n        \"fax\": \"+15557654321\",\n        \"isVerified\": true,\n        \"verificationId\": 12345\n      },\n      \"billing\": {\n        \"firstName\": \"John\",\n        \"lastName\": \"Doe\",\n        \"companyName\": \"Example Inc.\",\n        \"address1\": \"123 Main Street\",\n        \"address2\": \"Suite 400\",\n        \"city\": \"New York\",\n        \"state\": \"NY\",\n        \"zip\": \"10001\",\n        \"country\": \"US\",\n        \"email\": \"john.doe@example.com\",\n        \"phone\": \"+15551234567\",\n        \"fax\": \"+15557654321\",\n        \"isVerified\": true,\n        \"verificationId\": 12345\n      },\n      \"registrant\": {\n        \"firstName\": \"John\",\n        \"lastName\": \"Doe\",\n        \"companyName\": \"Example Inc.\",\n        \"address1\": \"123 Main Street\",\n        \"address2\": \"Suite 400\",\n        \"city\": \"New York\",\n        \"state\": \"NY\",\n        \"zip\": \"10001\",\n        \"country\": \"US\",\n        \"email\": \"john.doe@example.com\",\n        \"phone\": \"+15551234567\",\n        \"fax\": \"+15557654321\",\n        \"isVerified\": true,\n        \"verificationId\": 12345\n      },\n      \"tech\": {\n        \"firstName\": \"John\",\n        \"lastName\": \"Doe\",\n        \"companyName\": \"Example Inc.\",\n        \"address1\": \"123 Main Street\",\n        \"address2\": \"Suite 400\",\n        \"city\": \"New York\",\n        \"state\": \"NY\",\n        \"zip\": \"10001\",\n        \"country\": \"US\",\n        \"email\": \"john.doe@example.com\",\n        \"phone\": \"+15551234567\",\n        \"fax\": \"+15557654321\",\n        \"isVerified\": true,\n        \"verificationId\": 12345\n      }\n    },\n    \"nameservers\": [\n      \"ns1.example.com\",\n      \"ns2.example.com\"\n    ],\n    \"renewalPrice\": 12.99\n  },\n  \"order\": 1,\n  \"totalPaid\": 5.95\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "fbd31b3e-0374-4c05-b40b-eb41a5ef8505",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "15bdbfab-9a81-43a7-8d08-414bdcdbae36",
+      "name": "Set Contacts - default",
+      "request": {
+        "urlPathTemplate": "/core/v1/domains/{domainName}:setContacts",
+        "method": "POST",
+        "headers": {
+          "Authorization": {
+            "equalTo": "Basic dGVzdC11c2VybmFtZTp0ZXN0LXBhc3N3b3Jk"
+          }
+        },
+        "pathParameters": {
+          "domainName": {
+            "equalTo": "example.com"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"domainName\": \"example.com\",\n  \"createDate\": \"2023-01-15T14:30:00Z\",\n  \"expireDate\": \"2025-01-15T14:30:00Z\",\n  \"autorenewEnabled\": true,\n  \"locked\": true,\n  \"locks\": [\n    \"clientTransferProhibited\",\n    \"clientHold\"\n  ],\n  \"transferLockExpiresAt\": \"2023-03-16T14:30:00Z\",\n  \"privacyEnabled\": true,\n  \"contacts\": {\n    \"admin\": {\n      \"firstName\": \"John\",\n      \"lastName\": \"Doe\",\n      \"companyName\": \"Example Inc.\",\n      \"address1\": \"123 Main Street\",\n      \"address2\": \"Suite 400\",\n      \"city\": \"New York\",\n      \"state\": \"NY\",\n      \"zip\": \"10001\",\n      \"country\": \"US\",\n      \"email\": \"john.doe@example.com\",\n      \"phone\": \"+15551234567\",\n      \"fax\": \"+15557654321\",\n      \"isVerified\": true,\n      \"verificationId\": 12345\n    },\n    \"billing\": {\n      \"firstName\": \"John\",\n      \"lastName\": \"Doe\",\n      \"companyName\": \"Example Inc.\",\n      \"address1\": \"123 Main Street\",\n      \"address2\": \"Suite 400\",\n      \"city\": \"New York\",\n      \"state\": \"NY\",\n      \"zip\": \"10001\",\n      \"country\": \"US\",\n      \"email\": \"john.doe@example.com\",\n      \"phone\": \"+15551234567\",\n      \"fax\": \"+15557654321\",\n      \"isVerified\": true,\n      \"verificationId\": 12345\n    },\n    \"registrant\": {\n      \"firstName\": \"John\",\n      \"lastName\": \"Doe\",\n      \"companyName\": \"Example Inc.\",\n      \"address1\": \"123 Main Street\",\n      \"address2\": \"Suite 400\",\n      \"city\": \"New York\",\n      \"state\": \"NY\",\n      \"zip\": \"10001\",\n      \"country\": \"US\",\n      \"email\": \"john.doe@example.com\",\n      \"phone\": \"+15551234567\",\n      \"fax\": \"+15557654321\",\n      \"isVerified\": true,\n      \"verificationId\": 12345\n    },\n    \"tech\": {\n      \"firstName\": \"John\",\n      \"lastName\": \"Doe\",\n      \"companyName\": \"Example Inc.\",\n      \"address1\": \"123 Main Street\",\n      \"address2\": \"Suite 400\",\n      \"city\": \"New York\",\n      \"state\": \"NY\",\n      \"zip\": \"10001\",\n      \"country\": \"US\",\n      \"email\": \"john.doe@example.com\",\n      \"phone\": \"+15551234567\",\n      \"fax\": \"+15557654321\",\n      \"isVerified\": true,\n      \"verificationId\": 12345\n    }\n  },\n  \"nameservers\": [\n    \"ns1.example.com\",\n    \"ns2.example.com\"\n  ],\n  \"renewalPrice\": 12.99\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "15bdbfab-9a81-43a7-8d08-414bdcdbae36",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "49e47a2f-fbac-4527-8bd2-01140552c32e",
+      "name": "Set Nameservers - default",
+      "request": {
+        "urlPathTemplate": "/core/v1/domains/{domainName}:setNameservers",
+        "method": "POST",
+        "headers": {
+          "Authorization": {
+            "equalTo": "Basic dGVzdC11c2VybmFtZTp0ZXN0LXBhc3N3b3Jk"
+          }
+        },
+        "pathParameters": {
+          "domainName": {
+            "equalTo": "example.com"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"domainName\": \"example.com\",\n  \"createDate\": \"2023-01-15T14:30:00Z\",\n  \"expireDate\": \"2025-01-15T14:30:00Z\",\n  \"autorenewEnabled\": true,\n  \"locked\": true,\n  \"locks\": [\n    \"clientTransferProhibited\",\n    \"clientHold\"\n  ],\n  \"transferLockExpiresAt\": \"2023-03-16T14:30:00Z\",\n  \"privacyEnabled\": true,\n  \"contacts\": {\n    \"admin\": {\n      \"firstName\": \"John\",\n      \"lastName\": \"Doe\",\n      \"companyName\": \"Example Inc.\",\n      \"address1\": \"123 Main Street\",\n      \"address2\": \"Suite 400\",\n      \"city\": \"New York\",\n      \"state\": \"NY\",\n      \"zip\": \"10001\",\n      \"country\": \"US\",\n      \"email\": \"john.doe@example.com\",\n      \"phone\": \"+15551234567\",\n      \"fax\": \"+15557654321\",\n      \"isVerified\": true,\n      \"verificationId\": 12345\n    },\n    \"billing\": {\n      \"firstName\": \"John\",\n      \"lastName\": \"Doe\",\n      \"companyName\": \"Example Inc.\",\n      \"address1\": \"123 Main Street\",\n      \"address2\": \"Suite 400\",\n      \"city\": \"New York\",\n      \"state\": \"NY\",\n      \"zip\": \"10001\",\n      \"country\": \"US\",\n      \"email\": \"john.doe@example.com\",\n      \"phone\": \"+15551234567\",\n      \"fax\": \"+15557654321\",\n      \"isVerified\": true,\n      \"verificationId\": 12345\n    },\n    \"registrant\": {\n      \"firstName\": \"John\",\n      \"lastName\": \"Doe\",\n      \"companyName\": \"Example Inc.\",\n      \"address1\": \"123 Main Street\",\n      \"address2\": \"Suite 400\",\n      \"city\": \"New York\",\n      \"state\": \"NY\",\n      \"zip\": \"10001\",\n      \"country\": \"US\",\n      \"email\": \"john.doe@example.com\",\n      \"phone\": \"+15551234567\",\n      \"fax\": \"+15557654321\",\n      \"isVerified\": true,\n      \"verificationId\": 12345\n    },\n    \"tech\": {\n      \"firstName\": \"John\",\n      \"lastName\": \"Doe\",\n      \"companyName\": \"Example Inc.\",\n      \"address1\": \"123 Main Street\",\n      \"address2\": \"Suite 400\",\n      \"city\": \"New York\",\n      \"state\": \"NY\",\n      \"zip\": \"10001\",\n      \"country\": \"US\",\n      \"email\": \"john.doe@example.com\",\n      \"phone\": \"+15551234567\",\n      \"fax\": \"+15557654321\",\n      \"isVerified\": true,\n      \"verificationId\": 12345\n    }\n  },\n  \"nameservers\": [\n    \"ns1.example.com\",\n    \"ns2.example.com\"\n  ],\n  \"renewalPrice\": 12.99\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "49e47a2f-fbac-4527-8bd2-01140552c32e",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "e6f9c791-cd02-4663-89e5-e54d34472b51",
+      "name": "Unlock Domain - default",
+      "request": {
+        "urlPathTemplate": "/core/v1/domains/{domainName}:unlock",
+        "method": "POST",
+        "headers": {
+          "Authorization": {
+            "equalTo": "Basic dGVzdC11c2VybmFtZTp0ZXN0LXBhc3N3b3Jk"
+          }
+        },
+        "pathParameters": {
+          "domainName": {
+            "equalTo": "domainName"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"domainName\": \"example.com\",\n  \"createDate\": \"2023-01-15T14:30:00Z\",\n  \"expireDate\": \"2025-01-15T14:30:00Z\",\n  \"autorenewEnabled\": true,\n  \"locked\": true,\n  \"locks\": [\n    \"clientTransferProhibited\",\n    \"clientHold\"\n  ],\n  \"transferLockExpiresAt\": \"2023-03-16T14:30:00Z\",\n  \"privacyEnabled\": true,\n  \"contacts\": {\n    \"admin\": {\n      \"firstName\": \"John\",\n      \"lastName\": \"Doe\",\n      \"companyName\": \"Example Inc.\",\n      \"address1\": \"123 Main Street\",\n      \"address2\": \"Suite 400\",\n      \"city\": \"New York\",\n      \"state\": \"NY\",\n      \"zip\": \"10001\",\n      \"country\": \"US\",\n      \"email\": \"john.doe@example.com\",\n      \"phone\": \"+15551234567\",\n      \"fax\": \"+15557654321\",\n      \"isVerified\": true,\n      \"verificationId\": 12345\n    },\n    \"billing\": {\n      \"firstName\": \"John\",\n      \"lastName\": \"Doe\",\n      \"companyName\": \"Example Inc.\",\n      \"address1\": \"123 Main Street\",\n      \"address2\": \"Suite 400\",\n      \"city\": \"New York\",\n      \"state\": \"NY\",\n      \"zip\": \"10001\",\n      \"country\": \"US\",\n      \"email\": \"john.doe@example.com\",\n      \"phone\": \"+15551234567\",\n      \"fax\": \"+15557654321\",\n      \"isVerified\": true,\n      \"verificationId\": 12345\n    },\n    \"registrant\": {\n      \"firstName\": \"John\",\n      \"lastName\": \"Doe\",\n      \"companyName\": \"Example Inc.\",\n      \"address1\": \"123 Main Street\",\n      \"address2\": \"Suite 400\",\n      \"city\": \"New York\",\n      \"state\": \"NY\",\n      \"zip\": \"10001\",\n      \"country\": \"US\",\n      \"email\": \"john.doe@example.com\",\n      \"phone\": \"+15551234567\",\n      \"fax\": \"+15557654321\",\n      \"isVerified\": true,\n      \"verificationId\": 12345\n    },\n    \"tech\": {\n      \"firstName\": \"John\",\n      \"lastName\": \"Doe\",\n      \"companyName\": \"Example Inc.\",\n      \"address1\": \"123 Main Street\",\n      \"address2\": \"Suite 400\",\n      \"city\": \"New York\",\n      \"state\": \"NY\",\n      \"zip\": \"10001\",\n      \"country\": \"US\",\n      \"email\": \"john.doe@example.com\",\n      \"phone\": \"+15551234567\",\n      \"fax\": \"+15557654321\",\n      \"isVerified\": true,\n      \"verificationId\": 12345\n    }\n  },\n  \"nameservers\": [\n    \"ns1.example.com\",\n    \"ns2.example.com\"\n  ],\n  \"renewalPrice\": 12.99\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "e6f9c791-cd02-4663-89e5-e54d34472b51",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "2edc8218-4dc5-4175-b54d-1e5dcef128e7",
+      "name": "Check Availability - default",
+      "request": {
+        "urlPathTemplate": "/core/v1/domains:checkAvailability",
+        "method": "POST",
+        "headers": {
+          "Authorization": {
+            "equalTo": "Basic dGVzdC11c2VybmFtZTp0ZXN0LXBhc3N3b3Jk"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"results\": [\n    {\n      \"domainName\": \"example.com\",\n      \"premium\": true,\n      \"purchasable\": true,\n      \"purchasePrice\": 10.99,\n      \"purchaseType\": \"registration\",\n      \"renewalPrice\": 10.99,\n      \"sld\": \"example\",\n      \"tld\": \"com\",\n      \"reason\": \"reason\"\n    }\n  ]\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "2edc8218-4dc5-4175-b54d-1e5dcef128e7",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "e8b18bec-2b4d-4dda-95f2-c61266e32e24",
+      "name": "Search - default",
+      "request": {
+        "urlPathTemplate": "/core/v1/domains:search",
+        "method": "POST",
+        "headers": {
+          "Authorization": {
+            "equalTo": "Basic dGVzdC11c2VybmFtZTp0ZXN0LXBhc3N3b3Jk"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"results\": [\n    {\n      \"domainName\": \"example.com\",\n      \"premium\": true,\n      \"purchasable\": true,\n      \"purchasePrice\": 10.99,\n      \"purchaseType\": \"registration\",\n      \"renewalPrice\": 10.99,\n      \"sld\": \"example\",\n      \"tld\": \"com\",\n      \"reason\": \"reason\"\n    }\n  ]\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "e8b18bec-2b4d-4dda-95f2-c61266e32e24",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "b1f9b6ef-09f6-47e1-8de4-eb74c362ee4d",
+      "name": "Zone Check - default",
+      "request": {
+        "urlPathTemplate": "/core/v1/zonecheck",
+        "method": "POST",
+        "headers": {
+          "Authorization": {
+            "equalTo": "Basic dGVzdC11c2VybmFtZTp0ZXN0LXBhc3N3b3Jk"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"results\": [\n    {\n      \"domainName\": \"example.com\",\n      \"available\": true\n    }\n  ],\n  \"total\": 5,\n  \"removed\": 1\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "b1f9b6ef-09f6-47e1-8de4-eb74c362ee4d",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "131163f0-870b-4700-b06d-e671936878b1",
+      "name": "List DNSSECs - default",
+      "request": {
+        "urlPathTemplate": "/core/v1/domains/{domainName}/dnssec",
+        "method": "GET",
+        "headers": {
+          "Authorization": {
+            "equalTo": "Basic dGVzdC11c2VybmFtZTp0ZXN0LXBhc3N3b3Jk"
+          }
+        },
+        "pathParameters": {
+          "domainName": {
+            "equalTo": "domainName"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"dnssec\": [\n    {\n      \"algorithm\": 1,\n      \"digest\": \"digest\",\n      \"digestType\": 1,\n      \"domainName\": \"domainName\",\n      \"keyTag\": 1\n    }\n  ]\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "131163f0-870b-4700-b06d-e671936878b1",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "dafe1524-f160-4d30-b93e-2d71514d07ff",
+      "name": "Create DNSSEC - default",
+      "request": {
+        "urlPathTemplate": "/core/v1/domains/{domainName}/dnssec",
+        "method": "POST",
+        "headers": {
+          "Authorization": {
+            "equalTo": "Basic dGVzdC11c2VybmFtZTp0ZXN0LXBhc3N3b3Jk"
+          }
+        },
+        "pathParameters": {
+          "domainName": {
+            "equalTo": "domainName"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"algorithm\": 1,\n  \"digest\": \"digest\",\n  \"digestType\": 1,\n  \"domainName\": \"domainName\",\n  \"keyTag\": 1\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "dafe1524-f160-4d30-b93e-2d71514d07ff",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "1a33f2ab-d59f-44cf-8c92-ad258ef02baf",
+      "name": "Get DNSSEC - default",
+      "request": {
+        "urlPathTemplate": "/core/v1/domains/{domainName}/dnssec/{digest}",
+        "method": "GET",
+        "headers": {
+          "Authorization": {
+            "equalTo": "Basic dGVzdC11c2VybmFtZTp0ZXN0LXBhc3N3b3Jk"
+          }
+        },
+        "pathParameters": {
+          "domainName": {
+            "equalTo": "domainName"
+          },
+          "digest": {
+            "equalTo": "digest"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"algorithm\": 1,\n  \"digest\": \"digest\",\n  \"digestType\": 1,\n  \"domainName\": \"domainName\",\n  \"keyTag\": 1\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "1a33f2ab-d59f-44cf-8c92-ad258ef02baf",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "7ad1c4c0-6d4c-49b2-ac43-52f9fda2fa97",
+      "name": "Delete DNSSEC - default",
+      "request": {
+        "urlPathTemplate": "/core/v1/domains/{domainName}/dnssec/{digest}",
+        "method": "DELETE",
+        "headers": {
+          "Authorization": {
+            "equalTo": "Basic dGVzdC11c2VybmFtZTp0ZXN0LXBhc3N3b3Jk"
+          }
+        },
+        "pathParameters": {
+          "domainName": {
+            "equalTo": "domainName"
+          },
+          "digest": {
+            "equalTo": "digest"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "\"\"",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "7ad1c4c0-6d4c-49b2-ac43-52f9fda2fa97",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "5afc980e-4734-40e3-9749-b8232ba7cff2",
+      "name": "List Email Forwardings - default",
+      "request": {
+        "urlPathTemplate": "/core/v1/domains/{domainName}/email/forwarding",
+        "method": "GET",
+        "headers": {
+          "Authorization": {
+            "equalTo": "Basic dGVzdC11c2VybmFtZTp0ZXN0LXBhc3N3b3Jk"
+          }
+        },
+        "pathParameters": {
+          "domainName": {
+            "equalTo": "domainName"
+          }
+        },
+        "queryParameters": {
+          "perPage": {
+            "equalTo": "100"
+          },
+          "page": {
+            "equalTo": "1"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"emailForwarding\": [\n    {\n      \"domainName\": \"example.com\",\n      \"emailBox\": \"admin\",\n      \"emailTo\": \"webmaster@example.com\"\n    }\n  ],\n  \"lastPage\": 1,\n  \"nextPage\": 1\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "5afc980e-4734-40e3-9749-b8232ba7cff2",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "a4bc6c7f-99f5-4551-8da8-ec0d3fe3085d",
+      "name": "Create Email Forwarding - default",
+      "request": {
+        "urlPathTemplate": "/core/v1/domains/{domainName}/email/forwarding",
+        "method": "POST",
+        "headers": {
+          "Authorization": {
+            "equalTo": "Basic dGVzdC11c2VybmFtZTp0ZXN0LXBhc3N3b3Jk"
+          }
+        },
+        "pathParameters": {
+          "domainName": {
+            "equalTo": "example.com"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"domainName\": \"example.com\",\n  \"emailBox\": \"admin\",\n  \"emailTo\": \"webmaster@example.com\"\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "a4bc6c7f-99f5-4551-8da8-ec0d3fe3085d",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "fea9e59b-927e-4302-8347-938dcca9d285",
+      "name": "Get Email Forwarding - default",
+      "request": {
+        "urlPathTemplate": "/core/v1/domains/{domainName}/email/forwarding/{emailBox}",
+        "method": "GET",
+        "headers": {
+          "Authorization": {
+            "equalTo": "Basic dGVzdC11c2VybmFtZTp0ZXN0LXBhc3N3b3Jk"
+          }
+        },
+        "pathParameters": {
+          "domainName": {
+            "equalTo": "domainName"
+          },
+          "emailBox": {
+            "equalTo": "emailBox"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"domainName\": \"example.com\",\n  \"emailBox\": \"admin\",\n  \"emailTo\": \"webmaster@example.com\"\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "fea9e59b-927e-4302-8347-938dcca9d285",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "0110f363-1b65-456e-9a54-097938875c8a",
+      "name": "Update Email Forwarding - default",
+      "request": {
+        "urlPathTemplate": "/core/v1/domains/{domainName}/email/forwarding/{emailBox}",
+        "method": "PUT",
+        "headers": {
+          "Authorization": {
+            "equalTo": "Basic dGVzdC11c2VybmFtZTp0ZXN0LXBhc3N3b3Jk"
+          }
+        },
+        "pathParameters": {
+          "domainName": {
+            "equalTo": "domainName"
+          },
+          "emailBox": {
+            "equalTo": "emailBox"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"domainName\": \"example.com\",\n  \"emailBox\": \"admin\",\n  \"emailTo\": \"webmaster@example.com\"\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "0110f363-1b65-456e-9a54-097938875c8a",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "245ef78e-0935-415f-ac43-7d4284923748",
+      "name": "Delete Email Forwarding - default",
+      "request": {
+        "urlPathTemplate": "/core/v1/domains/{domainName}/email/forwarding/{emailBox}",
+        "method": "DELETE",
+        "headers": {
+          "Authorization": {
+            "equalTo": "Basic dGVzdC11c2VybmFtZTp0ZXN0LXBhc3N3b3Jk"
+          }
+        },
+        "pathParameters": {
+          "domainName": {
+            "equalTo": "domainName"
+          },
+          "emailBox": {
+            "equalTo": "emailBox"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "\"\"",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "245ef78e-0935-415f-ac43-7d4284923748",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "1d5b85bf-ea45-47c1-8d1e-29b6f5490bdd",
+      "name": "List Records - default",
+      "request": {
+        "urlPathTemplate": "/core/v1/domains/{domainName}/records",
+        "method": "GET",
+        "headers": {
+          "Authorization": {
+            "equalTo": "Basic dGVzdC11c2VybmFtZTp0ZXN0LXBhc3N3b3Jk"
+          }
+        },
+        "pathParameters": {
+          "domainName": {
+            "equalTo": "domainName"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"lastPage\": 1,\n  \"nextPage\": 1,\n  \"totalCount\": 1,\n  \"from\": 1,\n  \"to\": 1,\n  \"records\": [\n    {\n      \"answer\": \"answer\",\n      \"domainName\": \"domainName\",\n      \"fqdn\": \"fqdn\",\n      \"host\": \"host\",\n      \"id\": 1,\n      \"priority\": 1000000,\n      \"ttl\": 1000000,\n      \"type\": \"type\"\n    }\n  ]\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "1d5b85bf-ea45-47c1-8d1e-29b6f5490bdd",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "16994f9b-8eb6-4f60-81a3-a765a09ebd93",
+      "name": "Create Record - default",
+      "request": {
+        "urlPathTemplate": "/core/v1/domains/{domainName}/records",
+        "method": "POST",
+        "headers": {
+          "Authorization": {
+            "equalTo": "Basic dGVzdC11c2VybmFtZTp0ZXN0LXBhc3N3b3Jk"
+          }
+        },
+        "pathParameters": {
+          "domainName": {
+            "equalTo": "domainName"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"answer\": \"answer\",\n  \"domainName\": \"domainName\",\n  \"fqdn\": \"fqdn\",\n  \"host\": \"host\",\n  \"id\": 1,\n  \"priority\": 1000000,\n  \"ttl\": 1000000,\n  \"type\": \"type\"\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "16994f9b-8eb6-4f60-81a3-a765a09ebd93",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "2ec783e5-3f75-4d24-943d-94a6b5e489f2",
+      "name": "Get Record - default",
+      "request": {
+        "urlPathTemplate": "/core/v1/domains/{domainName}/records/{id}",
+        "method": "GET",
+        "headers": {
+          "Authorization": {
+            "equalTo": "Basic dGVzdC11c2VybmFtZTp0ZXN0LXBhc3N3b3Jk"
+          }
+        },
+        "pathParameters": {
+          "domainName": {
+            "equalTo": "domainName"
+          },
+          "id": {
+            "equalTo": "1"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"answer\": \"answer\",\n  \"domainName\": \"domainName\",\n  \"fqdn\": \"fqdn\",\n  \"host\": \"host\",\n  \"id\": 1,\n  \"priority\": 1000000,\n  \"ttl\": 1000000,\n  \"type\": \"type\"\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "2ec783e5-3f75-4d24-943d-94a6b5e489f2",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "12fbecf6-d631-4c0a-97da-998ab2988bfc",
+      "name": "Update Record - default",
+      "request": {
+        "urlPathTemplate": "/core/v1/domains/{domainName}/records/{id}",
+        "method": "PUT",
+        "headers": {
+          "Authorization": {
+            "equalTo": "Basic dGVzdC11c2VybmFtZTp0ZXN0LXBhc3N3b3Jk"
+          }
+        },
+        "pathParameters": {
+          "domainName": {
+            "equalTo": "domainName"
+          },
+          "id": {
+            "equalTo": "1"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"answer\": \"answer\",\n  \"domainName\": \"domainName\",\n  \"fqdn\": \"fqdn\",\n  \"host\": \"host\",\n  \"id\": 1,\n  \"priority\": 1000000,\n  \"ttl\": 1000000,\n  \"type\": \"type\"\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "12fbecf6-d631-4c0a-97da-998ab2988bfc",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "2106df65-2612-450a-9291-77fe8ea73d70",
+      "name": "Delete Record - default",
+      "request": {
+        "urlPathTemplate": "/core/v1/domains/{domainName}/records/{id}",
+        "method": "DELETE",
+        "headers": {
+          "Authorization": {
+            "equalTo": "Basic dGVzdC11c2VybmFtZTp0ZXN0LXBhc3N3b3Jk"
+          }
+        },
+        "pathParameters": {
+          "domainName": {
+            "equalTo": "domainName"
+          },
+          "id": {
+            "equalTo": "1"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "\"\"",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "2106df65-2612-450a-9291-77fe8ea73d70",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "c7b04276-5260-4ffc-ba20-ac55bd4b5582",
+      "name": "List URLForwardings - default",
+      "request": {
+        "urlPathTemplate": "/core/v1/domains/{domainName}/url/forwarding",
+        "method": "GET",
+        "headers": {
+          "Authorization": {
+            "equalTo": "Basic dGVzdC11c2VybmFtZTp0ZXN0LXBhc3N3b3Jk"
+          }
+        },
+        "pathParameters": {
+          "domainName": {
+            "equalTo": "example.com"
+          }
+        },
+        "queryParameters": {
+          "perPage": {
+            "equalTo": "100"
+          },
+          "page": {
+            "equalTo": "1"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"lastPage\": 5,\n  \"nextPage\": 2,\n  \"urlForwarding\": [\n    {\n      \"domainName\": \"example.org\",\n      \"forwardsTo\": \"https://destination-site.com\",\n      \"host\": \"www\",\n      \"meta\": \"<meta name='keywords' content='website, forwarding, masked'>\",\n      \"title\": \"Welcome to my forwarded website\",\n      \"type\": \"masked\",\n      \"id\": 12345\n    }\n  ]\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "c7b04276-5260-4ffc-ba20-ac55bd4b5582",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "15c6df26-9f56-443b-93f9-a3d9f5b5668e",
+      "name": "Create URLForwarding - default",
+      "request": {
+        "urlPathTemplate": "/core/v1/domains/{domainName}/url/forwarding",
+        "method": "POST",
+        "headers": {
+          "Authorization": {
+            "equalTo": "Basic dGVzdC11c2VybmFtZTp0ZXN0LXBhc3N3b3Jk"
+          }
+        },
+        "pathParameters": {
+          "domainName": {
+            "equalTo": "example.com"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"domainName\": \"example.org\",\n  \"forwardsTo\": \"https://destination-site.com\",\n  \"host\": \"www\",\n  \"meta\": \"<meta name='keywords' content='website, forwarding, masked'>\",\n  \"title\": \"Welcome to my forwarded website\",\n  \"type\": \"masked\",\n  \"id\": 12345\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "15c6df26-9f56-443b-93f9-a3d9f5b5668e",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "f37c5209-901a-4613-bfad-1e3a03b1b671",
+      "name": "Get URLForwarding - default",
+      "request": {
+        "urlPathTemplate": "/core/v1/domains/{domainName}/url/forwarding/{host}",
+        "method": "GET",
+        "headers": {
+          "Authorization": {
+            "equalTo": "Basic dGVzdC11c2VybmFtZTp0ZXN0LXBhc3N3b3Jk"
+          }
+        },
+        "pathParameters": {
+          "domainName": {
+            "equalTo": "example.com"
+          },
+          "host": {
+            "equalTo": "www.example.org"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"domainName\": \"example.org\",\n  \"forwardsTo\": \"https://destination-site.com\",\n  \"host\": \"www\",\n  \"meta\": \"<meta name='keywords' content='website, forwarding, masked'>\",\n  \"title\": \"Welcome to my forwarded website\",\n  \"type\": \"masked\",\n  \"id\": 12345\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "f37c5209-901a-4613-bfad-1e3a03b1b671",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "d6a2642a-7f3c-4a99-8634-b8ec6a4dc173",
+      "name": "Update URLForwarding - default",
+      "request": {
+        "urlPathTemplate": "/core/v1/domains/{domainName}/url/forwarding/{host}",
+        "method": "PUT",
+        "headers": {
+          "Authorization": {
+            "equalTo": "Basic dGVzdC11c2VybmFtZTp0ZXN0LXBhc3N3b3Jk"
+          }
+        },
+        "pathParameters": {
+          "domainName": {
+            "equalTo": "example.com"
+          },
+          "host": {
+            "equalTo": "www.example.org"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"domainName\": \"example.org\",\n  \"forwardsTo\": \"https://destination-site.com\",\n  \"host\": \"www\",\n  \"meta\": \"<meta name='keywords' content='website, forwarding, masked'>\",\n  \"title\": \"Welcome to my forwarded website\",\n  \"type\": \"masked\",\n  \"id\": 12345\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "d6a2642a-7f3c-4a99-8634-b8ec6a4dc173",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "4ad92392-4aed-4bec-b9a7-ef4caf07608c",
+      "name": "Delete URLForwarding - default",
+      "request": {
+        "urlPathTemplate": "/core/v1/domains/{domainName}/url/forwarding/{host}",
+        "method": "DELETE",
+        "headers": {
+          "Authorization": {
+            "equalTo": "Basic dGVzdC11c2VybmFtZTp0ZXN0LXBhc3N3b3Jk"
+          }
+        },
+        "pathParameters": {
+          "domainName": {
+            "equalTo": "example.com"
+          },
+          "host": {
+            "equalTo": "www.example.org"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "\"\"",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "4ad92392-4aed-4bec-b9a7-ef4caf07608c",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "0d34b7f9-dfed-43ba-b667-d129bc09fb05",
+      "name": "List URL Forwardings by domain - default",
+      "request": {
+        "urlPathTemplate": "/core/v1/urlforwarding/{domainName}",
+        "method": "GET",
+        "headers": {
+          "Authorization": {
+            "equalTo": "Basic dGVzdC11c2VybmFtZTp0ZXN0LXBhc3N3b3Jk"
+          }
+        },
+        "pathParameters": {
+          "domainName": {
+            "equalTo": "example.com"
+          }
+        },
+        "queryParameters": {
+          "perPage": {
+            "equalTo": "100"
+          },
+          "page": {
+            "equalTo": "1"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"lastPage\": 5,\n  \"nextPage\": 2,\n  \"urlForwarding\": [\n    {\n      \"domainName\": \"example.org\",\n      \"forwardsTo\": \"https://destination-site.com\",\n      \"host\": \"www\",\n      \"meta\": \"<meta name='keywords' content='website, forwarding, masked'>\",\n      \"title\": \"Welcome to my forwarded website\",\n      \"type\": \"masked\",\n      \"id\": 12345\n    }\n  ]\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "0d34b7f9-dfed-43ba-b667-d129bc09fb05",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "bb0f225c-a26b-4691-b6eb-c6d3b4847447",
+      "name": "Get URL Forwarding by ID - default",
+      "request": {
+        "urlPathTemplate": "/core/v1/urlforwarding/{domainName}/{id}",
+        "method": "GET",
+        "headers": {
+          "Authorization": {
+            "equalTo": "Basic dGVzdC11c2VybmFtZTp0ZXN0LXBhc3N3b3Jk"
+          }
+        },
+        "pathParameters": {
+          "domainName": {
+            "equalTo": "example.com"
+          },
+          "id": {
+            "equalTo": "12345"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"domainName\": \"example.org\",\n  \"forwardsTo\": \"https://destination-site.com\",\n  \"host\": \"www\",\n  \"meta\": \"<meta name='keywords' content='website, forwarding, masked'>\",\n  \"title\": \"Welcome to my forwarded website\",\n  \"type\": \"masked\",\n  \"id\": 12345\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "bb0f225c-a26b-4691-b6eb-c6d3b4847447",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "a7657a0f-6a81-4c7a-82f2-c49fc0162c79",
+      "name": "Delete URL Forwarding by ID - default",
+      "request": {
+        "urlPathTemplate": "/core/v1/urlforwarding/{domainName}/{id}",
+        "method": "DELETE",
+        "headers": {
+          "Authorization": {
+            "equalTo": "Basic dGVzdC11c2VybmFtZTp0ZXN0LXBhc3N3b3Jk"
+          }
+        },
+        "pathParameters": {
+          "domainName": {
+            "equalTo": "example.com"
+          },
+          "id": {
+            "equalTo": "12345"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "\"\"",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "a7657a0f-6a81-4c7a-82f2-c49fc0162c79",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "bd013c1e-7d89-43dc-bd3f-198f5b61b0f9",
+      "name": "Update URL Forwarding by ID - default",
+      "request": {
+        "urlPathTemplate": "/core/v1/urlforwarding/{domainName}/{id}",
+        "method": "PATCH",
+        "headers": {
+          "Authorization": {
+            "equalTo": "Basic dGVzdC11c2VybmFtZTp0ZXN0LXBhc3N3b3Jk"
+          }
+        },
+        "pathParameters": {
+          "domainName": {
+            "equalTo": "example.com"
+          },
+          "id": {
+            "equalTo": "12345"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"domainName\": \"example.org\",\n  \"forwardsTo\": \"https://destination-site.com\",\n  \"host\": \"www\",\n  \"meta\": \"<meta name='keywords' content='website, forwarding, masked'>\",\n  \"title\": \"Welcome to my forwarded website\",\n  \"type\": \"masked\",\n  \"id\": 12345\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "bd013c1e-7d89-43dc-bd3f-198f5b61b0f9",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "cb9552cf-8e8f-40e6-9793-85ec15205dc3",
+      "name": "List Vanity Nameservers - default",
+      "request": {
+        "urlPathTemplate": "/core/v1/domains/{domainName}/vanity_nameservers",
+        "method": "GET",
+        "headers": {
+          "Authorization": {
+            "equalTo": "Basic dGVzdC11c2VybmFtZTp0ZXN0LXBhc3N3b3Jk"
+          }
+        },
+        "pathParameters": {
+          "domainName": {
+            "equalTo": "example.com"
+          }
+        },
+        "queryParameters": {
+          "perPage": {
+            "equalTo": "50"
+          },
+          "page": {
+            "equalTo": "2"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"lastPage\": 5,\n  \"nextPage\": 2,\n  \"vanityNameservers\": [\n    {\n      \"domainName\": \"example.com\",\n      \"hostname\": \"ns1.example.com\",\n      \"ips\": [\n        \"192.168.1.1\",\n        \"2001:0db8:85a3:0000:0000:8a2e:0370:7334\"\n      ]\n    }\n  ]\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "cb9552cf-8e8f-40e6-9793-85ec15205dc3",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "13a47765-283b-4ee7-905e-c3707bd959c9",
+      "name": "Create Vanity Nameserver - default",
+      "request": {
+        "urlPathTemplate": "/core/v1/domains/{domainName}/vanity_nameservers",
+        "method": "POST",
+        "headers": {
+          "Authorization": {
+            "equalTo": "Basic dGVzdC11c2VybmFtZTp0ZXN0LXBhc3N3b3Jk"
+          }
+        },
+        "pathParameters": {
+          "domainName": {
+            "equalTo": "example.com"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"domainName\": \"example.com\",\n  \"hostname\": \"ns1.example.com\",\n  \"ips\": [\n    \"192.168.1.1\",\n    \"2001:0db8:85a3:0000:0000:8a2e:0370:7334\"\n  ]\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "13a47765-283b-4ee7-905e-c3707bd959c9",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "eeb2a1b4-feaf-4692-930f-2cb1181d9ad2",
+      "name": "Get Vanity Nameserver - default",
+      "request": {
+        "urlPathTemplate": "/core/v1/domains/{domainName}/vanity_nameservers/{hostname}",
+        "method": "GET",
+        "headers": {
+          "Authorization": {
+            "equalTo": "Basic dGVzdC11c2VybmFtZTp0ZXN0LXBhc3N3b3Jk"
+          }
+        },
+        "pathParameters": {
+          "domainName": {
+            "equalTo": "example.com"
+          },
+          "hostname": {
+            "equalTo": "ns1.example.com"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"domainName\": \"example.com\",\n  \"hostname\": \"ns1.example.com\",\n  \"ips\": [\n    \"192.168.1.1\",\n    \"2001:0db8:85a3:0000:0000:8a2e:0370:7334\"\n  ]\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "eeb2a1b4-feaf-4692-930f-2cb1181d9ad2",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "df50ee88-3154-4f88-b48f-59f18b9aa081",
+      "name": "Update Vanity Nameserver IP - default",
+      "request": {
+        "urlPathTemplate": "/core/v1/domains/{domainName}/vanity_nameservers/{hostname}",
+        "method": "PUT",
+        "headers": {
+          "Authorization": {
+            "equalTo": "Basic dGVzdC11c2VybmFtZTp0ZXN0LXBhc3N3b3Jk"
+          }
+        },
+        "pathParameters": {
+          "domainName": {
+            "equalTo": "example.com"
+          },
+          "hostname": {
+            "equalTo": "ns1.example.com"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"domainName\": \"example.com\",\n  \"hostname\": \"ns1.example.com\",\n  \"ips\": [\n    \"192.168.1.1\",\n    \"2001:0db8:85a3:0000:0000:8a2e:0370:7334\"\n  ]\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "df50ee88-3154-4f88-b48f-59f18b9aa081",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "32e99213-5a2b-45f1-8731-d210cb054159",
+      "name": "Delete Vanity Nameserver - default",
+      "request": {
+        "urlPathTemplate": "/core/v1/domains/{domainName}/vanity_nameservers/{hostname}",
+        "method": "DELETE",
+        "headers": {
+          "Authorization": {
+            "equalTo": "Basic dGVzdC11c2VybmFtZTp0ZXN0LXBhc3N3b3Jk"
+          }
+        },
+        "pathParameters": {
+          "domainName": {
+            "equalTo": "example.com"
+          },
+          "hostname": {
+            "equalTo": "ns1.example.com"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "\"\"",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "32e99213-5a2b-45f1-8731-d210cb054159",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "0c5c60b4-1718-444e-a072-4c9936fd1da8",
+      "name": "Get Subscribed Notifications - default",
+      "request": {
+        "urlPathTemplate": "/core/v1/notifications",
+        "method": "GET",
+        "headers": {
+          "Authorization": {
+            "equalTo": "Basic dGVzdC11c2VybmFtZTp0ZXN0LXBhc3N3b3Jk"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"subscriptions\": [\n    {\n      \"active\": true,\n      \"createDate\": \"createDate\",\n      \"eventName\": \"eventName\",\n      \"id\": 1,\n      \"updateDate\": \"updateDate\",\n      \"url\": \"url\"\n    }\n  ]\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "0c5c60b4-1718-444e-a072-4c9936fd1da8",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      },
+      "postServeActions": []
+    },
+    {
+      "id": "aba1c44b-595d-4ae2-88dc-18c9a64bc0dc",
+      "name": "Subscribe to Notification - default",
+      "request": {
+        "urlPathTemplate": "/core/v1/notifications",
+        "method": "POST",
+        "headers": {
+          "Authorization": {
+            "equalTo": "Basic dGVzdC11c2VybmFtZTp0ZXN0LXBhc3N3b3Jk"
+          }
+        }
+      },
+      "response": {
+        "status": 201,
+        "body": "{\n  \"subscription\": {\n    \"active\": true,\n    \"createDate\": \"createDate\",\n    \"eventName\": \"eventName\",\n    \"id\": 1,\n    \"updateDate\": \"updateDate\",\n    \"url\": \"url\"\n  }\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "aba1c44b-595d-4ae2-88dc-18c9a64bc0dc",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "891792af-1179-456b-bd57-2be2e96a134d",
+      "name": "Modify Subscription - default",
+      "request": {
+        "urlPathTemplate": "/core/v1/notifications/{id}",
+        "method": "PUT",
+        "headers": {
+          "Authorization": {
+            "equalTo": "Basic dGVzdC11c2VybmFtZTp0ZXN0LXBhc3N3b3Jk"
+          }
+        },
+        "pathParameters": {
+          "id": {
+            "equalTo": "1"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"subscription\": {\n    \"active\": true,\n    \"createDate\": \"createDate\",\n    \"eventName\": \"eventName\",\n    \"id\": 1,\n    \"updateDate\": \"updateDate\",\n    \"url\": \"url\"\n  }\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "891792af-1179-456b-bd57-2be2e96a134d",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "c7561676-0163-40b8-8113-006f665c7f88",
+      "name": "Delete Subscription - default",
+      "request": {
+        "urlPathTemplate": "/core/v1/notifications/{id}",
+        "method": "DELETE",
+        "headers": {
+          "Authorization": {
+            "equalTo": "Basic dGVzdC11c2VybmFtZTp0ZXN0LXBhc3N3b3Jk"
+          }
+        },
+        "pathParameters": {
+          "id": {
+            "equalTo": "1"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "\"\"",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "c7561676-0163-40b8-8113-006f665c7f88",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "6019d03b-abd3-4808-adfe-9ef2ec481aca",
+      "name": "List Orders - default",
+      "request": {
+        "urlPathTemplate": "/core/v1/orders",
+        "method": "GET",
+        "headers": {
+          "Authorization": {
+            "equalTo": "Basic dGVzdC11c2VybmFtZTp0ZXN0LXBhc3N3b3Jk"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"lastPage\": 1,\n  \"nextPage\": 1,\n  \"totalCount\": 1,\n  \"from\": 1,\n  \"to\": 1,\n  \"orders\": [\n    {\n      \"authAmount\": 1.1,\n      \"createDate\": \"createDate\",\n      \"currency\": \"currency\",\n      \"currencyRate\": 1.1,\n      \"finalAmount\": 1.1,\n      \"id\": 1,\n      \"orderItems\": [\n        {\n          \"duration\": 1,\n          \"id\": 1,\n          \"interval\": null,\n          \"name\": null,\n          \"originalPrice\": null,\n          \"price\": 1.1,\n          \"quantity\": 1,\n          \"status\": \"status\",\n          \"type\": \"type\",\n          \"isRefundable\": true\n        }\n      ],\n      \"registrar\": \"registrar\",\n      \"status\": \"status\",\n      \"totalCapture\": 10.95,\n      \"totalRefund\": 10.95\n    }\n  ],\n  \"parentAccountId\": 1\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "6019d03b-abd3-4808-adfe-9ef2ec481aca",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      },
+      "postServeActions": []
+    },
+    {
+      "id": "e6053c4f-da67-4ef2-a979-74daeab97f35",
+      "name": "Get Order - default",
+      "request": {
+        "urlPathTemplate": "/core/v1/orders/{orderId}",
+        "method": "GET",
+        "headers": {
+          "Authorization": {
+            "equalTo": "Basic dGVzdC11c2VybmFtZTp0ZXN0LXBhc3N3b3Jk"
+          }
+        },
+        "pathParameters": {
+          "orderId": {
+            "equalTo": "1"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"authAmount\": 1.1,\n  \"createDate\": \"createDate\",\n  \"currency\": \"currency\",\n  \"currencyRate\": 1.1,\n  \"finalAmount\": 1.1,\n  \"id\": 1,\n  \"orderItems\": [\n    {\n      \"duration\": 1,\n      \"id\": 1,\n      \"interval\": \"interval\",\n      \"name\": \"name\",\n      \"originalPrice\": 1.1,\n      \"price\": 1.1,\n      \"priceNonUsd\": 1.1,\n      \"quantity\": 1,\n      \"status\": \"status\",\n      \"taxAmount\": 1.1,\n      \"tld\": \"tld\",\n      \"type\": \"type\",\n      \"isRefundable\": true\n    }\n  ],\n  \"registrar\": \"registrar\",\n  \"status\": \"status\",\n  \"totalCapture\": 10.95,\n  \"totalRefund\": 10.95\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "e6053c4f-da67-4ef2-a979-74daeab97f35",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "7e0b81f1-adcc-4ddc-816d-c43b4b38024c",
+      "name": "Process Refund - Refund a single order item",
+      "request": {
+        "urlPathTemplate": "/core/v1/refund",
+        "method": "POST",
+        "headers": {
+          "Authorization": {
+            "equalTo": "Basic dGVzdC11c2VybmFtZTp0ZXN0LXBhc3N3b3Jk"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"results\": [\n    {\n      \"orderId\": 123456,\n      \"orderItemId\": 987654,\n      \"orderItemStatus\": \"refunded\",\n      \"refundAmount\": 10.99,\n      \"message\": \"Domain successfully deleted and refund processed.\"\n    }\n  ],\n  \"totalRefundAmount\": 10.99\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "7e0b81f1-adcc-4ddc-816d-c43b4b38024c",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "11755d5f-8e88-4ae5-ad90-33f885fc5974",
+      "name": "List Transfers - default",
+      "request": {
+        "urlPathTemplate": "/core/v1/transfers",
+        "method": "GET",
+        "headers": {
+          "Authorization": {
+            "equalTo": "Basic dGVzdC11c2VybmFtZTp0ZXN0LXBhc3N3b3Jk"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"lastPage\": 1,\n  \"nextPage\": 1,\n  \"totalCount\": 1,\n  \"from\": 1,\n  \"to\": 1,\n  \"transfers\": [\n    {\n      \"domainName\": \"example.com\",\n      \"email\": \"admin@example.com\",\n      \"status\": \"canceled\"\n    }\n  ]\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "11755d5f-8e88-4ae5-ad90-33f885fc5974",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      },
+      "postServeActions": []
+    },
+    {
+      "id": "dddeb414-2a71-403e-9b7a-58bcf5eeabc7",
+      "name": "Create Transfer - default",
+      "request": {
+        "urlPathTemplate": "/core/v1/transfers",
+        "method": "POST",
+        "headers": {
+          "Authorization": {
+            "equalTo": "Basic dGVzdC11c2VybmFtZTp0ZXN0LXBhc3N3b3Jk"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"order\": 12345,\n  \"totalPaid\": 12.99,\n  \"transfer\": {\n    \"domainName\": \"example.com\",\n    \"email\": \"admin@example.com\",\n    \"status\": \"canceled\"\n  },\n  \"warnings\": {\n    \"message\": \"Domain has registry statuses that may prevent a successful transfer. Please ensure the domain is unlocked and eligible at the losing registrar.\",\n    \"statuses\": [\n      \"clientTransferProhibited\",\n      \"clientUpdateProhibited\"\n    ]\n  }\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "dddeb414-2a71-403e-9b7a-58bcf5eeabc7",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "23beaae6-d6d6-419a-a051-11f2332b3f53",
+      "name": "Get Transfer - default",
+      "request": {
+        "urlPathTemplate": "/core/v1/transfers/{domainName}",
+        "method": "GET",
+        "headers": {
+          "Authorization": {
+            "equalTo": "Basic dGVzdC11c2VybmFtZTp0ZXN0LXBhc3N3b3Jk"
+          }
+        },
+        "pathParameters": {
+          "domainName": {
+            "equalTo": "domainName"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"domainName\": \"example.com\",\n  \"email\": \"admin@example.com\",\n  \"status\": \"canceled\"\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "23beaae6-d6d6-419a-a051-11f2332b3f53",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "9867e7f9-b465-4fa5-a031-4373be67179c",
+      "name": "Cancel Transfer - default",
+      "request": {
+        "urlPathTemplate": "/core/v1/transfers/{domainName}:cancel",
+        "method": "POST",
+        "headers": {
+          "Authorization": {
+            "equalTo": "Basic dGVzdC11c2VybmFtZTp0ZXN0LXBhc3N3b3Jk"
+          }
+        },
+        "pathParameters": {
+          "domainName": {
+            "equalTo": "domainName"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"domainName\": \"example.com\",\n  \"email\": \"admin@example.com\",\n  \"status\": \"canceled\"\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "9867e7f9-b465-4fa5-a031-4373be67179c",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "8a387890-7ddc-448f-9073-6328abae2be4",
+      "name": "Cancel external transfer out - default",
+      "request": {
+        "urlPathTemplate": "/core/v1/transfers/external/out/{domainName}:cancel",
+        "method": "POST",
+        "headers": {
+          "Authorization": {
+            "equalTo": "Basic dGVzdC11c2VybmFtZTp0ZXN0LXBhc3N3b3Jk"
+          }
+        },
+        "pathParameters": {
+          "domainName": {
+            "equalTo": "example.com"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"domainName\": \"example.com\",\n  \"status\": \"canceled\"\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "8a387890-7ddc-448f-9073-6328abae2be4",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "5ff4cdf4-7664-4e29-859d-8d82df638034",
+      "name": "Create Internal Transfer In - default",
+      "request": {
+        "urlPathTemplate": "/core/v1/transfers/internal/in",
+        "method": "POST",
+        "headers": {
+          "Authorization": {
+            "equalTo": "Basic dGVzdC11c2VybmFtZTp0ZXN0LXBhc3N3b3Jk"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"domainName\": \"example.com\",\n  \"createDate\": \"2023-01-15T14:30:00Z\",\n  \"expireDate\": \"2025-01-15T14:30:00Z\",\n  \"autorenewEnabled\": true,\n  \"locked\": true,\n  \"locks\": [\n    \"clientTransferProhibited\",\n    \"clientHold\"\n  ],\n  \"transferLockExpiresAt\": \"2023-03-16T14:30:00Z\",\n  \"privacyEnabled\": true,\n  \"contacts\": {\n    \"admin\": {\n      \"firstName\": \"John\",\n      \"lastName\": \"Doe\",\n      \"companyName\": \"Example Inc.\",\n      \"address1\": \"123 Main Street\",\n      \"address2\": \"Suite 400\",\n      \"city\": \"New York\",\n      \"state\": \"NY\",\n      \"zip\": \"10001\",\n      \"country\": \"US\",\n      \"email\": \"john.doe@example.com\",\n      \"phone\": \"+15551234567\",\n      \"fax\": \"+15557654321\",\n      \"isVerified\": true,\n      \"verificationId\": 12345\n    },\n    \"billing\": {\n      \"firstName\": \"John\",\n      \"lastName\": \"Doe\",\n      \"companyName\": \"Example Inc.\",\n      \"address1\": \"123 Main Street\",\n      \"address2\": \"Suite 400\",\n      \"city\": \"New York\",\n      \"state\": \"NY\",\n      \"zip\": \"10001\",\n      \"country\": \"US\",\n      \"email\": \"john.doe@example.com\",\n      \"phone\": \"+15551234567\",\n      \"fax\": \"+15557654321\",\n      \"isVerified\": true,\n      \"verificationId\": 12345\n    },\n    \"registrant\": {\n      \"firstName\": \"John\",\n      \"lastName\": \"Doe\",\n      \"companyName\": \"Example Inc.\",\n      \"address1\": \"123 Main Street\",\n      \"address2\": \"Suite 400\",\n      \"city\": \"New York\",\n      \"state\": \"NY\",\n      \"zip\": \"10001\",\n      \"country\": \"US\",\n      \"email\": \"john.doe@example.com\",\n      \"phone\": \"+15551234567\",\n      \"fax\": \"+15557654321\",\n      \"isVerified\": true,\n      \"verificationId\": 12345\n    },\n    \"tech\": {\n      \"firstName\": \"John\",\n      \"lastName\": \"Doe\",\n      \"companyName\": \"Example Inc.\",\n      \"address1\": \"123 Main Street\",\n      \"address2\": \"Suite 400\",\n      \"city\": \"New York\",\n      \"state\": \"NY\",\n      \"zip\": \"10001\",\n      \"country\": \"US\",\n      \"email\": \"john.doe@example.com\",\n      \"phone\": \"+15551234567\",\n      \"fax\": \"+15557654321\",\n      \"isVerified\": true,\n      \"verificationId\": 12345\n    }\n  },\n  \"nameservers\": [\n    \"ns1.example.com\",\n    \"ns2.example.com\"\n  ],\n  \"renewalPrice\": 12.99\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "5ff4cdf4-7664-4e29-859d-8d82df638034",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "cbc01104-7882-4ee4-ac85-fdc8ffba63de",
+      "name": "Get Transfer Eligibility - Domain is at name.com and TLD supports internal transfer",
+      "request": {
+        "urlPathTemplate": "/core/v1/transfers/eligibility/{domainName}",
+        "method": "GET",
+        "headers": {
+          "Authorization": {
+            "equalTo": "Basic dGVzdC11c2VybmFtZTp0ZXN0LXBhc3N3b3Jk"
+          }
+        },
+        "pathParameters": {
+          "domainName": {
+            "equalTo": "domainName"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"domainName\": \"example.com\",\n  \"atName\": true,\n  \"supportsInternalTransfer\": true\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "cbc01104-7882-4ee4-ac85-fdc8ffba63de",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "409ad0ff-cb52-4233-840e-0ea3edfe01ab",
+      "name": "Get Specific TLD Requirements - Complex requirement set",
+      "request": {
+        "urlPathTemplate": "/core/v1/domaininfo/requirements/{tld}",
+        "method": "GET",
+        "headers": {
+          "Authorization": {
+            "equalTo": "Basic dGVzdC11c2VybmFtZTp0ZXN0LXBhc3N3b3Jk"
+          }
+        },
+        "pathParameters": {
+          "tld": {
+            "equalTo": "fr"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"tldInfo\": {\n    \"tld\": \"fr\",\n    \"ccTld\": true,\n    \"supportsTransferLock\": true,\n    \"supportsDnssec\": true,\n    \"supportsPremium\": true,\n    \"supportsPrivacy\": true,\n    \"supportsInternalTransfer\": true,\n    \"requiresPreDelegation\": true,\n    \"expirationGracePeriod\": 3,\n    \"allowedRegistrationYears\": [\n      1,\n      2,\n      3,\n      4,\n      5,\n      6,\n      7,\n      8,\n      9,\n      10\n    ],\n    \"idnLanguages\": {\n      \"key\": \"value\"\n    },\n    \"hsts\": false,\n    \"minDomainLength\": 5,\n    \"minIdnDomainLength\": 5,\n    \"registryOperator\": \"registryfr\",\n    \"claimsCheckRequired\": [\n      \"registration\"\n    ],\n    \"requireIdnSld\": false\n  },\n  \"contacts\": {\n    \"description\": \"The contacts required to be submitted for registration\",\n    \"type\": \"string\",\n    \"required\": true,\n    \"label\": \"contacts\",\n    \"fields\": {\n      \"registrant\": {\n        \"description\": \"Registrant contact requirements\",\n        \"type\": \"string\",\n        \"required\": true,\n        \"fields\": {\n          \"firstName\": {\n            \"description\": \"First name of registrant contact\",\n            \"type\": \"string\",\n            \"required\": true,\n            \"label\": \"First Name\",\n            \"validation\": \"valid_email\",\n            \"options\": [\n              {\n                \"value\": \"no\",\n                \"label\": \"I am an individual\",\n                \"fields\": {\n                  \"X-FR-BIRTHDATE\": null,\n                  \"X-FR-BIRTHPLACE\": null\n                }\n              }\n            ],\n            \"required_when\": \"FR\",\n            \"value\": \"accepted\"\n          },\n          \"lastName\": {\n            \"description\": \"Last name of registrant contact\",\n            \"type\": \"string\",\n            \"required\": true,\n            \"label\": \"First Name\",\n            \"validation\": \"valid_email\",\n            \"options\": [\n              {\n                \"value\": \"no\",\n                \"label\": \"I am an individual\",\n                \"fields\": {\n                  \"X-FR-BIRTHDATE\": null,\n                  \"X-FR-BIRTHPLACE\": null\n                }\n              }\n            ],\n            \"required_when\": \"FR\",\n            \"value\": \"accepted\"\n          },\n          \"address1\": {\n            \"description\": \"First part of mailing address\",\n            \"type\": \"string\",\n            \"required\": true,\n            \"label\": \"First Name\",\n            \"validation\": \"valid_email\",\n            \"options\": [\n              {\n                \"value\": \"no\",\n                \"label\": \"I am an individual\",\n                \"fields\": {\n                  \"X-FR-BIRTHDATE\": null,\n                  \"X-FR-BIRTHPLACE\": null\n                }\n              }\n            ],\n            \"required_when\": \"FR\",\n            \"value\": \"accepted\"\n          },\n          \"address2\": {\n            \"description\": \"Second part of mailing address\",\n            \"type\": \"string\",\n            \"required\": false,\n            \"label\": \"First Name\",\n            \"validation\": \"valid_email\",\n            \"options\": [\n              {\n                \"value\": \"no\",\n                \"label\": \"I am an individual\",\n                \"fields\": {\n                  \"X-FR-BIRTHDATE\": null,\n                  \"X-FR-BIRTHPLACE\": null\n                }\n              }\n            ],\n            \"required_when\": \"FR\",\n            \"value\": \"accepted\"\n          },\n          \"companyName\": {\n            \"description\": \"Company name of registrant contact\",\n            \"type\": \"string\",\n            \"required\": false,\n            \"label\": \"First Name\",\n            \"validation\": \"valid_email\",\n            \"options\": [\n              {\n                \"value\": \"no\",\n                \"label\": \"I am an individual\",\n                \"fields\": {\n                  \"X-FR-BIRTHDATE\": null,\n                  \"X-FR-BIRTHPLACE\": null\n                }\n              }\n            ],\n            \"required_when\": \"FR\",\n            \"value\": \"accepted\"\n          },\n          \"phone\": {\n            \"description\": \"Phone number of registrant contact\",\n            \"type\": \"string\",\n            \"required\": true,\n            \"label\": \"First Name\",\n            \"validation\": \"valid_email\",\n            \"options\": [\n              {\n                \"value\": \"no\",\n                \"label\": \"I am an individual\",\n                \"fields\": {\n                  \"X-FR-BIRTHDATE\": null,\n                  \"X-FR-BIRTHPLACE\": null\n                }\n              }\n            ],\n            \"required_when\": \"FR\",\n            \"value\": \"accepted\"\n          },\n          \"fax\": {\n            \"description\": \"Fax number of registrant contact\",\n            \"type\": \"string\",\n            \"required\": false,\n            \"label\": \"First Name\",\n            \"validation\": \"valid_email\",\n            \"options\": [\n              {\n                \"value\": \"no\",\n                \"label\": \"I am an individual\",\n                \"fields\": {\n                  \"X-FR-BIRTHDATE\": null,\n                  \"X-FR-BIRTHPLACE\": null\n                }\n              }\n            ],\n            \"required_when\": \"FR\",\n            \"value\": \"accepted\"\n          },\n          \"email\": {\n            \"description\": \"Email address of registrant contact\",\n            \"type\": \"string\",\n            \"required\": true,\n            \"label\": \"First Name\",\n            \"validation\": \"valid_email\",\n            \"options\": [\n              {\n                \"value\": \"no\",\n                \"label\": \"I am an individual\",\n                \"fields\": {\n                  \"X-FR-BIRTHDATE\": null,\n                  \"X-FR-BIRTHPLACE\": null\n                }\n              }\n            ],\n            \"required_when\": \"FR\",\n            \"value\": \"accepted\"\n          },\n          \"city\": {\n            \"description\": \"City of registrant contact\",\n            \"type\": \"string\",\n            \"required\": true,\n            \"label\": \"First Name\",\n            \"validation\": \"valid_email\",\n            \"options\": [\n              {\n                \"value\": \"no\",\n                \"label\": \"I am an individual\",\n                \"fields\": {\n                  \"X-FR-BIRTHDATE\": null,\n                  \"X-FR-BIRTHPLACE\": null\n                }\n              }\n            ],\n            \"required_when\": \"FR\",\n            \"value\": \"accepted\"\n          },\n          \"state\": {\n            \"description\": \"State/Province of registrant. Only values from this list are allowed\",\n            \"type\": \"string\",\n            \"required\": true,\n            \"label\": \"First Name\",\n            \"validation\": \"valid_email\",\n            \"options\": [\n              {\n                \"value\": \"no\",\n                \"label\": \"I am an individual\",\n                \"fields\": {\n                  \"X-FR-BIRTHDATE\": null,\n                  \"X-FR-BIRTHPLACE\": null\n                }\n              }\n            ],\n            \"required_when\": \"FR\",\n            \"value\": \"accepted\"\n          },\n          \"zip\": {\n            \"description\": \"Postal code of registrant contact\",\n            \"type\": \"string\",\n            \"required\": true,\n            \"label\": \"First Name\",\n            \"validation\": \"valid_email\",\n            \"options\": [\n              {\n                \"value\": \"no\",\n                \"label\": \"I am an individual\",\n                \"fields\": {\n                  \"X-FR-BIRTHDATE\": null,\n                  \"X-FR-BIRTHPLACE\": null\n                }\n              }\n            ],\n            \"required_when\": \"FR\",\n            \"value\": \"accepted\"\n          },\n          \"country\": {\n            \"description\": \"Country of registrant, only options in this list are allowed\",\n            \"type\": \"enum\",\n            \"required\": true,\n            \"label\": \"First Name\",\n            \"validation\": \"valid_email\",\n            \"options\": [\n              {\n                \"value\": \"AT\",\n                \"label\": \"Austria\",\n                \"fields\": {\n                  \"X-FR-BIRTHDATE\": null,\n                  \"X-FR-BIRTHPLACE\": null\n                }\n              },\n              {\n                \"value\": \"AX\",\n                \"label\": \"Åland Islands\",\n                \"fields\": {\n                  \"X-FR-BIRTHDATE\": null,\n                  \"X-FR-BIRTHPLACE\": null\n                }\n              },\n              {\n                \"value\": \"BE\",\n                \"label\": \"Belgium\",\n                \"fields\": {\n                  \"X-FR-BIRTHDATE\": null,\n                  \"X-FR-BIRTHPLACE\": null\n                }\n              },\n              {\n                \"value\": \"BG\",\n                \"label\": \"Bulgaria\",\n                \"fields\": {\n                  \"X-FR-BIRTHDATE\": null,\n                  \"X-FR-BIRTHPLACE\": null\n                }\n              },\n              {\n                \"value\": \"CH\",\n                \"label\": \"Switzerland\",\n                \"fields\": {\n                  \"X-FR-BIRTHDATE\": null,\n                  \"X-FR-BIRTHPLACE\": null\n                }\n              },\n              {\n                \"value\": \"CY\",\n                \"label\": \"Cyprus\",\n                \"fields\": {\n                  \"X-FR-BIRTHDATE\": null,\n                  \"X-FR-BIRTHPLACE\": null\n                }\n              },\n              {\n                \"value\": \"CZ\",\n                \"label\": \"Czech Republic\",\n                \"fields\": {\n                  \"X-FR-BIRTHDATE\": null,\n                  \"X-FR-BIRTHPLACE\": null\n                }\n              },\n              {\n                \"value\": \"DE\",\n                \"label\": \"Germany\",\n                \"fields\": {\n                  \"X-FR-BIRTHDATE\": null,\n                  \"X-FR-BIRTHPLACE\": null\n                }\n              },\n              {\n                \"value\": \"DK\",\n                \"label\": \"Denmark\",\n                \"fields\": {\n                  \"X-FR-BIRTHDATE\": null,\n                  \"X-FR-BIRTHPLACE\": null\n                }\n              },\n              {\n                \"value\": \"EE\",\n                \"label\": \"Estonia\",\n                \"fields\": {\n                  \"X-FR-BIRTHDATE\": null,\n                  \"X-FR-BIRTHPLACE\": null\n                }\n              },\n              {\n                \"value\": \"ES\",\n                \"label\": \"Spain\",\n                \"fields\": {\n                  \"X-FR-BIRTHDATE\": null,\n                  \"X-FR-BIRTHPLACE\": null\n                }\n              },\n              {\n                \"value\": \"FI\",\n                \"label\": \"Finland\",\n                \"fields\": {\n                  \"X-FR-BIRTHDATE\": null,\n                  \"X-FR-BIRTHPLACE\": null\n                }\n              },\n              {\n                \"value\": \"FR\",\n                \"label\": \"France\",\n                \"fields\": {\n                  \"X-FR-BIRTHDATE\": null,\n                  \"X-FR-BIRTHPLACE\": null\n                }\n              },\n              {\n                \"value\": \"GF\",\n                \"label\": \"Guiana\",\n                \"fields\": {\n                  \"X-FR-BIRTHDATE\": null,\n                  \"X-FR-BIRTHPLACE\": null\n                }\n              },\n              {\n                \"value\": \"GP\",\n                \"label\": \"Guadeloupe\",\n                \"fields\": {\n                  \"X-FR-BIRTHDATE\": null,\n                  \"X-FR-BIRTHPLACE\": null\n                }\n              },\n              {\n                \"value\": \"GR\",\n                \"label\": \"Greece\",\n                \"fields\": {\n                  \"X-FR-BIRTHDATE\": null,\n                  \"X-FR-BIRTHPLACE\": null\n                }\n              },\n              {\n                \"value\": \"HU\",\n                \"label\": \"Hungary\",\n                \"fields\": {\n                  \"X-FR-BIRTHDATE\": null,\n                  \"X-FR-BIRTHPLACE\": null\n                }\n              },\n              {\n                \"value\": \"IE\",\n                \"label\": \"Ireland\",\n                \"fields\": {\n                  \"X-FR-BIRTHDATE\": null,\n                  \"X-FR-BIRTHPLACE\": null\n                }\n              },\n              {\n                \"value\": \"IS\",\n                \"label\": \"Iceland\",\n                \"fields\": {\n                  \"X-FR-BIRTHDATE\": null,\n                  \"X-FR-BIRTHPLACE\": null\n                }\n              },\n              {\n                \"value\": \"IT\",\n                \"label\": \"Italy\",\n                \"fields\": {\n                  \"X-FR-BIRTHDATE\": null,\n                  \"X-FR-BIRTHPLACE\": null\n                }\n              },\n              {\n                \"value\": \"LI\",\n                \"label\": \"Liechtenstein\",\n                \"fields\": {\n                  \"X-FR-BIRTHDATE\": null,\n                  \"X-FR-BIRTHPLACE\": null\n                }\n              },\n              {\n                \"value\": \"LT\",\n                \"label\": \"Lithuania\",\n                \"fields\": {\n                  \"X-FR-BIRTHDATE\": null,\n                  \"X-FR-BIRTHPLACE\": null\n                }\n              },\n              {\n                \"value\": \"LU\",\n                \"label\": \"Luxembourg\",\n                \"fields\": {\n                  \"X-FR-BIRTHDATE\": null,\n                  \"X-FR-BIRTHPLACE\": null\n                }\n              },\n              {\n                \"value\": \"LV\",\n                \"label\": \"Latvia\",\n                \"fields\": {\n                  \"X-FR-BIRTHDATE\": null,\n                  \"X-FR-BIRTHPLACE\": null\n                }\n              },\n              {\n                \"value\": \"MQ\",\n                \"label\": \"Martinique\",\n                \"fields\": {\n                  \"X-FR-BIRTHDATE\": null,\n                  \"X-FR-BIRTHPLACE\": null\n                }\n              },\n              {\n                \"value\": \"MT\",\n                \"label\": \"Malta\",\n                \"fields\": {\n                  \"X-FR-BIRTHDATE\": null,\n                  \"X-FR-BIRTHPLACE\": null\n                }\n              },\n              {\n                \"value\": \"NC\",\n                \"label\": \"New Caledonia\",\n                \"fields\": {\n                  \"X-FR-BIRTHDATE\": null,\n                  \"X-FR-BIRTHPLACE\": null\n                }\n              },\n              {\n                \"value\": \"NL\",\n                \"label\": \"Netherlands\",\n                \"fields\": {\n                  \"X-FR-BIRTHDATE\": null,\n                  \"X-FR-BIRTHPLACE\": null\n                }\n              },\n              {\n                \"value\": \"NO\",\n                \"label\": \"Norway\",\n                \"fields\": {\n                  \"X-FR-BIRTHDATE\": null,\n                  \"X-FR-BIRTHPLACE\": null\n                }\n              },\n              {\n                \"value\": \"PF\",\n                \"label\": \"Polynesia (French)\",\n                \"fields\": {\n                  \"X-FR-BIRTHDATE\": null,\n                  \"X-FR-BIRTHPLACE\": null\n                }\n              },\n              {\n                \"value\": \"PL\",\n                \"label\": \"Poland\",\n                \"fields\": {\n                  \"X-FR-BIRTHDATE\": null,\n                  \"X-FR-BIRTHPLACE\": null\n                }\n              },\n              {\n                \"value\": \"PM\",\n                \"label\": \"St. Pierre & Miquelon\",\n                \"fields\": {\n                  \"X-FR-BIRTHDATE\": null,\n                  \"X-FR-BIRTHPLACE\": null\n                }\n              },\n              {\n                \"value\": \"PT\",\n                \"label\": \"Portugal\",\n                \"fields\": {\n                  \"X-FR-BIRTHDATE\": null,\n                  \"X-FR-BIRTHPLACE\": null\n                }\n              },\n              {\n                \"value\": \"RE\",\n                \"label\": \"Reunion\",\n                \"fields\": {\n                  \"X-FR-BIRTHDATE\": null,\n                  \"X-FR-BIRTHPLACE\": null\n                }\n              },\n              {\n                \"value\": \"RO\",\n                \"label\": \"Romania\",\n                \"fields\": {\n                  \"X-FR-BIRTHDATE\": null,\n                  \"X-FR-BIRTHPLACE\": null\n                }\n              },\n              {\n                \"value\": \"SE\",\n                \"label\": \"Sweden\",\n                \"fields\": {\n                  \"X-FR-BIRTHDATE\": null,\n                  \"X-FR-BIRTHPLACE\": null\n                }\n              },\n              {\n                \"value\": \"SI\",\n                \"label\": \"Slovenia\",\n                \"fields\": {\n                  \"X-FR-BIRTHDATE\": null,\n                  \"X-FR-BIRTHPLACE\": null\n                }\n              },\n              {\n                \"value\": \"SK\",\n                \"label\": \"Slovakia\",\n                \"fields\": {\n                  \"X-FR-BIRTHDATE\": null,\n                  \"X-FR-BIRTHPLACE\": null\n                }\n              },\n              {\n                \"value\": \"TF\",\n                \"label\": \"French Southern and Antarctic Lands\",\n                \"fields\": {\n                  \"X-FR-BIRTHDATE\": null,\n                  \"X-FR-BIRTHPLACE\": null\n                }\n              },\n              {\n                \"value\": \"WF\",\n                \"label\": \"Wallis & Futuna Is.\",\n                \"fields\": {\n                  \"X-FR-BIRTHDATE\": null,\n                  \"X-FR-BIRTHPLACE\": null\n                }\n              },\n              {\n                \"value\": \"YT\",\n                \"label\": \"Mayotte\",\n                \"fields\": {\n                  \"X-FR-BIRTHDATE\": null,\n                  \"X-FR-BIRTHPLACE\": null\n                }\n              }\n            ],\n            \"required_when\": \"FR\",\n            \"value\": \"accepted\"\n          }\n        }\n      },\n      \"tech\": {\n        \"description\": \"Technical contact requirements\",\n        \"type\": \"string\",\n        \"required\": true,\n        \"fields\": {\n          \"firstName\": {\n            \"description\": \"First name of tech contact\",\n            \"type\": \"string\",\n            \"required\": true,\n            \"label\": \"First Name\",\n            \"validation\": \"valid_email\",\n            \"options\": [\n              {\n                \"value\": \"no\",\n                \"label\": \"I am an individual\",\n                \"fields\": {\n                  \"X-FR-BIRTHDATE\": null,\n                  \"X-FR-BIRTHPLACE\": null\n                }\n              }\n            ],\n            \"required_when\": \"FR\",\n            \"value\": \"accepted\"\n          },\n          \"lastName\": {\n            \"description\": \"Last name of tech contact\",\n            \"type\": \"string\",\n            \"required\": true,\n            \"label\": \"First Name\",\n            \"validation\": \"valid_email\",\n            \"options\": [\n              {\n                \"value\": \"no\",\n                \"label\": \"I am an individual\",\n                \"fields\": {\n                  \"X-FR-BIRTHDATE\": null,\n                  \"X-FR-BIRTHPLACE\": null\n                }\n              }\n            ],\n            \"required_when\": \"FR\",\n            \"value\": \"accepted\"\n          },\n          \"address1\": {\n            \"description\": \"First part of mailing address\",\n            \"type\": \"string\",\n            \"required\": true,\n            \"label\": \"First Name\",\n            \"validation\": \"valid_email\",\n            \"options\": [\n              {\n                \"value\": \"no\",\n                \"label\": \"I am an individual\",\n                \"fields\": {\n                  \"X-FR-BIRTHDATE\": null,\n                  \"X-FR-BIRTHPLACE\": null\n                }\n              }\n            ],\n            \"required_when\": \"FR\",\n            \"value\": \"accepted\"\n          },\n          \"address2\": {\n            \"description\": \"Second part of mailing address\",\n            \"type\": \"string\",\n            \"required\": false,\n            \"label\": \"First Name\",\n            \"validation\": \"valid_email\",\n            \"options\": [\n              {\n                \"value\": \"no\",\n                \"label\": \"I am an individual\",\n                \"fields\": {\n                  \"X-FR-BIRTHDATE\": null,\n                  \"X-FR-BIRTHPLACE\": null\n                }\n              }\n            ],\n            \"required_when\": \"FR\",\n            \"value\": \"accepted\"\n          },\n          \"companyName\": {\n            \"description\": \"Required company name of tech contact\",\n            \"type\": \"string\",\n            \"required\": true,\n            \"label\": \"First Name\",\n            \"validation\": \"valid_email\",\n            \"options\": [\n              {\n                \"value\": \"no\",\n                \"label\": \"I am an individual\",\n                \"fields\": {\n                  \"X-FR-BIRTHDATE\": null,\n                  \"X-FR-BIRTHPLACE\": null\n                }\n              }\n            ],\n            \"required_when\": \"FR\",\n            \"value\": \"accepted\"\n          },\n          \"phone\": {\n            \"description\": \"Phone number of tech contact\",\n            \"type\": \"string\",\n            \"required\": true,\n            \"label\": \"First Name\",\n            \"validation\": \"valid_email\",\n            \"options\": [\n              {\n                \"value\": \"no\",\n                \"label\": \"I am an individual\",\n                \"fields\": {\n                  \"X-FR-BIRTHDATE\": null,\n                  \"X-FR-BIRTHPLACE\": null\n                }\n              }\n            ],\n            \"required_when\": \"FR\",\n            \"value\": \"accepted\"\n          },\n          \"fax\": {\n            \"description\": \"Fax number of tech contact\",\n            \"type\": \"string\",\n            \"required\": false,\n            \"label\": \"First Name\",\n            \"validation\": \"valid_email\",\n            \"options\": [\n              {\n                \"value\": \"no\",\n                \"label\": \"I am an individual\",\n                \"fields\": {\n                  \"X-FR-BIRTHDATE\": null,\n                  \"X-FR-BIRTHPLACE\": null\n                }\n              }\n            ],\n            \"required_when\": \"FR\",\n            \"value\": \"accepted\"\n          },\n          \"email\": {\n            \"description\": \"Email address of tech contact\",\n            \"type\": \"string\",\n            \"required\": true,\n            \"label\": \"First Name\",\n            \"validation\": \"valid_email\",\n            \"options\": [\n              {\n                \"value\": \"no\",\n                \"label\": \"I am an individual\",\n                \"fields\": {\n                  \"X-FR-BIRTHDATE\": null,\n                  \"X-FR-BIRTHPLACE\": null\n                }\n              }\n            ],\n            \"required_when\": \"FR\",\n            \"value\": \"accepted\"\n          },\n          \"city\": {\n            \"description\": \"City of tech contact\",\n            \"type\": \"string\",\n            \"required\": true,\n            \"label\": \"First Name\",\n            \"validation\": \"valid_email\",\n            \"options\": [\n              {\n                \"value\": \"no\",\n                \"label\": \"I am an individual\",\n                \"fields\": {\n                  \"X-FR-BIRTHDATE\": null,\n                  \"X-FR-BIRTHPLACE\": null\n                }\n              }\n            ],\n            \"required_when\": \"FR\",\n            \"value\": \"accepted\"\n          },\n          \"state\": {\n            \"description\": \"State/Province of tech contact. Only values from this list are allowed\",\n            \"type\": \"string\",\n            \"required\": true,\n            \"label\": \"First Name\",\n            \"validation\": \"valid_email\",\n            \"options\": [\n              {\n                \"value\": \"no\",\n                \"label\": \"I am an individual\",\n                \"fields\": {\n                  \"X-FR-BIRTHDATE\": null,\n                  \"X-FR-BIRTHPLACE\": null\n                }\n              }\n            ],\n            \"required_when\": \"FR\",\n            \"value\": \"accepted\"\n          },\n          \"zip\": {\n            \"description\": \"Postal code of tech contact\",\n            \"type\": \"string\",\n            \"required\": true,\n            \"label\": \"First Name\",\n            \"validation\": \"valid_email\",\n            \"options\": [\n              {\n                \"value\": \"no\",\n                \"label\": \"I am an individual\",\n                \"fields\": {\n                  \"X-FR-BIRTHDATE\": null,\n                  \"X-FR-BIRTHPLACE\": null\n                }\n              }\n            ],\n            \"required_when\": \"FR\",\n            \"value\": \"accepted\"\n          },\n          \"country\": {\n            \"description\": \"Country of tech contact\",\n            \"type\": \"enum\",\n            \"required\": true,\n            \"label\": \"First Name\",\n            \"validation\": \"valid_email\",\n            \"options\": [\n              {\n                \"value\": \"no\",\n                \"label\": \"I am an individual\",\n                \"fields\": {\n                  \"X-FR-BIRTHDATE\": null,\n                  \"X-FR-BIRTHPLACE\": null\n                }\n              }\n            ],\n            \"required_when\": \"FR\",\n            \"value\": \"accepted\"\n          }\n        }\n      }\n    }\n  },\n  \"requirements\": {\n    \"description\": \"Registration requirements for .fr domains\",\n    \"fields\": {\n      \"firstName\": {\n        \"description\": \"First name of registrant\",\n        \"type\": \"string\",\n        \"required\": true,\n        \"label\": \"First Name\",\n        \"validation\": \"valid_email\",\n        \"options\": [\n          {\n            \"value\": \"no\",\n            \"label\": \"I am an individual\",\n            \"fields\": {\n              \"X-FR-BIRTHDATE\": null,\n              \"X-FR-BIRTHPLACE\": null\n            }\n          }\n        ],\n        \"required_when\": \"FR\",\n        \"value\": \"accepted\"\n      },\n      \"lastName\": {\n        \"description\": \"Last name of registrant\",\n        \"type\": \"string\",\n        \"required\": true,\n        \"label\": \"First Name\",\n        \"validation\": \"valid_email\",\n        \"options\": [\n          {\n            \"value\": \"no\",\n            \"label\": \"I am an individual\",\n            \"fields\": {\n              \"X-FR-BIRTHDATE\": null,\n              \"X-FR-BIRTHPLACE\": null\n            }\n          }\n        ],\n        \"required_when\": \"FR\",\n        \"value\": \"accepted\"\n      },\n      \"address1\": {\n        \"description\": \"First part of mailing address\",\n        \"type\": \"string\",\n        \"required\": true,\n        \"label\": \"First Name\",\n        \"validation\": \"valid_email\",\n        \"options\": [\n          {\n            \"value\": \"no\",\n            \"label\": \"I am an individual\",\n            \"fields\": {\n              \"X-FR-BIRTHDATE\": null,\n              \"X-FR-BIRTHPLACE\": null\n            }\n          }\n        ],\n        \"required_when\": \"FR\",\n        \"value\": \"accepted\"\n      },\n      \"address2\": {\n        \"description\": \"Second part of mailing address\",\n        \"type\": \"string\",\n        \"required\": false,\n        \"label\": \"First Name\",\n        \"validation\": \"valid_email\",\n        \"options\": [\n          {\n            \"value\": \"no\",\n            \"label\": \"I am an individual\",\n            \"fields\": {\n              \"X-FR-BIRTHDATE\": null,\n              \"X-FR-BIRTHPLACE\": null\n            }\n          }\n        ],\n        \"required_when\": \"FR\",\n        \"value\": \"accepted\"\n      },\n      \"companyName\": {\n        \"description\": \"Company name of registrant\",\n        \"type\": \"string\",\n        \"required\": false,\n        \"label\": \"First Name\",\n        \"validation\": \"valid_email\",\n        \"options\": [\n          {\n            \"value\": \"no\",\n            \"label\": \"I am an individual\",\n            \"fields\": {\n              \"X-FR-BIRTHDATE\": null,\n              \"X-FR-BIRTHPLACE\": null\n            }\n          }\n        ],\n        \"required_when\": \"FR\",\n        \"value\": \"accepted\"\n      },\n      \"phone\": {\n        \"description\": \"Phone number of registrant\",\n        \"type\": \"string\",\n        \"required\": true,\n        \"label\": \"First Name\",\n        \"validation\": \"valid_email\",\n        \"options\": [\n          {\n            \"value\": \"no\",\n            \"label\": \"I am an individual\",\n            \"fields\": {\n              \"X-FR-BIRTHDATE\": null,\n              \"X-FR-BIRTHPLACE\": null\n            }\n          }\n        ],\n        \"required_when\": \"FR\",\n        \"value\": \"accepted\"\n      },\n      \"fax\": {\n        \"description\": \"Fax number of registrant\",\n        \"type\": \"string\",\n        \"required\": false,\n        \"label\": \"First Name\",\n        \"validation\": \"valid_email\",\n        \"options\": [\n          {\n            \"value\": \"no\",\n            \"label\": \"I am an individual\",\n            \"fields\": {\n              \"X-FR-BIRTHDATE\": null,\n              \"X-FR-BIRTHPLACE\": null\n            }\n          }\n        ],\n        \"required_when\": \"FR\",\n        \"value\": \"accepted\"\n      },\n      \"email\": {\n        \"description\": \"Email address of registrant\",\n        \"type\": \"string\",\n        \"required\": true,\n        \"label\": \"First Name\",\n        \"validation\": \"valid_email\",\n        \"options\": [\n          {\n            \"value\": \"no\",\n            \"label\": \"I am an individual\",\n            \"fields\": {\n              \"X-FR-BIRTHDATE\": null,\n              \"X-FR-BIRTHPLACE\": null\n            }\n          }\n        ],\n        \"required_when\": \"FR\",\n        \"value\": \"accepted\"\n      },\n      \"city\": {\n        \"description\": \"City of registrant\",\n        \"type\": \"string\",\n        \"required\": true,\n        \"label\": \"First Name\",\n        \"validation\": \"valid_email\",\n        \"options\": [\n          {\n            \"value\": \"no\",\n            \"label\": \"I am an individual\",\n            \"fields\": {\n              \"X-FR-BIRTHDATE\": null,\n              \"X-FR-BIRTHPLACE\": null\n            }\n          }\n        ],\n        \"required_when\": \"FR\",\n        \"value\": \"accepted\"\n      },\n      \"state\": {\n        \"description\": \"State/Province of registrant\",\n        \"type\": \"string\",\n        \"required\": true,\n        \"label\": \"First Name\",\n        \"validation\": \"valid_email\",\n        \"options\": [\n          {\n            \"value\": \"no\",\n            \"label\": \"I am an individual\",\n            \"fields\": {\n              \"X-FR-BIRTHDATE\": null,\n              \"X-FR-BIRTHPLACE\": null\n            }\n          }\n        ],\n        \"required_when\": \"FR\",\n        \"value\": \"accepted\"\n      },\n      \"zip\": {\n        \"description\": \"Postal code of registrant\",\n        \"type\": \"string\",\n        \"required\": true,\n        \"label\": \"First Name\",\n        \"validation\": \"valid_email\",\n        \"options\": [\n          {\n            \"value\": \"no\",\n            \"label\": \"I am an individual\",\n            \"fields\": {\n              \"X-FR-BIRTHDATE\": null,\n              \"X-FR-BIRTHPLACE\": null\n            }\n          }\n        ],\n        \"required_when\": \"FR\",\n        \"value\": \"accepted\"\n      },\n      \"country\": {\n        \"description\": \"Country of registrant, only options in this list are allowed\",\n        \"type\": \"enum\",\n        \"required\": true,\n        \"label\": \"First Name\",\n        \"validation\": \"valid_email\",\n        \"options\": [\n          {\n            \"value\": \"AT\",\n            \"label\": \"Austria\",\n            \"fields\": {\n              \"X-FR-BIRTHDATE\": null,\n              \"X-FR-BIRTHPLACE\": null\n            }\n          },\n          {\n            \"value\": \"AX\",\n            \"label\": \"Åland Islands\",\n            \"fields\": {\n              \"X-FR-BIRTHDATE\": null,\n              \"X-FR-BIRTHPLACE\": null\n            }\n          },\n          {\n            \"value\": \"BE\",\n            \"label\": \"Belgium\",\n            \"fields\": {\n              \"X-FR-BIRTHDATE\": null,\n              \"X-FR-BIRTHPLACE\": null\n            }\n          },\n          {\n            \"value\": \"BG\",\n            \"label\": \"Bulgaria\",\n            \"fields\": {\n              \"X-FR-BIRTHDATE\": null,\n              \"X-FR-BIRTHPLACE\": null\n            }\n          },\n          {\n            \"value\": \"CH\",\n            \"label\": \"Switzerland\",\n            \"fields\": {\n              \"X-FR-BIRTHDATE\": null,\n              \"X-FR-BIRTHPLACE\": null\n            }\n          },\n          {\n            \"value\": \"CY\",\n            \"label\": \"Cyprus\",\n            \"fields\": {\n              \"X-FR-BIRTHDATE\": null,\n              \"X-FR-BIRTHPLACE\": null\n            }\n          },\n          {\n            \"value\": \"CZ\",\n            \"label\": \"Czech Republic\",\n            \"fields\": {\n              \"X-FR-BIRTHDATE\": null,\n              \"X-FR-BIRTHPLACE\": null\n            }\n          },\n          {\n            \"value\": \"DE\",\n            \"label\": \"Germany\",\n            \"fields\": {\n              \"X-FR-BIRTHDATE\": null,\n              \"X-FR-BIRTHPLACE\": null\n            }\n          },\n          {\n            \"value\": \"DK\",\n            \"label\": \"Denmark\",\n            \"fields\": {\n              \"X-FR-BIRTHDATE\": null,\n              \"X-FR-BIRTHPLACE\": null\n            }\n          },\n          {\n            \"value\": \"EE\",\n            \"label\": \"Estonia\",\n            \"fields\": {\n              \"X-FR-BIRTHDATE\": null,\n              \"X-FR-BIRTHPLACE\": null\n            }\n          },\n          {\n            \"value\": \"ES\",\n            \"label\": \"Spain\",\n            \"fields\": {\n              \"X-FR-BIRTHDATE\": null,\n              \"X-FR-BIRTHPLACE\": null\n            }\n          },\n          {\n            \"value\": \"FI\",\n            \"label\": \"Finland\",\n            \"fields\": {\n              \"X-FR-BIRTHDATE\": null,\n              \"X-FR-BIRTHPLACE\": null\n            }\n          },\n          {\n            \"value\": \"FR\",\n            \"label\": \"France\",\n            \"fields\": {\n              \"X-FR-BIRTHDATE\": null,\n              \"X-FR-BIRTHPLACE\": null\n            }\n          },\n          {\n            \"value\": \"GF\",\n            \"label\": \"Guiana\",\n            \"fields\": {\n              \"X-FR-BIRTHDATE\": null,\n              \"X-FR-BIRTHPLACE\": null\n            }\n          },\n          {\n            \"value\": \"GP\",\n            \"label\": \"Guadeloupe\",\n            \"fields\": {\n              \"X-FR-BIRTHDATE\": null,\n              \"X-FR-BIRTHPLACE\": null\n            }\n          },\n          {\n            \"value\": \"GR\",\n            \"label\": \"Greece\",\n            \"fields\": {\n              \"X-FR-BIRTHDATE\": null,\n              \"X-FR-BIRTHPLACE\": null\n            }\n          },\n          {\n            \"value\": \"HU\",\n            \"label\": \"Hungary\",\n            \"fields\": {\n              \"X-FR-BIRTHDATE\": null,\n              \"X-FR-BIRTHPLACE\": null\n            }\n          },\n          {\n            \"value\": \"IE\",\n            \"label\": \"Ireland\",\n            \"fields\": {\n              \"X-FR-BIRTHDATE\": null,\n              \"X-FR-BIRTHPLACE\": null\n            }\n          },\n          {\n            \"value\": \"IS\",\n            \"label\": \"Iceland\",\n            \"fields\": {\n              \"X-FR-BIRTHDATE\": null,\n              \"X-FR-BIRTHPLACE\": null\n            }\n          },\n          {\n            \"value\": \"IT\",\n            \"label\": \"Italy\",\n            \"fields\": {\n              \"X-FR-BIRTHDATE\": null,\n              \"X-FR-BIRTHPLACE\": null\n            }\n          },\n          {\n            \"value\": \"LI\",\n            \"label\": \"Liechtenstein\",\n            \"fields\": {\n              \"X-FR-BIRTHDATE\": null,\n              \"X-FR-BIRTHPLACE\": null\n            }\n          },\n          {\n            \"value\": \"LT\",\n            \"label\": \"Lithuania\",\n            \"fields\": {\n              \"X-FR-BIRTHDATE\": null,\n              \"X-FR-BIRTHPLACE\": null\n            }\n          },\n          {\n            \"value\": \"LU\",\n            \"label\": \"Luxembourg\",\n            \"fields\": {\n              \"X-FR-BIRTHDATE\": null,\n              \"X-FR-BIRTHPLACE\": null\n            }\n          },\n          {\n            \"value\": \"LV\",\n            \"label\": \"Latvia\",\n            \"fields\": {\n              \"X-FR-BIRTHDATE\": null,\n              \"X-FR-BIRTHPLACE\": null\n            }\n          },\n          {\n            \"value\": \"MQ\",\n            \"label\": \"Martinique\",\n            \"fields\": {\n              \"X-FR-BIRTHDATE\": null,\n              \"X-FR-BIRTHPLACE\": null\n            }\n          },\n          {\n            \"value\": \"MT\",\n            \"label\": \"Malta\",\n            \"fields\": {\n              \"X-FR-BIRTHDATE\": null,\n              \"X-FR-BIRTHPLACE\": null\n            }\n          },\n          {\n            \"value\": \"NC\",\n            \"label\": \"New Caledonia\",\n            \"fields\": {\n              \"X-FR-BIRTHDATE\": null,\n              \"X-FR-BIRTHPLACE\": null\n            }\n          },\n          {\n            \"value\": \"NL\",\n            \"label\": \"Netherlands\",\n            \"fields\": {\n              \"X-FR-BIRTHDATE\": null,\n              \"X-FR-BIRTHPLACE\": null\n            }\n          },\n          {\n            \"value\": \"NO\",\n            \"label\": \"Norway\",\n            \"fields\": {\n              \"X-FR-BIRTHDATE\": null,\n              \"X-FR-BIRTHPLACE\": null\n            }\n          },\n          {\n            \"value\": \"PF\",\n            \"label\": \"Polynesia (French)\",\n            \"fields\": {\n              \"X-FR-BIRTHDATE\": null,\n              \"X-FR-BIRTHPLACE\": null\n            }\n          },\n          {\n            \"value\": \"PL\",\n            \"label\": \"Poland\",\n            \"fields\": {\n              \"X-FR-BIRTHDATE\": null,\n              \"X-FR-BIRTHPLACE\": null\n            }\n          },\n          {\n            \"value\": \"PM\",\n            \"label\": \"St. Pierre & Miquelon\",\n            \"fields\": {\n              \"X-FR-BIRTHDATE\": null,\n              \"X-FR-BIRTHPLACE\": null\n            }\n          },\n          {\n            \"value\": \"PT\",\n            \"label\": \"Portugal\",\n            \"fields\": {\n              \"X-FR-BIRTHDATE\": null,\n              \"X-FR-BIRTHPLACE\": null\n            }\n          },\n          {\n            \"value\": \"RE\",\n            \"label\": \"Reunion\",\n            \"fields\": {\n              \"X-FR-BIRTHDATE\": null,\n              \"X-FR-BIRTHPLACE\": null\n            }\n          },\n          {\n            \"value\": \"RO\",\n            \"label\": \"Romania\",\n            \"fields\": {\n              \"X-FR-BIRTHDATE\": null,\n              \"X-FR-BIRTHPLACE\": null\n            }\n          },\n          {\n            \"value\": \"SE\",\n            \"label\": \"Sweden\",\n            \"fields\": {\n              \"X-FR-BIRTHDATE\": null,\n              \"X-FR-BIRTHPLACE\": null\n            }\n          },\n          {\n            \"value\": \"SI\",\n            \"label\": \"Slovenia\",\n            \"fields\": {\n              \"X-FR-BIRTHDATE\": null,\n              \"X-FR-BIRTHPLACE\": null\n            }\n          },\n          {\n            \"value\": \"SK\",\n            \"label\": \"Slovakia\",\n            \"fields\": {\n              \"X-FR-BIRTHDATE\": null,\n              \"X-FR-BIRTHPLACE\": null\n            }\n          },\n          {\n            \"value\": \"TF\",\n            \"label\": \"French Southern and Antarctic Lands\",\n            \"fields\": {\n              \"X-FR-BIRTHDATE\": null,\n              \"X-FR-BIRTHPLACE\": null\n            }\n          },\n          {\n            \"value\": \"WF\",\n            \"label\": \"Wallis & Futuna Is.\",\n            \"fields\": {\n              \"X-FR-BIRTHDATE\": null,\n              \"X-FR-BIRTHPLACE\": null\n            }\n          },\n          {\n            \"value\": \"YT\",\n            \"label\": \"Mayotte\",\n            \"fields\": {\n              \"X-FR-BIRTHDATE\": null,\n              \"X-FR-BIRTHPLACE\": null\n            }\n          }\n        ],\n        \"required_when\": \"FR\",\n        \"value\": \"accepted\"\n      },\n      \"business\": {\n        \"description\": \"\",\n        \"type\": \"enum\",\n        \"required\": true,\n        \"label\": \"business\",\n        \"validation\": \"valid_email\",\n        \"options\": [\n          {\n            \"value\": \"no\",\n            \"label\": \"I am an individual\",\n            \"fields\": {\n              \"X-FR-BIRTHDATE\": null,\n              \"X-FR-BIRTHPLACE\": null\n            }\n          },\n          {\n            \"value\": \"yes\",\n            \"label\": \"I am an organization\",\n            \"fields\": {\n              \"X-FR-LOCAL\": null\n            }\n          }\n        ],\n        \"required_when\": \"FR\",\n        \"value\": \"accepted\"\n      }\n    }\n  }\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "409ad0ff-cb52-4233-840e-0ea3edfe01ab",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "33ec7b2e-1853-4c6f-af59-504735518288",
+      "name": "Check Domain Claims - Domain with trademark claims",
+      "request": {
+        "urlPathTemplate": "/core/v1/domaininfo/claims/{domain}",
+        "method": "POST",
+        "headers": {
+          "Authorization": {
+            "equalTo": "Basic dGVzdC11c2VybmFtZTp0ZXN0LXBhc3N3b3Jk"
+          }
+        },
+        "pathParameters": {
+          "domain": {
+            "equalTo": "tiktok.page"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"domain\": \"tiktok.page\",\n  \"claims\": [\n    {\n      \"trademark\": \"TikTok\",\n      \"holder\": \"ByteDance Ltd.\",\n      \"jurisdiction\": \"US\",\n      \"registrationNumber\": \"US123456789\",\n      \"description\": \"Social media platform trademark\",\n      \"noticeHtml\": \"<div class='trademark-notice'>This domain may infringe on the TikTok trademark held by ByteDance Ltd.</div>\",\n      \"confidence\": 0.95\n    }\n  ],\n  \"claimsProcessActive\": true,\n  \"claimId\": \"8c3027d30000000000382500785\",\n  \"notBefore\": \"2020-01-01T00:00:00Z\",\n  \"notAfter\": \"2030-01-01T00:00:00Z\",\n  \"claimsNotice\": \"**This domain may infringe on a trademark claim. Proceeding with registration acknowledges that you have received notice of this claim.**\"\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "33ec7b2e-1853-4c6f-af59-504735518288",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "a67c681e-6285-4388-abd6-03b5dafe7fd7",
+      "name": "Get TLD Requirements as JSON Schema - Example for .it TLD",
+      "request": {
+        "urlPathTemplate": "/core/v1/domaininfo/requirementsV2/{tld}",
+        "method": "GET",
+        "headers": {
+          "Authorization": {
+            "equalTo": "Basic dGVzdC11c2VybmFtZTp0ZXN0LXBhc3N3b3Jk"
+          }
+        },
+        "pathParameters": {
+          "tld": {
+            "equalTo": "fr"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"$schema\": \"http://json-schema.org/draft-07/schema#\",\n  \"type\": \"object\",\n  \"title\": \".it Domain Registration Requirements Schema\",\n  \"description\": \"Registration requirements for .it domains\",\n  \"properties\": {\n    \"tldInfo\": {\n      \"tld\": \".it\",\n      \"ccTld\": true,\n      \"supportsTransferLock\": true,\n      \"supportsDnssec\": true,\n      \"supportsPremium\": false,\n      \"supportsPrivacy\": false,\n      \"supportsInternalTransfer\": true,\n      \"requiresPreDelegation\": false,\n      \"expirationGracePeriod\": 25,\n      \"allowedRegistrationYears\": [\n        1,\n        3,\n        5,\n        8,\n        10\n      ],\n      \"idnLanguages\": {\n        \"IT\": \"Italian\"\n      },\n      \"hsts\": false,\n      \"minDomainLength\": 3,\n      \"minIdnDomainLength\": 5,\n      \"registryOperator\": \"nic.it\",\n      \"claimsCheckRequired\": [\n        \"registration\"\n      ],\n      \"requireIdnSld\": false\n    },\n    \"contacts\": {\n      \"type\": \"object\",\n      \"properties\": {\n        \"registrant\": {\n          \"type\": \"object\",\n          \"properties\": {\n            \"firstName\": {\n              \"type\": \"string\",\n              \"title\": \"First Name\",\n              \"description\": \"First name of registrant contact\"\n            },\n            \"email\": {\n              \"type\": \"string\",\n              \"format\": \"email\",\n              \"title\": \"Email\",\n              \"description\": \"Email address of registrant contact\"\n            }\n          },\n          \"required\": [\n            \"firstName\",\n            \"email\"\n          ]\n        }\n      },\n      \"required\": [\n        \"registrant\"\n      ]\n    },\n    \"tldRequirements\": {\n      \"type\": \"object\",\n      \"properties\": {\n        \"X-IT-ENTITY-TYPE\": {\n          \"type\": \"string\",\n          \"title\": \"Registrant Entity Type\",\n          \"enum\": [\n            \"1\",\n            \"2\",\n            \"3\",\n            \"4\",\n            \"5\",\n            \"6\",\n            \"7\"\n          ]\n        },\n        \"X-IT-PIN\": {\n          \"type\": \"string\",\n          \"title\": \".IT PIN number\",\n          \"description\": \"16 alphanumeric characters (tax code) for natural persons or 11 digits (VAT number) for organizations\"\n        }\n      }\n    }\n  },\n  \"required\": [\n    \"tldInfo\",\n    \"contacts\",\n    \"tldRequirements\"\n  ],\n  \"allOf\": [\n    {\n      \"key\": \"value\"\n    }\n  ],\n  \"if\": {\n    \"key\": \"value\"\n  },\n  \"then\": {\n    \"key\": \"value\"\n  },\n  \"else\": {\n    \"key\": \"value\"\n  }\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "a67c681e-6285-4388-abd6-03b5dafe7fd7",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "daf480dd-b7b9-42e7-8a2b-c79e99e21469",
+      "name": "TLD Price List - default",
+      "request": {
+        "urlPathTemplate": "/core/v1/tldpricing",
+        "method": "GET",
+        "headers": {
+          "Authorization": {
+            "equalTo": "Basic dGVzdC11c2VybmFtZTp0ZXN0LXBhc3N3b3Jk"
+          }
+        },
+        "queryParameters": {
+          "duration": {
+            "equalTo": "1"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"lastPage\": 1,\n  \"nextPage\": 1,\n  \"totalCount\": 1,\n  \"from\": 1,\n  \"to\": 1,\n  \"pricing\": [\n    {\n      \"tld\": \"com\",\n      \"duration\": 1,\n      \"registrationPrice\": 9.99,\n      \"registrationRetailPrice\": 10.99,\n      \"registrationOriginalPrice\": 11.99,\n      \"renewalPrice\": 9.99,\n      \"renewalRetailPrice\": 10.99,\n      \"renewalOriginalPrice\": 11.99,\n      \"domainRestorationPrice\": 120.99,\n      \"domainRestorationRetailPrice\": 130.99,\n      \"domainRestorationOriginalPrice\": 140.99,\n      \"transferInPrice\": 19.99,\n      \"transferInRetailPrice\": 20.99,\n      \"transferInOriginalPrice\": 21.99\n    }\n  ]\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "daf480dd-b7b9-42e7-8a2b-c79e99e21469",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      },
+      "postServeActions": []
+    },
+    {
+      "id": "6e4417ba-4ba9-44f7-8b47-4dd640062711",
+      "name": "Download Premium Domain Lists - default",
+      "request": {
+        "urlPathTemplate": "/core/v1/premiumdomainslist",
+        "method": "GET",
+        "headers": {
+          "Authorization": {
+            "equalTo": "Basic dGVzdC11c2VybmFtZTp0ZXN0LXBhc3N3b3Jk"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"downloadUrl\": \"https://name-ote-downloads/PremiumList_123456.zip\",\n  \"expireDate\": \"2025-09-04T16:45:00Z\"\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "6e4417ba-4ba9-44f7-8b47-4dd640062711",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      },
+      "postServeActions": []
+    },
+    {
+      "id": "acd9e7e7-aa3a-4df1-a980-20eccc088ec1",
+      "name": "List Unverified Contacts - default",
+      "request": {
+        "urlPathTemplate": "/core/v1/contacts/unverified",
+        "method": "GET",
+        "headers": {
+          "Authorization": {
+            "equalTo": "Basic dGVzdC11c2VybmFtZTp0ZXN0LXBhc3N3b3Jk"
+          }
+        },
+        "queryParameters": {
+          "perPage": {
+            "equalTo": "100"
+          },
+          "page": {
+            "equalTo": "2"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"unverifiedContacts\": [\n    {\n      \"verificationId\": 4897668,\n      \"createDate\": \"2025-01-01T15:35:06Z\",\n      \"verifyBy\": \"2025-01-16T15:35:06Z\",\n      \"email\": \"admin@example.com\",\n      \"domains\": [\n        \"domains\"\n      ]\n    }\n  ],\n  \"from\": 1,\n  \"to\": 25,\n  \"lastPage\": 1,\n  \"nextPage\": 1,\n  \"totalCount\": 1\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "acd9e7e7-aa3a-4df1-a980-20eccc088ec1",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      },
+      "postServeActions": []
+    },
+    {
+      "id": "3fa14a9f-a8f7-4c6f-b89a-a421679b81f9",
+      "name": "Verify Contact - default",
+      "request": {
+        "urlPathTemplate": "/core/v1/contacts/verify/{verificationId}",
+        "method": "POST",
+        "headers": {
+          "Authorization": {
+            "equalTo": "Basic dGVzdC11c2VybmFtZTp0ZXN0LXBhc3N3b3Jk"
+          }
+        },
+        "pathParameters": {
+          "verificationId": {
+            "equalTo": "1"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "\"\"",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "3fa14a9f-a8f7-4c6f-b89a-a421679b81f9",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "c55a9dd9-8e3c-49e8-8b2c-0b16655ad982",
+      "name": "Resend Contact Verification Email - Email sent",
+      "request": {
+        "urlPathTemplate": "/core/v1/contacts/verify/{verificationId}:resend",
+        "method": "POST",
+        "headers": {
+          "Authorization": {
+            "equalTo": "Basic dGVzdC11c2VybmFtZTp0ZXN0LXBhc3N3b3Jk"
+          }
+        },
+        "pathParameters": {
+          "verificationId": {
+            "equalTo": "1"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"sent\": true,\n  \"verificationId\": 98752463,\n  \"nextEligibleAt\": \"2026-01-14T12:15:00Z\"\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "c55a9dd9-8e3c-49e8-8b2c-0b16655ad982",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "e87169ba-5829-42fc-ba34-c3c97ff042ac",
+      "name": "Hello - default",
+      "request": {
+        "urlPathTemplate": "/core/v1/hello",
+        "method": "GET",
+        "headers": {
+          "Authorization": {
+            "equalTo": "Basic dGVzdC11c2VybmFtZTp0ZXN0LXBhc3N3b3Jk"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"motd\": \"motd\",\n  \"serverName\": \"serverName\",\n  \"serverTime\": \"serverTime\",\n  \"username\": \"username\"\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "e87169ba-5829-42fc-ba34-c3c97ff042ac",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      },
+      "postServeActions": []
+    }
+  ],
+  "meta": {
+    "total": 72
+  }
+}

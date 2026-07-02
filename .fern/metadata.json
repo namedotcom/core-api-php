@@ -1,0 +1,21 @@
+{
+  "cliVersion": "5.64.0",
+  "generatorName": "fernapi/fern-php-sdk",
+  "generatorVersion": "2.10.15",
+  "generatorConfig": {
+    "namespace": "Namecom",
+    "clientName": "NamecomClient",
+    "packageName": "namecom/core-api",
+    "enable-wire-tests": true,
+    "composerJson": {
+      "description": "Official PHP SDK for the name.com Core API",
+      "homepage": "https://github.com/namedotcom/core-api-php"
+    }
+  },
+  "originGitCommit": "c3ab257628a7366dab6a8ad857854de9416d2338",
+  "originGitCommitIsDirty": true,
+  "invokedBy": "manual",
+  "requestedVersion": "1.29.0",
+  "ciProvider": null,
+  "sdkVersion": "1.29.0"
+}
