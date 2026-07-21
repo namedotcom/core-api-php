@@ -3,18 +3,18 @@
 namespace Namecom\UrlForwardings\Requests;
 
 use Namecom\Core\Json\JsonSerializableType;
-use Namecom\Types\UrlForwarding;
+use Namecom\Types\UrlForwardingInput;
 
 class CreateUrlForwardingRequest extends JsonSerializableType
 {
     /**
-     * @var UrlForwarding $body
+     * @var UrlForwardingInput $body
      */
-    public UrlForwarding $body;
+    public UrlForwardingInput $body;
 
     /**
      * @param array{
-     *   body: UrlForwarding,
+     *   body: UrlForwardingInput,
      * } $values
      */
     public function __construct(

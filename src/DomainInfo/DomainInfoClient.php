@@ -74,7 +74,7 @@ class DomainInfoClient
         try {
             $response = $this->client->sendRequest(
                 new JsonApiRequest(
-                    baseUrl: $options['baseUrl'] ?? $this->client->options['baseUrl'] ?? Environments::Default_->value,
+                    baseUrl: $options['baseUrl'] ?? $this->client->options['baseUrl'] ?? Environments::Sandbox->value,
                     path: "core/v1/domaininfo/requirements/{$tld}",
                     method: HttpMethod::GET,
                 ),
@@ -123,7 +123,7 @@ class DomainInfoClient
         try {
             $response = $this->client->sendRequest(
                 new JsonApiRequest(
-                    baseUrl: $options['baseUrl'] ?? $this->client->options['baseUrl'] ?? Environments::Default_->value,
+                    baseUrl: $options['baseUrl'] ?? $this->client->options['baseUrl'] ?? Environments::Sandbox->value,
                     path: "core/v1/domaininfo/claims/{$domain}",
                     method: HttpMethod::POST,
                     body: $request,
@@ -172,7 +172,7 @@ class DomainInfoClient
         try {
             $response = $this->client->sendRequest(
                 new JsonApiRequest(
-                    baseUrl: $options['baseUrl'] ?? $this->client->options['baseUrl'] ?? Environments::Default_->value,
+                    baseUrl: $options['baseUrl'] ?? $this->client->options['baseUrl'] ?? Environments::Sandbox->value,
                     path: "core/v1/domaininfo/requirementsV2/{$tld}",
                     method: HttpMethod::GET,
                 ),

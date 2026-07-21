@@ -83,7 +83,7 @@ class ContactVerificationClient
         try {
             $response = $this->client->sendRequest(
                 new JsonApiRequest(
-                    baseUrl: $options['baseUrl'] ?? $this->client->options['baseUrl'] ?? Environments::Default_->value,
+                    baseUrl: $options['baseUrl'] ?? $this->client->options['baseUrl'] ?? Environments::Sandbox->value,
                     path: "core/v1/contacts/unverified",
                     method: HttpMethod::GET,
                     query: $query,
@@ -137,7 +137,7 @@ class ContactVerificationClient
         try {
             $response = $this->client->sendRequest(
                 new JsonApiRequest(
-                    baseUrl: $options['baseUrl'] ?? $this->client->options['baseUrl'] ?? Environments::Default_->value,
+                    baseUrl: $options['baseUrl'] ?? $this->client->options['baseUrl'] ?? Environments::Sandbox->value,
                     path: "core/v1/contacts/verify/{$verificationId}",
                     method: HttpMethod::POST,
                     headers: $headers,
@@ -194,7 +194,7 @@ class ContactVerificationClient
         try {
             $response = $this->client->sendRequest(
                 new JsonApiRequest(
-                    baseUrl: $options['baseUrl'] ?? $this->client->options['baseUrl'] ?? Environments::Default_->value,
+                    baseUrl: $options['baseUrl'] ?? $this->client->options['baseUrl'] ?? Environments::Sandbox->value,
                     path: "core/v1/contacts/verify/{$verificationId}:resend",
                     method: HttpMethod::POST,
                     headers: $headers,

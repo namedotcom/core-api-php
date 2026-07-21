@@ -83,7 +83,7 @@ class VanityNameserversClient
         try {
             $response = $this->client->sendRequest(
                 new JsonApiRequest(
-                    baseUrl: $options['baseUrl'] ?? $this->client->options['baseUrl'] ?? Environments::Default_->value,
+                    baseUrl: $options['baseUrl'] ?? $this->client->options['baseUrl'] ?? Environments::Sandbox->value,
                     path: "core/v1/domains/{$domainName}/vanity_nameservers",
                     method: HttpMethod::GET,
                     query: $query,
@@ -133,7 +133,7 @@ class VanityNameserversClient
         try {
             $response = $this->client->sendRequest(
                 new JsonApiRequest(
-                    baseUrl: $options['baseUrl'] ?? $this->client->options['baseUrl'] ?? Environments::Default_->value,
+                    baseUrl: $options['baseUrl'] ?? $this->client->options['baseUrl'] ?? Environments::Sandbox->value,
                     path: "core/v1/domains/{$domainName}/vanity_nameservers",
                     method: HttpMethod::POST,
                     body: $request,
@@ -183,7 +183,7 @@ class VanityNameserversClient
         try {
             $response = $this->client->sendRequest(
                 new JsonApiRequest(
-                    baseUrl: $options['baseUrl'] ?? $this->client->options['baseUrl'] ?? Environments::Default_->value,
+                    baseUrl: $options['baseUrl'] ?? $this->client->options['baseUrl'] ?? Environments::Sandbox->value,
                     path: "core/v1/domains/{$domainName}/vanity_nameservers/{$hostname}",
                     method: HttpMethod::GET,
                 ),
@@ -233,7 +233,7 @@ class VanityNameserversClient
         try {
             $response = $this->client->sendRequest(
                 new JsonApiRequest(
-                    baseUrl: $options['baseUrl'] ?? $this->client->options['baseUrl'] ?? Environments::Default_->value,
+                    baseUrl: $options['baseUrl'] ?? $this->client->options['baseUrl'] ?? Environments::Sandbox->value,
                     path: "core/v1/domains/{$domainName}/vanity_nameservers/{$hostname}",
                     method: HttpMethod::PUT,
                     body: $request,
@@ -282,7 +282,7 @@ class VanityNameserversClient
         try {
             $response = $this->client->sendRequest(
                 new JsonApiRequest(
-                    baseUrl: $options['baseUrl'] ?? $this->client->options['baseUrl'] ?? Environments::Default_->value,
+                    baseUrl: $options['baseUrl'] ?? $this->client->options['baseUrl'] ?? Environments::Sandbox->value,
                     path: "core/v1/domains/{$domainName}/vanity_nameservers/{$hostname}",
                     method: HttpMethod::DELETE,
                 ),

@@ -7,6 +7,7 @@ The Namecom PHP library provides convenient access to the Namecom APIs from PHP.
 
 ## Table of Contents
 
+- [Documentation](#documentation)
 - [Requirements](#requirements)
 - [Installation](#installation)
 - [Usage](#usage)
@@ -17,6 +18,10 @@ The Namecom PHP library provides convenient access to the Namecom APIs from PHP.
   - [Retries](#retries)
   - [Timeouts](#timeouts)
 - [Contributing](#contributing)
+
+## Documentation
+
+API reference documentation is available [here](https://docs.name.com).
 
 ## Requirements
 
@@ -38,38 +43,12 @@ Instantiate and use the client with the following:
 namespace Example;
 
 use Namecom\NamecomClient;
-use Namecom\Accounts\Requests\CreateAccountRequest;
-use Namecom\Types\AccountRequest;
-use Namecom\Types\ContactsRequest;
-use Namecom\Types\RegistrantContactRequest;
 
 $client = new NamecomClient(
     username: '<username>',
     password: '<password>',
 );
-$client->accounts->createAccount(
-    new CreateAccountRequest([
-        'account' => new AccountRequest([
-            'contacts' => new ContactsRequest([
-                'registrant' => new RegistrantContactRequest([
-                    'firstName' => 'Jane',
-                    'lastName' => 'Doe',
-                    'address1' => '123 Main St.',
-                    'city' => 'Denver',
-                    'state' => 'CO',
-                    'zip' => '12345',
-                    'country' => 'US',
-                    'email' => 'admin@example.net',
-                    'phone' => '+13035551212',
-                ]),
-            ]),
-            'accountName' => 'reseller_subaccount',
-            'password' => 'SecureP4ss!',
-        ]),
-        'apiTos' => true,
-        'tos' => true,
-    ]),
-);
+$client->hello();
 
 ```
 
@@ -78,7 +57,7 @@ $client->accounts->createAccount(
 This SDK allows you to configure different environments for API requests.
 
 ```php
-The SDK defaults to the `Default_` environment. To use a different environment, pass it to the client constructor:
+The SDK defaults to the `Sandbox` environment. To use a different environment, pass it to the client constructor:
 
 ```php
 use Namecom\NamecomClient;
@@ -93,7 +72,8 @@ $client = new NamecomClient(
 ```
 
 Available environments:
-- `Environments::Default_`
+- `Environments::Sandbox`
+- `Environments::Production`
 ```
 
 ## Exception Handling
@@ -105,7 +85,7 @@ use Namecom\Exceptions\NamecomApiException;
 use Namecom\Exceptions\NamecomException;
 
 try {
-    $response = $client->accounts->createAccount(...);
+    $response = $client->hello(...);
 } catch (NamecomApiException $e) {
     echo 'API Exception occurred: ' . $e->getMessage() . "\n";
     echo 'Status Code: ' . $e->getCode() . "\n";
@@ -164,7 +144,7 @@ The `retryStatusCodes` configuration controls which [5XX](https://developer.mozi
 Use the `maxRetries` request option to configure this behavior.
 
 ```php
-$response = $client->accounts->createAccount(
+$response = $client->hello(
     ...,
     options: [
         'maxRetries' => 0 // Override maxRetries at the request level
@@ -177,7 +157,7 @@ $response = $client->accounts->createAccount(
 The SDK defaults to a 30 second timeout. Use the `timeout` option to configure this behavior.
 
 ```php
-$response = $client->accounts->createAccount(
+$response = $client->hello(
     ...,
     options: [
         'timeout' => 3.0 // Override timeout at the request level

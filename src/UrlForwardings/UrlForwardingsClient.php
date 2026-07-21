@@ -85,7 +85,7 @@ class UrlForwardingsClient
         try {
             $response = $this->client->sendRequest(
                 new JsonApiRequest(
-                    baseUrl: $options['baseUrl'] ?? $this->client->options['baseUrl'] ?? Environments::Default_->value,
+                    baseUrl: $options['baseUrl'] ?? $this->client->options['baseUrl'] ?? Environments::Sandbox->value,
                     path: "core/v1/domains/{$domainName}/url/forwarding",
                     method: HttpMethod::GET,
                     query: $query,
@@ -135,7 +135,7 @@ class UrlForwardingsClient
         try {
             $response = $this->client->sendRequest(
                 new JsonApiRequest(
-                    baseUrl: $options['baseUrl'] ?? $this->client->options['baseUrl'] ?? Environments::Default_->value,
+                    baseUrl: $options['baseUrl'] ?? $this->client->options['baseUrl'] ?? Environments::Sandbox->value,
                     path: "core/v1/domains/{$domainName}/url/forwarding",
                     method: HttpMethod::POST,
                     body: $request->body,
@@ -185,7 +185,7 @@ class UrlForwardingsClient
         try {
             $response = $this->client->sendRequest(
                 new JsonApiRequest(
-                    baseUrl: $options['baseUrl'] ?? $this->client->options['baseUrl'] ?? Environments::Default_->value,
+                    baseUrl: $options['baseUrl'] ?? $this->client->options['baseUrl'] ?? Environments::Sandbox->value,
                     path: "core/v1/domains/{$domainName}/url/forwarding/{$host}",
                     method: HttpMethod::GET,
                 ),
@@ -235,7 +235,7 @@ class UrlForwardingsClient
         try {
             $response = $this->client->sendRequest(
                 new JsonApiRequest(
-                    baseUrl: $options['baseUrl'] ?? $this->client->options['baseUrl'] ?? Environments::Default_->value,
+                    baseUrl: $options['baseUrl'] ?? $this->client->options['baseUrl'] ?? Environments::Sandbox->value,
                     path: "core/v1/domains/{$domainName}/url/forwarding/{$host}",
                     method: HttpMethod::PUT,
                     body: $request->body,
@@ -284,7 +284,7 @@ class UrlForwardingsClient
         try {
             $response = $this->client->sendRequest(
                 new JsonApiRequest(
-                    baseUrl: $options['baseUrl'] ?? $this->client->options['baseUrl'] ?? Environments::Default_->value,
+                    baseUrl: $options['baseUrl'] ?? $this->client->options['baseUrl'] ?? Environments::Sandbox->value,
                     path: "core/v1/domains/{$domainName}/url/forwarding/{$host}",
                     method: HttpMethod::DELETE,
                 ),
@@ -334,7 +334,7 @@ class UrlForwardingsClient
         try {
             $response = $this->client->sendRequest(
                 new JsonApiRequest(
-                    baseUrl: $options['baseUrl'] ?? $this->client->options['baseUrl'] ?? Environments::Default_->value,
+                    baseUrl: $options['baseUrl'] ?? $this->client->options['baseUrl'] ?? Environments::Sandbox->value,
                     path: "core/v1/urlforwarding/{$domainName}",
                     method: HttpMethod::GET,
                     query: $query,
@@ -384,7 +384,7 @@ class UrlForwardingsClient
         try {
             $response = $this->client->sendRequest(
                 new JsonApiRequest(
-                    baseUrl: $options['baseUrl'] ?? $this->client->options['baseUrl'] ?? Environments::Default_->value,
+                    baseUrl: $options['baseUrl'] ?? $this->client->options['baseUrl'] ?? Environments::Sandbox->value,
                     path: "core/v1/urlforwarding/{$domainName}/{$id}",
                     method: HttpMethod::GET,
                 ),
@@ -432,7 +432,7 @@ class UrlForwardingsClient
         try {
             $response = $this->client->sendRequest(
                 new JsonApiRequest(
-                    baseUrl: $options['baseUrl'] ?? $this->client->options['baseUrl'] ?? Environments::Default_->value,
+                    baseUrl: $options['baseUrl'] ?? $this->client->options['baseUrl'] ?? Environments::Sandbox->value,
                     path: "core/v1/urlforwarding/{$domainName}/{$id}",
                     method: HttpMethod::DELETE,
                 ),
@@ -476,7 +476,7 @@ class UrlForwardingsClient
         try {
             $response = $this->client->sendRequest(
                 new JsonApiRequest(
-                    baseUrl: $options['baseUrl'] ?? $this->client->options['baseUrl'] ?? Environments::Default_->value,
+                    baseUrl: $options['baseUrl'] ?? $this->client->options['baseUrl'] ?? Environments::Sandbox->value,
                     path: "core/v1/urlforwarding/{$domainName}/{$id}",
                     method: HttpMethod::PATCH,
                     body: $request->body,

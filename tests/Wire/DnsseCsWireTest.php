@@ -40,7 +40,12 @@ class DnsseCsWireTest extends WireMockTestCase
         $testId = 'dnsse_cs.create_dnssec.0';
         $this->client->dnsseCs->createDnssec(
             'domainName',
-            new CreateDnssecBody([]),
+            new CreateDnssecBody([
+                'algorithm' => 1,
+                'digest' => 'digest',
+                'digestType' => 1,
+                'keyTag' => 1,
+            ]),
             [
                 'headers' => [
                     'X-Test-Id' => 'dnsse_cs.create_dnssec.0',

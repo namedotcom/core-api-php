@@ -12,10 +12,9 @@
       "homepage": "https://github.com/namedotcom/core-api-php"
     }
   },
-  "originGitCommit": "c3ab257628a7366dab6a8ad857854de9416d2338",
-  "originGitCommitIsDirty": true,
-  "invokedBy": "manual",
-  "requestedVersion": "1.29.0",
-  "ciProvider": null,
-  "sdkVersion": "1.29.0"
+  "originGitCommitIsDirty": null,
+  "invokedBy": "ci",
+  "requestedVersion": "1.31.0",
+  "ciProvider": "gitlab",
+  "sdkVersion": "1.31.0"
 }

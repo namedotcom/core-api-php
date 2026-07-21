@@ -145,8 +145,8 @@ class NamecomClient
         $defaultHeaders = [
             'X-Fern-Language' => 'PHP',
             'X-Fern-SDK-Name' => 'Namecom',
-            'X-Fern-SDK-Version' => '1.29.0',
-            'User-Agent' => 'namecom/core-api/1.29.0',
+            'X-Fern-SDK-Version' => '1.31.0',
+            'User-Agent' => 'namecom/core-api/1.31.0',
         ];
         $defaultHeaders['Authorization'] = "Basic " . base64_encode($username . ":" . $password);
 
@@ -200,7 +200,7 @@ class NamecomClient
         try {
             $response = $this->client->sendRequest(
                 new JsonApiRequest(
-                    baseUrl: $options['baseUrl'] ?? $this->client->options['baseUrl'] ?? Environments::Default_->value,
+                    baseUrl: $options['baseUrl'] ?? $this->client->options['baseUrl'] ?? Environments::Sandbox->value,
                     path: "core/v1/hello",
                     method: HttpMethod::GET,
                 ),

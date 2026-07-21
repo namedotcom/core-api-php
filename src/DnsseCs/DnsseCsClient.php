@@ -73,7 +73,7 @@ class DnsseCsClient
         try {
             $response = $this->client->sendRequest(
                 new JsonApiRequest(
-                    baseUrl: $options['baseUrl'] ?? $this->client->options['baseUrl'] ?? Environments::Default_->value,
+                    baseUrl: $options['baseUrl'] ?? $this->client->options['baseUrl'] ?? Environments::Sandbox->value,
                     path: "core/v1/domains/{$domainName}/dnssec",
                     method: HttpMethod::GET,
                 ),
@@ -116,13 +116,13 @@ class DnsseCsClient
      * @throws NamecomException
      * @throws NamecomApiException
      */
-    public function createDnssec(string $domainName, CreateDnssecBody $request = new CreateDnssecBody(), ?array $options = null): ?Dnssec
+    public function createDnssec(string $domainName, CreateDnssecBody $request, ?array $options = null): ?Dnssec
     {
         $options = array_merge($this->options, $options ?? []);
         try {
             $response = $this->client->sendRequest(
                 new JsonApiRequest(
-                    baseUrl: $options['baseUrl'] ?? $this->client->options['baseUrl'] ?? Environments::Default_->value,
+                    baseUrl: $options['baseUrl'] ?? $this->client->options['baseUrl'] ?? Environments::Sandbox->value,
                     path: "core/v1/domains/{$domainName}/dnssec",
                     method: HttpMethod::POST,
                     body: $request,
@@ -172,7 +172,7 @@ class DnsseCsClient
         try {
             $response = $this->client->sendRequest(
                 new JsonApiRequest(
-                    baseUrl: $options['baseUrl'] ?? $this->client->options['baseUrl'] ?? Environments::Default_->value,
+                    baseUrl: $options['baseUrl'] ?? $this->client->options['baseUrl'] ?? Environments::Sandbox->value,
                     path: "core/v1/domains/{$domainName}/dnssec/{$digest}",
                     method: HttpMethod::GET,
                 ),
@@ -220,7 +220,7 @@ class DnsseCsClient
         try {
             $response = $this->client->sendRequest(
                 new JsonApiRequest(
-                    baseUrl: $options['baseUrl'] ?? $this->client->options['baseUrl'] ?? Environments::Default_->value,
+                    baseUrl: $options['baseUrl'] ?? $this->client->options['baseUrl'] ?? Environments::Sandbox->value,
                     path: "core/v1/domains/{$domainName}/dnssec/{$digest}",
                     method: HttpMethod::DELETE,
                 ),
