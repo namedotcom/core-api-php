@@ -6,27 +6,21 @@ use Namecom\Core\Json\JsonSerializableType;
 use Namecom\Core\Json\JsonProperty;
 
 /**
- * The request body for updating an existing URL forwarding entry.
+ * Fields for creating or updating a URL forwarding entry.
  */
-class UpdateUrlForwardingBody extends JsonSerializableType
+class UrlForwardingInput extends JsonSerializableType
 {
-    /**
-     * @var ?string $host The subdomain portion of the hostname that is being forwarded.
-     */
-    #[JsonProperty('host')]
-    public ?string $host;
-
-    /**
-     * @var ?string $domainName The domain name (without subdomains) that is being forwarded.
-     */
-    #[JsonProperty('domainName')]
-    public ?string $domainName;
-
     /**
      * @var string $forwardsTo The destination URL to which this hostname will be forwarded.
      */
     #[JsonProperty('forwardsTo')]
     public string $forwardsTo;
+
+    /**
+     * @var string $host The subdomain portion of the hostname that is being forwarded.
+     */
+    #[JsonProperty('host')]
+    public string $host;
 
     /**
      * Meta tags to include in the HTML page when using "masked" forwarding.
@@ -53,7 +47,7 @@ class UpdateUrlForwardingBody extends JsonSerializableType
      *   - `redirect`: Uses a standard HTTP redirect (301), which changes the address bar to the destination URL.
      *   - `302`: Uses a temporary HTTP redirect (302), which changes the address bar to the destination URL but indicates the resource is temporarily located elsewhere.
      *
-     * @var value-of<UrlForwardingType> $type
+     * @var value-of<UrlForwardingInputType> $type
      */
     #[JsonProperty('type')]
     public string $type;
@@ -61,9 +55,8 @@ class UpdateUrlForwardingBody extends JsonSerializableType
     /**
      * @param array{
      *   forwardsTo: string,
-     *   type: value-of<UrlForwardingType>,
-     *   host?: ?string,
-     *   domainName?: ?string,
+     *   host: string,
+     *   type: value-of<UrlForwardingInputType>,
      *   meta?: ?string,
      *   title?: ?string,
      * } $values
@@ -71,9 +64,8 @@ class UpdateUrlForwardingBody extends JsonSerializableType
     public function __construct(
         array $values,
     ) {
-        $this->host = $values['host'] ?? null;
-        $this->domainName = $values['domainName'] ?? null;
         $this->forwardsTo = $values['forwardsTo'];
+        $this->host = $values['host'];
         $this->meta = $values['meta'] ?? null;
         $this->title = $values['title'] ?? null;
         $this->type = $values['type'];

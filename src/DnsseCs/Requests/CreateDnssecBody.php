@@ -8,51 +8,43 @@ use Namecom\Core\Json\JsonProperty;
 class CreateDnssecBody extends JsonSerializableType
 {
     /**
-     * @var ?int $algorithm
+     * @var int $algorithm
      */
     #[JsonProperty('algorithm')]
-    public ?int $algorithm;
+    public int $algorithm;
 
     /**
-     * @var ?string $digest Digest is a digest of the DNSKEY RR that is registered with the registry.
+     * @var string $digest Digest is a digest of the DNSKEY RR that is registered with the registry.
      */
     #[JsonProperty('digest')]
-    public ?string $digest;
+    public string $digest;
 
     /**
-     * @var ?string $createDnssecBodyDomainName The name of the domain.
-     */
-    #[JsonProperty('domainName')]
-    public ?string $createDnssecBodyDomainName;
-
-    /**
-     * @var ?int $digestType
+     * @var int $digestType
      */
     #[JsonProperty('digestType')]
-    public ?int $digestType;
+    public int $digestType;
 
     /**
-     * @var ?int $keyTag
+     * @var int $keyTag
      */
     #[JsonProperty('keyTag')]
-    public ?int $keyTag;
+    public int $keyTag;
 
     /**
      * @param array{
-     *   algorithm?: ?int,
-     *   digest?: ?string,
-     *   createDnssecBodyDomainName?: ?string,
-     *   digestType?: ?int,
-     *   keyTag?: ?int,
+     *   algorithm: int,
+     *   digest: string,
+     *   digestType: int,
+     *   keyTag: int,
      * } $values
      */
     public function __construct(
-        array $values = [],
+        array $values,
     ) {
-        $this->algorithm = $values['algorithm'] ?? null;
-        $this->digest = $values['digest'] ?? null;
-        $this->createDnssecBodyDomainName = $values['createDnssecBodyDomainName'] ?? null;
-        $this->digestType = $values['digestType'] ?? null;
-        $this->keyTag = $values['keyTag'] ?? null;
+        $this->algorithm = $values['algorithm'];
+        $this->digest = $values['digest'];
+        $this->digestType = $values['digestType'];
+        $this->keyTag = $values['keyTag'];
     }
 }

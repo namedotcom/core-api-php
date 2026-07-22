@@ -1752,7 +1752,12 @@ Adds (registers) a new DNSSEC DS record for a domain.
 ```php
 $client->dnsseCs->createDnssec(
     'domainName',
-    new CreateDnssecBody([]),
+    new CreateDnssecBody([
+        'algorithm' => 1,
+        'digest' => 'digest',
+        'digestType' => 1,
+        'keyTag' => 1,
+    ]),
 );
 ```
 </dd>
@@ -1776,7 +1781,7 @@ $client->dnsseCs->createDnssec(
 <dl>
 <dd>
 
-**$algorithm:** `?int` 
+**$algorithm:** `int` 
     
 </dd>
 </dl>
@@ -1784,7 +1789,7 @@ $client->dnsseCs->createDnssec(
 <dl>
 <dd>
 
-**$digest:** `?string` — Digest is a digest of the DNSKEY RR that is registered with the registry.
+**$digest:** `string` — Digest is a digest of the DNSKEY RR that is registered with the registry.
     
 </dd>
 </dl>
@@ -1792,7 +1797,7 @@ $client->dnsseCs->createDnssec(
 <dl>
 <dd>
 
-**$createDnssecBodyDomainName:** `?string` — The name of the domain.
+**$digestType:** `int` 
     
 </dd>
 </dl>
@@ -1800,15 +1805,7 @@ $client->dnsseCs->createDnssec(
 <dl>
 <dd>
 
-**$digestType:** `?int` 
-    
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**$keyTag:** `?int` 
+**$keyTag:** `int` 
     
 </dd>
 </dl>
@@ -2866,10 +2863,10 @@ Sets up a new URL forwarding (redirect) for a domain or subdomain. If this is th
 $client->urlForwardings->createUrlForwarding(
     'example.com',
     new CreateUrlForwardingRequest([
-        'body' => new UrlForwarding([
+        'body' => new UrlForwardingInput([
             'forwardsTo' => 'https://destination-site.com',
             'host' => 'www',
-            'type' => UrlForwardingType::Masked->value,
+            'type' => UrlForwardingInputType::Masked->value,
         ]),
     ]),
 );
@@ -2895,7 +2892,7 @@ $client->urlForwardings->createUrlForwarding(
 <dl>
 <dd>
 
-**$request:** `UrlForwarding` 
+**$request:** `UrlForwardingInput` 
     
 </dd>
 </dl>
@@ -3003,9 +3000,10 @@ $client->urlForwardings->updateUrlForwarding(
     'example.com',
     'www.example.org',
     new UpdateUrlForwardingRequest([
-        'body' => new UpdateUrlForwardingBody([
+        'body' => new UrlForwardingInput([
             'forwardsTo' => 'https://destination-site.com',
-            'type' => UrlForwardingType::Masked->value,
+            'host' => 'www',
+            'type' => UrlForwardingInputType::Masked->value,
         ]),
     ]),
 );
@@ -3039,7 +3037,7 @@ $client->urlForwardings->updateUrlForwarding(
 <dl>
 <dd>
 
-**$request:** `UpdateUrlForwardingBody` 
+**$request:** `UrlForwardingInput` 
     
 </dd>
 </dl>
@@ -3353,9 +3351,10 @@ $client->urlForwardings->updateUrlForwardingById(
     'example.com',
     12345,
     new UpdateUrlForwardingByIdRequest([
-        'body' => new UpdateUrlForwardingBody([
+        'body' => new UrlForwardingInput([
             'forwardsTo' => 'https://destination-site.com',
-            'type' => UrlForwardingType::Masked->value,
+            'host' => 'www',
+            'type' => UrlForwardingInputType::Masked->value,
         ]),
     ]),
 );
@@ -3389,7 +3388,7 @@ $client->urlForwardings->updateUrlForwardingById(
 <dl>
 <dd>
 
-**$request:** `UpdateUrlForwardingBody` 
+**$request:** `UrlForwardingInput` 
     
 </dd>
 </dl>
@@ -3819,9 +3818,11 @@ Supported webhook event names:
 - `domain.lock.status_change` – domain lock added or removed.
 - `domain.transfer.status_change` – domain transfer IN to name.com; status updates while name.com is the gaining registrar.
 - `domain.transfer_out.status_change` – domain transfer OUT from name.com to another registrar; fires when the domain is removed from the account.
-- `domain.transfer.internal_in` - name.com domain transfers in to the subscribing account.
+- `domain.transfer.internal_in` - name.com domain transfers in to the subscribing account via internal transfer.
+- `domain.transfer.internal_out` - name.com domain transfers out of the subscribing account via internal transfer.
 - `contact.verification.status_change` - contact verification status changes (verified or unverified).
 - `domain.registry.rejection` – domain **create** failed after asynchronous registry processing (uncommon; most creates succeed at request time).
+- `domain.expiration` – domain has expired and entered the post-expiry grace period. This is informational only.
 </dd>
 </dl>
 </dd>

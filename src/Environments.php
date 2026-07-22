@@ -4,5 +4,6 @@ namespace Namecom;
 
 enum Environments: string
 {
-    case Default_ = "https://api.dev.name.com";
+    case Sandbox = "https://api.dev.name.com";
+    case Production = "https://api.name.com";
 }

@@ -74,7 +74,7 @@ class WebhookNotificationsClient
         try {
             $response = $this->client->sendRequest(
                 new JsonApiRequest(
-                    baseUrl: $options['baseUrl'] ?? $this->client->options['baseUrl'] ?? Environments::Default_->value,
+                    baseUrl: $options['baseUrl'] ?? $this->client->options['baseUrl'] ?? Environments::Sandbox->value,
                     path: "core/v1/notifications",
                     method: HttpMethod::GET,
                 ),
@@ -107,9 +107,11 @@ class WebhookNotificationsClient
      * - `domain.lock.status_change` – domain lock added or removed.
      * - `domain.transfer.status_change` – domain transfer IN to name.com; status updates while name.com is the gaining registrar.
      * - `domain.transfer_out.status_change` – domain transfer OUT from name.com to another registrar; fires when the domain is removed from the account.
-     * - `domain.transfer.internal_in` - name.com domain transfers in to the subscribing account.
+     * - `domain.transfer.internal_in` - name.com domain transfers in to the subscribing account via internal transfer.
+     * - `domain.transfer.internal_out` - name.com domain transfers out of the subscribing account via internal transfer.
      * - `contact.verification.status_change` - contact verification status changes (verified or unverified).
      * - `domain.registry.rejection` – domain **create** failed after asynchronous registry processing (uncommon; most creates succeed at request time).
+     * - `domain.expiration` – domain has expired and entered the post-expiry grace period. This is informational only.
      *
      * @param SubscribeToNotification $request
      * @param ?array{
@@ -130,7 +132,7 @@ class WebhookNotificationsClient
         try {
             $response = $this->client->sendRequest(
                 new JsonApiRequest(
-                    baseUrl: $options['baseUrl'] ?? $this->client->options['baseUrl'] ?? Environments::Default_->value,
+                    baseUrl: $options['baseUrl'] ?? $this->client->options['baseUrl'] ?? Environments::Sandbox->value,
                     path: "core/v1/notifications",
                     method: HttpMethod::POST,
                     body: $request,
@@ -180,7 +182,7 @@ class WebhookNotificationsClient
         try {
             $response = $this->client->sendRequest(
                 new JsonApiRequest(
-                    baseUrl: $options['baseUrl'] ?? $this->client->options['baseUrl'] ?? Environments::Default_->value,
+                    baseUrl: $options['baseUrl'] ?? $this->client->options['baseUrl'] ?? Environments::Sandbox->value,
                     path: "core/v1/notifications/{$id}",
                     method: HttpMethod::PUT,
                     body: $request->body,
@@ -228,7 +230,7 @@ class WebhookNotificationsClient
         try {
             $response = $this->client->sendRequest(
                 new JsonApiRequest(
-                    baseUrl: $options['baseUrl'] ?? $this->client->options['baseUrl'] ?? Environments::Default_->value,
+                    baseUrl: $options['baseUrl'] ?? $this->client->options['baseUrl'] ?? Environments::Sandbox->value,
                     path: "core/v1/notifications/{$id}",
                     method: HttpMethod::DELETE,
                 ),
