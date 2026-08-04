@@ -14,7 +14,7 @@
   },
   "originGitCommitIsDirty": null,
   "invokedBy": "ci",
-  "requestedVersion": "1.31.0",
+  "requestedVersion": "1.32.0",
   "ciProvider": "gitlab",
-  "sdkVersion": "1.31.0"
+  "sdkVersion": "1.32.0"
 }
