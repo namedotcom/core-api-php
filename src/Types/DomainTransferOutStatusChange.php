@@ -6,7 +6,7 @@ use Namecom\Core\Json\JsonSerializableType;
 use Namecom\Core\Json\JsonProperty;
 
 /**
- * Payload sent when a domain transfer OUT from name.com to another registrar has a status change (initiated, completed, or canceled). When status is "completed", the domain has been removed from name.com. In some edge cases (including near-expiration scenarios) the data may not be fully accurate.
+ * Payload for `domain.transfer_out.status_change`. `completed` means the domain left name.com. `canceled` means the outbound transfer is no longer pending at the registry.
  */
 class DomainTransferOutStatusChange extends JsonSerializableType
 {
@@ -17,13 +17,13 @@ class DomainTransferOutStatusChange extends JsonSerializableType
     public string $eventName;
 
     /**
-     * @var string $domainName The domain that has transferred out of name.com.
+     * @var string $domainName The domain whose outbound transfer status changed. For `completed`, the domain has left name.com; for `initiated` and `canceled`, it remains on the losing account.
      */
     #[JsonProperty('domainName')]
     public string $domainName;
 
     /**
-     * @var value-of<DomainTransferOutStatusChangeStatus> $status The status of the transfer out event. May be "initiated" (transfer out was started), "completed" (domain has been removed from the account), or "canceled" (transfer out was canceled before completion).
+     * @var value-of<DomainTransferOutStatusChangeStatus> $status `initiated` (pending out started), `completed` (domain removed), or `canceled` (no longer pending at the registry).
      */
     #[JsonProperty('status')]
     public string $status;
