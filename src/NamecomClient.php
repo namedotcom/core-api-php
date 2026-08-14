@@ -145,8 +145,8 @@ class NamecomClient
         $defaultHeaders = [
             'X-Fern-Language' => 'PHP',
             'X-Fern-SDK-Name' => 'Namecom',
-            'X-Fern-SDK-Version' => '1.33.0',
-            'User-Agent' => 'namecom/core-api/1.33.0',
+            'X-Fern-SDK-Version' => '1.33.1',
+            'User-Agent' => 'namecom/core-api/1.33.1',
         ];
         $defaultHeaders['Authorization'] = "Basic " . base64_encode($username . ":" . $password);
 
@@ -181,6 +181,11 @@ class NamecomClient
 
     /**
      * Returns basic information about the API server (useful for testing connectivity and version checks).
+     *
+     * Example:
+     * ```php
+     * $client->hello();
+     * ```
      *
      * @param ?array{
      *   baseUrl?: string,

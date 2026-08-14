@@ -56,6 +56,14 @@ class DnsClient
     /**
      * Lists all DNS records for a specified domain.
      *
+     * Example:
+     * ```php
+     * $client->dns->listRecords(
+     *     'domainName',
+     *     new ListRecordsRequest([]),
+     * );
+     * ```
+     *
      * @param string $domainName DomainName is the zone to list the records for.
      * @param ListRecordsRequest $request
      * @param ?array{
@@ -113,6 +121,18 @@ class DnsClient
     /**
      * Adds a new DNS record to the specified domain zone. Provide the record type (e.g. A, MX, CNAME), host, value, and TTL.  This is used for configuring domain-based services such as email, website hosting, or third-party verifications.
      *
+     * Example:
+     * ```php
+     * $client->dns->createRecord(
+     *     'domainName',
+     *     new DnsCreateRecordBody([
+     *         'answer' => 'answer',
+     *         'host' => 'host',
+     *         'type' => DnsCreateRecordBodyType::A->value,
+     *     ]),
+     * );
+     * ```
+     *
      * @param string $domainName DomainName is the zone that the record belongs to.
      * @param DnsCreateRecordBody $request
      * @param ?array{
@@ -163,6 +183,14 @@ class DnsClient
     /**
      * Retrieves details of a specific DNS record.
      *
+     * Example:
+     * ```php
+     * $client->dns->getRecord(
+     *     'domainName',
+     *     1,
+     * );
+     * ```
+     *
      * @param string $domainName DomainName is the zone the record exists in.
      * @param int $id ID is the server-assigned unique identifier for this record.
      * @param ?array{
@@ -211,6 +239,18 @@ class DnsClient
 
     /**
      * Replaces an existing DNS record with new data. This is a full overwrite — all required fields (host, type, answer, ttl) must be included in the request body. If you omit a field, the existing value will not be preserved and the request may fail. Use [GetRecord](/api/v1/reference/dns/get-record) beforehand to retrieve the current values if you intend to modify just one field. The record ID must belong to a domain you manage.
+     *
+     * Example:
+     * ```php
+     * $client->dns->updateRecord(
+     *     'domainName',
+     *     1,
+     *     new DnsUpdateRecordBody([
+     *         'answer' => 'answer',
+     *         'type' => DnsUpdateRecordBodyType::A->value,
+     *     ]),
+     * );
+     * ```
      *
      * @param string $domainName DomainName is the zone that the record belongs to.
      * @param int $id Unique record id. Value is ignored on Create, and must match the URI on Update.
@@ -262,6 +302,14 @@ class DnsClient
 
     /**
      * Removes a DNS record by ID. Often used during cleanup operations or when replacing outdated DNS settings with updated records.
+     *
+     * Example:
+     * ```php
+     * $client->dns->deleteRecord(
+     *     'domainName',
+     *     1,
+     * );
+     * ```
      *
      * @param string $domainName DomainName is the zone that the record to be deleted exists in.
      * @param int $id ID is the server-assigned unique identifier for the Record to be deleted. If the Record with that ID does not exist in the specified Domain, an error is returned.

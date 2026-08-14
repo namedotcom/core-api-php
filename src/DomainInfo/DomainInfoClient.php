@@ -55,6 +55,13 @@ class DomainInfoClient
     /**
      * Returns the registration requirements some general information for a specific TLD. The response contains a detailed description of eligibility criteria and a fields object with all required and optional fields, including validation rules, conditional logic, and nested field structures. Provide the TLD as a path parameter to retrieve its complete registration requirements. Useful when you only need details for one TLD (e.g., when a user selects .fr from a dropdown).
      *
+     * Example:
+     * ```php
+     * $client->domainInfo->getRequirement(
+     *     'fr',
+     * );
+     * ```
+     *
      * @param string $tld TLD indicates which domain requirements to retrieve (without the dot prefix, e.g., 'fr' for .fr domains). For punycode TLDs, use the ASCII version instead of the UTF-8. So for the `онлайн` TLD, you would submit `xn--80asehdb`.
      * @param ?array{
      *   baseUrl?: string,
@@ -102,6 +109,14 @@ class DomainInfoClient
 
     /**
      * Performs the actual claims check for a specific domain. This endpoint checks if a specific domain has trademark claims against it, returning detailed information about any matching trademarks and their holders. Use this to verify if a domain can be registered without trademark conflicts. Please see the [claims flow](/guides/claims-flow) for information on how to use this endpoint in your domain purchase flow.
+     *
+     * Example:
+     * ```php
+     * $client->domainInfo->checkDomainClaims(
+     *     'tiktok.page',
+     *     new DomainClaimsCheckRequest([]),
+     * );
+     * ```
      *
      * @param string $domain The domain name to check for trademark claims (e.g., 'tiktok.page', 'example.com'). Include the full domain name including the TLD.
      * @param DomainClaimsCheckRequest $request
@@ -152,6 +167,13 @@ class DomainInfoClient
 
     /**
      * Returns the registration requirements as a JSON Schema (Draft 7) document. This endpoint is designed for form generation and validation libraries that consume JSON Schema directly.
+     *
+     * Example:
+     * ```php
+     * $client->domainInfo->getTldRequirementsV2(
+     *     'fr',
+     * );
+     * ```
      *
      * @param string $tld TLD indicates which domain requirements to retrieve (without the dot prefix, e.g., 'fr' for .fr domains). For punycode TLDs, use the ASCII version instead of the UTF-8. So for the `онлайн` TLD, you would submit `xn--80asehdb`.
      * @param ?array{

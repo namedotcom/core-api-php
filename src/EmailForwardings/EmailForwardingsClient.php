@@ -56,6 +56,17 @@ class EmailForwardingsClient
     /**
      * Returns a paginated list of all email forwarding rules for a domain.
      *
+     * Example:
+     * ```php
+     * $client->emailForwardings->listEmailForwardings(
+     *     'domainName',
+     *     new ListEmailForwardingsRequest([
+     *         'perPage' => 100,
+     *         'page' => 1,
+     *     ]),
+     * );
+     * ```
+     *
      * @param string $domainName DomainName is the domain to list email forwarded boxes for.
      * @param ListEmailForwardingsRequest $request
      * @param ?array{
@@ -113,6 +124,17 @@ class EmailForwardingsClient
     /**
      * Creates a new email forwarding rule for a domain, such as redirecting info@example.com to an external inbox.  If this is the first email forwarding rule created for the domain, the API may also update your MX records automatically to enable mail routing.  The alias must not conflict with existing email services or MX records.  To modify a forwarding rule later, use [UpdateEmailForwarding](/api/v1/reference/email-forwardings/update-email-forwarding).
      *
+     * Example:
+     * ```php
+     * $client->emailForwardings->createEmailForwarding(
+     *     'example.com',
+     *     new CreateEmailForwardingRequest([
+     *         'emailBox' => 'admin',
+     *         'emailTo' => 'webmaster@example.com',
+     *     ]),
+     * );
+     * ```
+     *
      * @param string $domainName DomainName is the domain part of the email address to forward.
      * @param CreateEmailForwardingRequest $request
      * @param ?array{
@@ -163,6 +185,14 @@ class EmailForwardingsClient
     /**
      * Retrieves the details of a specific email forwarding entry.
      *
+     * Example:
+     * ```php
+     * $client->emailForwardings->getEmailForwarding(
+     *     'domainName',
+     *     'emailBox',
+     * );
+     * ```
+     *
      * @param string $domainName DomainName is the domain to list email forwarded box for.
      * @param string $emailBox EmailBox is which email box to retrieve.
      * @param ?array{
@@ -211,6 +241,15 @@ class EmailForwardingsClient
 
     /**
      * Updates the destination email address for an existing forwarding rule.
+     *
+     * Example:
+     * ```php
+     * $client->emailForwardings->updateEmailForwarding(
+     *     'domainName',
+     *     'emailBox',
+     *     new EmailForwardingsUpdateEmailForwardingBody([]),
+     * );
+     * ```
      *
      * @param string $domainName DomainName is the domain part of the email address to forward.
      * @param string $emailBox EmailBox is the user portion of the email address to forward.
@@ -262,6 +301,14 @@ class EmailForwardingsClient
 
     /**
      * Deletes an email forwarding rule from a domain.
+     *
+     * Example:
+     * ```php
+     * $client->emailForwardings->deleteEmailForwarding(
+     *     'domainName',
+     *     'emailBox',
+     * );
+     * ```
      *
      * @param string $domainName DomainName is the domain to delete the email forwarded box from.
      * @param string $emailBox EmailBox is which email box to delete.

@@ -647,7 +647,7 @@ $client->domains->updateDomain(
 </dl>
 </details>
 
-<details><summary><code>$client-&gt;domains-&gt;disableAutorenew($domainName) -> ?Domain</code></summary>
+<details><summary><code>$client-&gt;domains-&gt;disableAutorenew($domainName, $request) -> ?Domain</code></summary>
 <dl>
 <dd>
 
@@ -659,7 +659,7 @@ $client->domains->updateDomain(
 <dl>
 <dd>
 
-Turns off automatic renewal for a domain.  **DEPRECATED** This endpoint is deprecated in favor of the new UpdateDomain API. This will be removed in a future release.
+Turns off automatic renewal for a domain. **DEPRECATED** This endpoint is deprecated in favor of the new UpdateDomain API. This will be removed in a future release.
 </dd>
 </dl>
 </dd>
@@ -676,6 +676,9 @@ Turns off automatic renewal for a domain.  **DEPRECATED** This endpoint is depre
 ```php
 $client->domains->disableAutorenew(
     'example.com',
+    new DisableAutorenewRequest([
+        'body' => new EmptyObject([]),
+    ]),
 );
 ```
 </dd>
@@ -695,6 +698,14 @@ $client->domains->disableAutorenew(
     
 </dd>
 </dl>
+
+<dl>
+<dd>
+
+**$request:** `EmptyObject` 
+    
+</dd>
+</dl>
 </dd>
 </dl>
 
@@ -703,7 +714,7 @@ $client->domains->disableAutorenew(
 </dl>
 </details>
 
-<details><summary><code>$client-&gt;domains-&gt;disableWhoisPrivacy($domainName) -> ?Domain</code></summary>
+<details><summary><code>$client-&gt;domains-&gt;disableWhoisPrivacy($domainName, $request) -> ?Domain</code></summary>
 <dl>
 <dd>
 
@@ -732,6 +743,9 @@ Disables WHOIS privacy protection on a domain. **DEPRECATED** This endpoint is d
 ```php
 $client->domains->disableWhoisPrivacy(
     'example.com',
+    new DisableWhoisPrivacyRequest([
+        'body' => new EmptyObject([]),
+    ]),
 );
 ```
 </dd>
@@ -751,6 +765,14 @@ $client->domains->disableWhoisPrivacy(
     
 </dd>
 </dl>
+
+<dl>
+<dd>
+
+**$request:** `EmptyObject` 
+    
+</dd>
+</dl>
 </dd>
 </dl>
 
@@ -759,7 +781,7 @@ $client->domains->disableWhoisPrivacy(
 </dl>
 </details>
 
-<details><summary><code>$client-&gt;domains-&gt;enableAutorenew($domainName) -> ?Domain</code></summary>
+<details><summary><code>$client-&gt;domains-&gt;enableAutorenew($domainName, $request) -> ?Domain</code></summary>
 <dl>
 <dd>
 
@@ -788,6 +810,9 @@ Turns on automatic renewal for a domain. **DEPRECATED** This endpoint is depreca
 ```php
 $client->domains->enableAutorenew(
     'example.com',
+    new EnableAutorenewRequest([
+        'body' => new EmptyObject([]),
+    ]),
 );
 ```
 </dd>
@@ -807,6 +832,14 @@ $client->domains->enableAutorenew(
     
 </dd>
 </dl>
+
+<dl>
+<dd>
+
+**$request:** `EmptyObject` 
+    
+</dd>
+</dl>
 </dd>
 </dl>
 
@@ -815,7 +848,7 @@ $client->domains->enableAutorenew(
 </dl>
 </details>
 
-<details><summary><code>$client-&gt;domains-&gt;enableWhoisPrivacy($domainName) -> ?Domain</code></summary>
+<details><summary><code>$client-&gt;domains-&gt;enableWhoisPrivacy($domainName, $request) -> ?Domain</code></summary>
 <dl>
 <dd>
 
@@ -844,6 +877,9 @@ Enables WHOIS privacy protection on a domain. **DEPRECATED** This endpoint is de
 ```php
 $client->domains->enableWhoisPrivacy(
     'domainName',
+    new EnableWhoisPrivacyRequest([
+        'body' => new EmptyObject([]),
+    ]),
 );
 ```
 </dd>
@@ -860,6 +896,14 @@ $client->domains->enableWhoisPrivacy(
 <dd>
 
 **$domainName:** `string` — DomainName is the domain name to enable whoisprivacy for.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$request:** `EmptyObject` 
     
 </dd>
 </dl>
@@ -1006,7 +1050,7 @@ $client->domains->getPricingForDomain(
 </dl>
 </details>
 
-<details><summary><code>$client-&gt;domains-&gt;lockDomain($domainName) -> ?Domain</code></summary>
+<details><summary><code>$client-&gt;domains-&gt;lockDomain($domainName, $request) -> ?Domain</code></summary>
 <dl>
 <dd>
 
@@ -1035,6 +1079,9 @@ Locks a domain to prevent it from being transferred. **DEPRECATED** This endpoin
 ```php
 $client->domains->lockDomain(
     'example.com',
+    new LockDomainRequest([
+        'body' => new EmptyObject([]),
+    ]),
 );
 ```
 </dd>
@@ -1051,6 +1098,14 @@ $client->domains->lockDomain(
 <dd>
 
 **$domainName:** `string` — DomainName is the domain name to lock.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$request:** `EmptyObject` 
     
 </dd>
 </dl>
@@ -1355,7 +1410,7 @@ $client->domains->setNameservers(
 </dl>
 </details>
 
-<details><summary><code>$client-&gt;domains-&gt;unlockDomain($domainName) -> ?Domain</code></summary>
+<details><summary><code>$client-&gt;domains-&gt;unlockDomain($domainName, $request) -> ?Domain</code></summary>
 <dl>
 <dd>
 
@@ -1384,6 +1439,9 @@ Unlocks a domain to allow it to be transferred. **DEPRECATED** This endpoint is 
 ```php
 $client->domains->unlockDomain(
     'domainName',
+    new UnlockDomainRequest([
+        'body' => new EmptyObject([]),
+    ]),
 );
 ```
 </dd>
@@ -1400,6 +1458,14 @@ $client->domains->unlockDomain(
 <dd>
 
 **$domainName:** `string` — DomainName is the domain name to unlock.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$request:** `EmptyObject` 
     
 </dd>
 </dl>
@@ -4491,7 +4557,7 @@ $client->transfers->getTransfer(
 </dl>
 </details>
 
-<details><summary><code>$client-&gt;transfers-&gt;cancelTransfer($domainName) -> ?Transfer</code></summary>
+<details><summary><code>$client-&gt;transfers-&gt;cancelTransfer($domainName, $request) -> ?Transfer</code></summary>
 <dl>
 <dd>
 
@@ -4537,6 +4603,9 @@ Non-cancelable statuses:
 ```php
 $client->transfers->cancelTransfer(
     'domainName',
+    new CancelTransferRequest([
+        'body' => new EmptyObject([]),
+    ]),
 );
 ```
 </dd>
@@ -4556,6 +4625,14 @@ $client->transfers->cancelTransfer(
     
 </dd>
 </dl>
+
+<dl>
+<dd>
+
+**$request:** `EmptyObject` 
+    
+</dd>
+</dl>
 </dd>
 </dl>
 
@@ -4564,7 +4641,7 @@ $client->transfers->cancelTransfer(
 </dl>
 </details>
 
-<details><summary><code>$client-&gt;transfers-&gt;cancelOutboundTransfer($domainName) -> ?CancelTransferOutResponse</code></summary>
+<details><summary><code>$client-&gt;transfers-&gt;cancelOutboundTransfer($domainName, $request) -> ?CancelTransferOutResponse</code></summary>
 <dl>
 <dd>
 
@@ -4595,6 +4672,9 @@ The endpoint validates that the domain exists and belongs to the authenticated a
 ```php
 $client->transfers->cancelOutboundTransfer(
     'example.com',
+    new CancelOutboundTransferRequest([
+        'body' => new EmptyObject([]),
+    ]),
 );
 ```
 </dd>
@@ -4611,6 +4691,14 @@ $client->transfers->cancelOutboundTransfer(
 <dd>
 
 **$domainName:** `string` — DomainName is the domain whose transfer out should be canceled.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$request:** `EmptyObject` 
     
 </dd>
 </dl>
@@ -5185,6 +5273,7 @@ $client->contactVerification->verifyContact(
     1,
     new VerifyContactRequest([
         'idempotencyKey' => '083910ef-04e4-4bd1-a0bf-3737fe005ca8',
+        'body' => new EmptyObject([]),
     ]),
 );
 ```
@@ -5210,6 +5299,14 @@ $client->contactVerification->verifyContact(
 <dd>
 
 **$idempotencyKey:** `?string` — A unique string (e.g., a UUID v4) to make the request idempotent. This key ensures that if the request is retried, the operation will not be performed multiple times. Subsequent requests with the same key will return the original result.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$request:** `EmptyObject` 
     
 </dd>
 </dl>
@@ -5261,6 +5358,7 @@ $client->contactVerification->resendContactVerificationEmail(
     1,
     new ResendContactVerificationEmailRequest([
         'idempotencyKey' => '083910ef-04e4-4bd1-a0bf-3737fe005ca8',
+        'body' => new EmptyObject([]),
     ]),
 );
 ```
@@ -5286,6 +5384,14 @@ $client->contactVerification->resendContactVerificationEmail(
 <dd>
 
 **$idempotencyKey:** `?string` — A unique string (e.g., a UUID v4) to make the request idempotent. This key ensures that if the request is retried, the operation will not be performed multiple times. Subsequent requests with the same key will return the original result.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$request:** `EmptyObject` 
     
 </dd>
 </dl>

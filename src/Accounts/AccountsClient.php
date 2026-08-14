@@ -53,6 +53,33 @@ class AccountsClient
     /**
      * Creates a new sub-account under your authenticated reseller account and returns API credentials for the new account.  This endpoint is only available to approved reseller accounts. Contact name.com support to request access.
      *
+     * Example:
+     * ```php
+     * $client->accounts->createAccount(
+     *     new CreateAccountRequest([
+     *         'account' => new AccountRequest([
+     *             'contacts' => new ContactsRequest([
+     *                 'registrant' => new RegistrantContactRequest([
+     *                     'firstName' => 'Jane',
+     *                     'lastName' => 'Doe',
+     *                     'address1' => '123 Main St.',
+     *                     'city' => 'Denver',
+     *                     'state' => 'CO',
+     *                     'zip' => '12345',
+     *                     'country' => 'US',
+     *                     'email' => 'admin@example.net',
+     *                     'phone' => '+13035551212',
+     *                 ]),
+     *             ]),
+     *             'accountName' => 'reseller_subaccount',
+     *             'password' => 'SecureP4ss!',
+     *         ]),
+     *         'apiTos' => true,
+     *         'tos' => true,
+     *     ]),
+     * );
+     * ```
+     *
      * @param CreateAccountRequest $request
      * @param ?array{
      *   baseUrl?: string,

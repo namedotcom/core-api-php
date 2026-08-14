@@ -6,6 +6,9 @@ use Namecom\Tests\Wire\WireMockTestCase;
 use Namecom\NamecomClient;
 use Namecom\Transfers\Requests\ListTransfersRequest;
 use Namecom\Transfers\Requests\CreateTransferRequest;
+use Namecom\Transfers\Requests\CancelTransferRequest;
+use Namecom\Types\EmptyObject;
+use Namecom\Transfers\Requests\CancelOutboundTransferRequest;
 use Namecom\Transfers\Requests\CreateInternalTransferInRequest;
 
 class TransfersWireTest extends WireMockTestCase
@@ -87,6 +90,9 @@ class TransfersWireTest extends WireMockTestCase
         $testId = 'transfers.cancel_transfer.0';
         $this->client->transfers->cancelTransfer(
             'domainName',
+            new CancelTransferRequest([
+                'body' => new EmptyObject([]),
+            ]),
             [
                 'headers' => [
                     'X-Test-Id' => 'transfers.cancel_transfer.0',
@@ -108,6 +114,9 @@ class TransfersWireTest extends WireMockTestCase
         $testId = 'transfers.cancel_outbound_transfer.0';
         $this->client->transfers->cancelOutboundTransfer(
             'example.com',
+            new CancelOutboundTransferRequest([
+                'body' => new EmptyObject([]),
+            ]),
             [
                 'headers' => [
                     'X-Test-Id' => 'transfers.cancel_outbound_transfer.0',

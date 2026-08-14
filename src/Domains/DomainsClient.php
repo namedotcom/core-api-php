@@ -17,16 +17,22 @@ use Namecom\Domains\Requests\CreateDomainRequest;
 use Namecom\Types\CreateDomainResponse;
 use Namecom\Types\DomainResponsePayload;
 use Namecom\Domains\Requests\UpdateDomainRequest;
+use Namecom\Domains\Requests\DisableAutorenewRequest;
 use Namecom\Types\Domain;
+use Namecom\Domains\Requests\DisableWhoisPrivacyRequest;
+use Namecom\Domains\Requests\EnableAutorenewRequest;
+use Namecom\Domains\Requests\EnableWhoisPrivacyRequest;
 use Namecom\Types\AuthCodeResponse;
 use Namecom\Domains\Requests\GetPricingForDomainRequest;
 use Namecom\Types\PricingResponse;
+use Namecom\Domains\Requests\LockDomainRequest;
 use Namecom\Domains\Requests\DomainsPurchasePrivacyBody;
 use Namecom\Types\PrivacyResponse;
 use Namecom\Domains\Requests\DomainsRenewDomainBody;
 use Namecom\Types\RenewDomainResponse;
 use Namecom\Domains\Requests\DomainsSetContactsBody;
 use Namecom\Domains\Requests\DomainsSetNameserversBody;
+use Namecom\Domains\Requests\UnlockDomainRequest;
 use Namecom\Domains\Requests\AvailabilityRequest;
 use Namecom\Types\SearchResponse;
 use Namecom\Domains\Requests\SearchRequest;
@@ -71,6 +77,13 @@ class DomainsClient
 
     /**
      * Lists all domains in your account (basic details for each domain).
+     *
+     * Example:
+     * ```php
+     * $client->domains->listDomains(
+     *     new ListDomainsRequest([]),
+     * );
+     * ```
      *
      * @param ListDomainsRequest $request
      * @param ?array{
@@ -212,6 +225,18 @@ class DomainsClient
      * #### Contact Verification
      * When a new domain registration is created and a contact is submitted, name.com may need to validate the contact's email address in accordance with ICANN policy. This validation involves sending an email to the provided address, prompting the recipient to click a link to verify their email address.
      *
+     * Example:
+     * ```php
+     * $client->domains->createDomain(
+     *     new CreateDomainRequest([
+     *         'idempotencyKey' => '083910ef-04e4-4bd1-a0bf-3737fe005ca8',
+     *         'domain' => new DomainCreatePayload([
+     *             'domainName' => 'example.com',
+     *         ]),
+     *     ]),
+     * );
+     * ```
+     *
      * @param CreateDomainRequest $request
      * @param ?array{
      *   baseUrl?: string,
@@ -266,6 +291,13 @@ class DomainsClient
     /**
      * Retrieves detailed information for a specific domain in your account.
      *
+     * Example:
+     * ```php
+     * $client->domains->getDomain(
+     *     'example.com',
+     * );
+     * ```
+     *
      * @param string $domainName DomainName is the domain to retrieve.
      * @param ?array{
      *   baseUrl?: string,
@@ -313,6 +345,18 @@ class DomainsClient
 
     /**
      * Allows updating of the autorenew, WhoIs Privacy and lock status of the specified domain. The request requires one, or any combination of the parameters in order to pass validation. If any of the requested updates failed, the domain will be returned to it's original state.
+     *
+     * Example:
+     * ```php
+     * $client->domains->updateDomain(
+     *     'domainName',
+     *     new UpdateDomainRequest([
+     *         'body' => new UpdateDomainRequestBodyAutorenewEnabled([
+     *             'autorenewEnabled' => true,
+     *         ]),
+     *     ]),
+     * );
+     * ```
      *
      * @param string $domainName DomainName is the domain to update.
      * @param UpdateDomainRequest $request
@@ -362,9 +406,20 @@ class DomainsClient
     }
 
     /**
-     * Turns off automatic renewal for a domain.  **DEPRECATED** This endpoint is deprecated in favor of the new UpdateDomain API. This will be removed in a future release.
+     * Turns off automatic renewal for a domain. **DEPRECATED** This endpoint is deprecated in favor of the new UpdateDomain API. This will be removed in a future release.
+     *
+     * Example:
+     * ```php
+     * $client->domains->disableAutorenew(
+     *     'example.com',
+     *     new DisableAutorenewRequest([
+     *         'body' => new EmptyObject([]),
+     *     ]),
+     * );
+     * ```
      *
      * @param string $domainName DomainName is the domain name to disable autorenew for.
+     * @param DisableAutorenewRequest $request
      * @param ?array{
      *   baseUrl?: string,
      *   maxRetries?: int,
@@ -377,7 +432,7 @@ class DomainsClient
      * @throws NamecomException
      * @throws NamecomApiException
      */
-    public function disableAutorenew(string $domainName, ?array $options = null): ?Domain
+    public function disableAutorenew(string $domainName, DisableAutorenewRequest $request, ?array $options = null): ?Domain
     {
         $options = array_merge($this->options, $options ?? []);
         try {
@@ -386,6 +441,7 @@ class DomainsClient
                     baseUrl: $options['baseUrl'] ?? $this->client->options['baseUrl'] ?? Environments::Sandbox->value,
                     path: "core/v1/domains/{$domainName}:disableAutorenew",
                     method: HttpMethod::POST,
+                    body: $request->body,
                 ),
                 $options,
             );
@@ -412,7 +468,18 @@ class DomainsClient
     /**
      * Disables WHOIS privacy protection on a domain. **DEPRECATED** This endpoint is deprecated in favor of the new UpdateDomain API. This will be removed in a future release.
      *
+     * Example:
+     * ```php
+     * $client->domains->disableWhoisPrivacy(
+     *     'example.com',
+     *     new DisableWhoisPrivacyRequest([
+     *         'body' => new EmptyObject([]),
+     *     ]),
+     * );
+     * ```
+     *
      * @param string $domainName DomainName is the domain name to disable whoisprivacy for.
+     * @param DisableWhoisPrivacyRequest $request
      * @param ?array{
      *   baseUrl?: string,
      *   maxRetries?: int,
@@ -425,7 +492,7 @@ class DomainsClient
      * @throws NamecomException
      * @throws NamecomApiException
      */
-    public function disableWhoisPrivacy(string $domainName, ?array $options = null): ?Domain
+    public function disableWhoisPrivacy(string $domainName, DisableWhoisPrivacyRequest $request, ?array $options = null): ?Domain
     {
         $options = array_merge($this->options, $options ?? []);
         try {
@@ -434,6 +501,7 @@ class DomainsClient
                     baseUrl: $options['baseUrl'] ?? $this->client->options['baseUrl'] ?? Environments::Sandbox->value,
                     path: "core/v1/domains/{$domainName}:disableWhoisPrivacy",
                     method: HttpMethod::POST,
+                    body: $request->body,
                 ),
                 $options,
             );
@@ -460,7 +528,18 @@ class DomainsClient
     /**
      * Turns on automatic renewal for a domain. **DEPRECATED** This endpoint is deprecated in favor of the new UpdateDomain API. This will be removed in a future release.
      *
+     * Example:
+     * ```php
+     * $client->domains->enableAutorenew(
+     *     'example.com',
+     *     new EnableAutorenewRequest([
+     *         'body' => new EmptyObject([]),
+     *     ]),
+     * );
+     * ```
+     *
      * @param string $domainName DomainName is the domain name to enable autorenew for.
+     * @param EnableAutorenewRequest $request
      * @param ?array{
      *   baseUrl?: string,
      *   maxRetries?: int,
@@ -473,7 +552,7 @@ class DomainsClient
      * @throws NamecomException
      * @throws NamecomApiException
      */
-    public function enableAutorenew(string $domainName, ?array $options = null): ?Domain
+    public function enableAutorenew(string $domainName, EnableAutorenewRequest $request, ?array $options = null): ?Domain
     {
         $options = array_merge($this->options, $options ?? []);
         try {
@@ -482,6 +561,7 @@ class DomainsClient
                     baseUrl: $options['baseUrl'] ?? $this->client->options['baseUrl'] ?? Environments::Sandbox->value,
                     path: "core/v1/domains/{$domainName}:enableAutorenew",
                     method: HttpMethod::POST,
+                    body: $request->body,
                 ),
                 $options,
             );
@@ -508,7 +588,18 @@ class DomainsClient
     /**
      * Enables WHOIS privacy protection on a domain. **DEPRECATED** This endpoint is deprecated in favor of the new UpdateDomain API. This will be removed in a future release.
      *
+     * Example:
+     * ```php
+     * $client->domains->enableWhoisPrivacy(
+     *     'domainName',
+     *     new EnableWhoisPrivacyRequest([
+     *         'body' => new EmptyObject([]),
+     *     ]),
+     * );
+     * ```
+     *
      * @param string $domainName DomainName is the domain name to enable whoisprivacy for.
+     * @param EnableWhoisPrivacyRequest $request
      * @param ?array{
      *   baseUrl?: string,
      *   maxRetries?: int,
@@ -521,7 +612,7 @@ class DomainsClient
      * @throws NamecomException
      * @throws NamecomApiException
      */
-    public function enableWhoisPrivacy(string $domainName, ?array $options = null): ?Domain
+    public function enableWhoisPrivacy(string $domainName, EnableWhoisPrivacyRequest $request, ?array $options = null): ?Domain
     {
         $options = array_merge($this->options, $options ?? []);
         try {
@@ -530,6 +621,7 @@ class DomainsClient
                     baseUrl: $options['baseUrl'] ?? $this->client->options['baseUrl'] ?? Environments::Sandbox->value,
                     path: "core/v1/domains/{$domainName}:enableWhoisPrivacy",
                     method: HttpMethod::POST,
+                    body: $request->body,
                 ),
                 $options,
             );
@@ -555,6 +647,13 @@ class DomainsClient
 
     /**
      * Retrieves the transfer authorization code (EPP code) for a domain.
+     *
+     * Example:
+     * ```php
+     * $client->domains->getAuthCodeForDomain(
+     *     'domainName',
+     * );
+     * ```
      *
      * @param string $domainName DomainName is the domain name to retrieve the authorization code for.
      * @param ?array{
@@ -616,6 +715,16 @@ class DomainsClient
      *
      * See the [Domain pricing guide](/guides/domain-pricing) for the full workflow.
      *
+     * Example:
+     * ```php
+     * $client->domains->getPricingForDomain(
+     *     'domainName',
+     *     new GetPricingForDomainRequest([
+     *         'years' => 2,
+     *     ]),
+     * );
+     * ```
+     *
      * @param string $domainName DomainName is the domain to retrieve.
      * @param GetPricingForDomainRequest $request
      * @param ?array{
@@ -670,7 +779,18 @@ class DomainsClient
     /**
      * Locks a domain to prevent it from being transferred. **DEPRECATED** This endpoint is deprecated in favor of the new UpdateDomain API. This will be removed in a future release.
      *
+     * Example:
+     * ```php
+     * $client->domains->lockDomain(
+     *     'example.com',
+     *     new LockDomainRequest([
+     *         'body' => new EmptyObject([]),
+     *     ]),
+     * );
+     * ```
+     *
      * @param string $domainName DomainName is the domain name to lock.
+     * @param LockDomainRequest $request
      * @param ?array{
      *   baseUrl?: string,
      *   maxRetries?: int,
@@ -683,7 +803,7 @@ class DomainsClient
      * @throws NamecomException
      * @throws NamecomApiException
      */
-    public function lockDomain(string $domainName, ?array $options = null): ?Domain
+    public function lockDomain(string $domainName, LockDomainRequest $request, ?array $options = null): ?Domain
     {
         $options = array_merge($this->options, $options ?? []);
         try {
@@ -692,6 +812,7 @@ class DomainsClient
                     baseUrl: $options['baseUrl'] ?? $this->client->options['baseUrl'] ?? Environments::Sandbox->value,
                     path: "core/v1/domains/{$domainName}:lock",
                     method: HttpMethod::POST,
+                    body: $request->body,
                 ),
                 $options,
             );
@@ -717,6 +838,16 @@ class DomainsClient
 
     /**
      * Adds or renews WHOIS privacy protection for a domain. This is used to ensure personal contact details remain hidden from public WHOIS lookups.  If WHOIS privacy is already enabled, this will extend the protection. If it’s not yet active, this will both purchase and enable the service.  This is a billable action unless covered by a bundled privacy plan.
+     *
+     * Example:
+     * ```php
+     * $client->domains->purchasePrivacy(
+     *     'domainName',
+     *     new DomainsPurchasePrivacyBody([
+     *         'idempotencyKey' => '083910ef-04e4-4bd1-a0bf-3737fe005ca8',
+     *     ]),
+     * );
+     * ```
      *
      * @param string $domainName DomainName is the domain to purchase Whois Privacy for.
      * @param DomainsPurchasePrivacyBody $request
@@ -773,6 +904,14 @@ class DomainsClient
     /**
      * Renews an existing domain for an additional registration period. Include the domain name and renewal term. Omit `purchasePrice` for standard (non-premium) renewals. For premium renewals, pass `renewalPrice` from [Get Pricing](/api/v1/reference/domains/get-pricing-for-domain) with matching `years` as `purchasePrice`. Renewal pricing is separate from Create Domain registration/acquisition pricing. This is typically used to extend ownership before a domain’s expiration.
      *
+     * Example:
+     * ```php
+     * $client->domains->renewDomain(
+     *     'domainName',
+     *     new DomainsRenewDomainBody([]),
+     * );
+     * ```
+     *
      * @param string $domainName DomainName is the domain to renew.
      * @param DomainsRenewDomainBody $request
      * @param ?array{
@@ -825,6 +964,14 @@ class DomainsClient
      * #### Contact Verification
      * When registrant contact information is updated, validation may be triggered if the new contact information has not been previously validated. This validation is required by ICANN for all TLDs except country-code TLDs (ccTLDs). This validation involves sending an email to the provided address, prompting the recipient to click a link to verify their email address.
      *
+     * Example:
+     * ```php
+     * $client->domains->setContacts(
+     *     'example.com',
+     *     new DomainsSetContactsBody([]),
+     * );
+     * ```
+     *
      * @param string $domainName DomainName is the domain name to set the contacts for.
      * @param DomainsSetContactsBody $request
      * @param ?array{
@@ -874,6 +1021,19 @@ class DomainsClient
 
     /**
      * SetNameservers will set the nameservers for the Domain. This operation updates the DNS configuration by changing which nameservers are responsible for the domain's zone.
+     *
+     * Example:
+     * ```php
+     * $client->domains->setNameservers(
+     *     'example.com',
+     *     new DomainsSetNameserversBody([
+     *         'nameservers' => [
+     *             'ns1.name.com',
+     *             'ns2.name.com',
+     *         ],
+     *     ]),
+     * );
+     * ```
      *
      * @param string $domainName DomainName is the domain name to set the nameservers for.
      * @param DomainsSetNameserversBody $request
@@ -925,7 +1085,18 @@ class DomainsClient
     /**
      * Unlocks a domain to allow it to be transferred. **DEPRECATED** This endpoint is deprecated in favor of the new UpdateDomain API. This will be removed in a future release.
      *
+     * Example:
+     * ```php
+     * $client->domains->unlockDomain(
+     *     'domainName',
+     *     new UnlockDomainRequest([
+     *         'body' => new EmptyObject([]),
+     *     ]),
+     * );
+     * ```
+     *
      * @param string $domainName DomainName is the domain name to unlock.
+     * @param UnlockDomainRequest $request
      * @param ?array{
      *   baseUrl?: string,
      *   maxRetries?: int,
@@ -938,7 +1109,7 @@ class DomainsClient
      * @throws NamecomException
      * @throws NamecomApiException
      */
-    public function unlockDomain(string $domainName, ?array $options = null): ?Domain
+    public function unlockDomain(string $domainName, UnlockDomainRequest $request, ?array $options = null): ?Domain
     {
         $options = array_merge($this->options, $options ?? []);
         try {
@@ -947,6 +1118,7 @@ class DomainsClient
                     baseUrl: $options['baseUrl'] ?? $this->client->options['baseUrl'] ?? Environments::Sandbox->value,
                     path: "core/v1/domains/{$domainName}:unlock",
                     method: HttpMethod::POST,
+                    body: $request->body,
                 ),
                 $options,
             );
@@ -982,6 +1154,17 @@ class DomainsClient
      * to ensure predictable pricing and immediate fulfillment. Other purchase types
      * (such as aftermarket variants) can introduce higher costs and non-instant
      * transactions that may be delayed or declined by third parties.
+     *
+     * Example:
+     * ```php
+     * $client->domains->checkAvailability(
+     *     new AvailabilityRequest([
+     *         'domainNames' => [
+     *             'domainNames',
+     *         ],
+     *     ]),
+     * );
+     * ```
      *
      * @param AvailabilityRequest $request
      * @param ?array{
@@ -1044,6 +1227,15 @@ class DomainsClient
      *
      * When results show `premium: true` or a non-`registration` `purchaseType`, follow the [Domain pricing guide](/guides/domain-pricing) before calling Create Domain. For all types, re-check with Check Availability immediately before create — prices and availability can change.
      *
+     * Example:
+     * ```php
+     * $client->domains->search(
+     *     new SearchRequest([
+     *         'keyword' => 'mydomain',
+     *     ]),
+     * );
+     * ```
+     *
      * @param SearchRequest $request
      * @param ?array{
      *   baseUrl?: string,
@@ -1098,6 +1290,19 @@ class DomainsClient
      *
      * If no valid domains remain after this process, the API returns a `400 Bad Request` response.
      * **Note:** The cached zone files used for this check are refreshed twice daily based on the latest available data from the registries.
+     *
+     * Example:
+     * ```php
+     * $client->domains->zoneCheck(
+     *     new ZoneCheckRequest([
+     *         'domainNames' => [
+     *             'example.com',
+     *             'example.net',
+     *             'example.org',
+     *         ],
+     *     ]),
+     * );
+     * ```
      *
      * @param ZoneCheckRequest $request
      * @param ?array{

@@ -3,7 +3,17 @@
 [![fern shield](https://img.shields.io/badge/%F0%9F%8C%BF-Built%20with%20Fern-brightgreen)](https://buildwithfern.com?utm_source=github&utm_medium=github&utm_campaign=readme&utm_source=https%3A%2F%2Fgithub.com%2Fnamedotcom%2Fcore-api-php)
 [![php shield](https://img.shields.io/badge/php-packagist-pink)](https://packagist.org/packages/namecom/core-api)
 
-The Namecom PHP library provides convenient access to the Namecom APIs from PHP.
+Official SDK for the name.com Core API.
+
+List endpoints are paginated: pass the `page` query parameter to page through
+results, and read the response `links` header for next/previous page links.
+
+Write endpoints that accept an `X-Idempotency-Key` header are safe to retry —
+reusing the same key returns the original result instead of repeating the
+operation. Keys are valid for 12 hours.
+
+See https://docs.name.com for full guides and the API reference.
+
 
 ## Table of Contents
 
@@ -49,6 +59,119 @@ $client = new NamecomClient(
     password: '<password>',
 );
 $client->hello();
+
+```
+
+```php
+<?php
+
+namespace Example;
+
+use Namecom\NamecomClient;
+
+$client = new NamecomClient(
+    username: '<username>',
+    password: '<password>',
+);
+$client->accountInfo->checkAccountBalance();
+
+```
+
+```php
+<?php
+
+namespace Example;
+
+use Namecom\NamecomClient;
+use Namecom\Domains\Requests\SearchRequest;
+
+$client = new NamecomClient(
+    username: '<username>',
+    password: '<password>',
+);
+$client->domains->search(
+    new SearchRequest([
+        'keyword' => 'mydomain',
+    ]),
+);
+
+```
+
+```php
+<?php
+
+namespace Example;
+
+use Namecom\NamecomClient;
+use Namecom\Domains\Requests\ListDomainsRequest;
+
+$client = new NamecomClient(
+    username: '<username>',
+    password: '<password>',
+);
+$client->domains->listDomains(
+    new ListDomainsRequest([]),
+);
+
+```
+
+```php
+<?php
+
+namespace Example;
+
+use Namecom\NamecomClient;
+
+$client = new NamecomClient(
+    username: '<username>',
+    password: '<password>',
+);
+$client->domains->getDomain(
+    'example.com',
+);
+
+```
+
+```php
+<?php
+
+namespace Example;
+
+use Namecom\NamecomClient;
+use Namecom\Dns\Requests\ListRecordsRequest;
+
+$client = new NamecomClient(
+    username: '<username>',
+    password: '<password>',
+);
+$client->dns->listRecords(
+    'domainName',
+    new ListRecordsRequest([]),
+);
+
+```
+
+```php
+<?php
+
+namespace Example;
+
+use Namecom\NamecomClient;
+use Namecom\Dns\Requests\DnsCreateRecordBody;
+use Namecom\Dns\Types\DnsCreateRecordBodyType;
+
+$client = new NamecomClient(
+    username: '<username>',
+    password: '<password>',
+);
+$client->dns->createRecord(
+    'domainName',
+    new DnsCreateRecordBody([
+        'answer' => 'answer',
+        'host' => 'host',
+        'type' => DnsCreateRecordBodyType::A->value,
+    ]),
+);
 
 ```
 

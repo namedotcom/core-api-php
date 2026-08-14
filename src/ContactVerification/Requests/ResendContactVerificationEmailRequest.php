@@ -3,6 +3,7 @@
 namespace Namecom\ContactVerification\Requests;
 
 use Namecom\Core\Json\JsonSerializableType;
+use Namecom\Types\EmptyObject;
 
 class ResendContactVerificationEmailRequest extends JsonSerializableType
 {
@@ -12,13 +13,20 @@ class ResendContactVerificationEmailRequest extends JsonSerializableType
     public ?string $idempotencyKey;
 
     /**
+     * @var EmptyObject $body
+     */
+    public EmptyObject $body;
+
+    /**
      * @param array{
+     *   body: EmptyObject,
      *   idempotencyKey?: ?string,
      * } $values
      */
     public function __construct(
-        array $values = [],
+        array $values,
     ) {
         $this->idempotencyKey = $values['idempotencyKey'] ?? null;
+        $this->body = $values['body'];
     }
 }

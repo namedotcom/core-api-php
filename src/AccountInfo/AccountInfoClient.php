@@ -52,6 +52,11 @@ class AccountInfoClient
     /**
      * Returns the current account credit balance for the authenticated user.
      *
+     * Example:
+     * ```php
+     * $client->accountInfo->checkAccountBalance();
+     * ```
+     *
      * @param ?array{
      *   baseUrl?: string,
      *   maxRetries?: int,

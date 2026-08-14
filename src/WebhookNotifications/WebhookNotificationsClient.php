@@ -56,6 +56,11 @@ class WebhookNotificationsClient
     /**
      * Retrieves all active webhook subscriptions on the account.
      *
+     * Example:
+     * ```php
+     * $client->webhookNotifications->getSubscribedNotifications();
+     * ```
+     *
      * @param ?array{
      *   baseUrl?: string,
      *   maxRetries?: int,
@@ -114,6 +119,17 @@ class WebhookNotificationsClient
      * - `domain.registry.rejection` – domain **create** failed after asynchronous registry processing (uncommon; most creates succeed at request time).
      * - `domain.expiration` – domain has expired and entered the post-expiry grace period. This is informational only.
      *
+     * Example:
+     * ```php
+     * $client->webhookNotifications->subscribeToNotification(
+     *     new SubscribeToNotification([
+     *         'eventName' => AvailableWebhooks::AccountCreditBalanceChange->value,
+     *         'url' => 'https://example.com',
+     *         'active' => true,
+     *     ]),
+     * );
+     * ```
+     *
      * @param SubscribeToNotification $request
      * @param ?array{
      *   baseUrl?: string,
@@ -162,6 +178,18 @@ class WebhookNotificationsClient
 
     /**
      * Updates an existing webhook’s configuration.  This may include changing the callback URL or updating whether the webhook is currently active.
+     *
+     * Example:
+     * ```php
+     * $client->webhookNotifications->modifySubscription(
+     *     1,
+     *     new ModifySubscriptionRequest([
+     *         'body' => new ModifySubscriptionRequestBodyUrl([
+     *             'url' => 'url',
+     *         ]),
+     *     ]),
+     * );
+     * ```
      *
      * @param int $id ID of the subscription to update.
      * @param ModifySubscriptionRequest $request
@@ -212,6 +240,13 @@ class WebhookNotificationsClient
 
     /**
      * Removes a webhook subscription from the account.
+     *
+     * Example:
+     * ```php
+     * $client->webhookNotifications->deleteSubscription(
+     *     1,
+     * );
+     * ```
      *
      * @param int $id ID of the subscription to delete.
      * @param ?array{

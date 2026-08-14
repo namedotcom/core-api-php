@@ -71,6 +71,19 @@ class RefundsClient
      *
      * This endpoint supports idempotent requests via the `X-Idempotency-Key` header. If you retry a request with the same idempotency key, you will receive the same response as the original request. This is useful for safely retrying requests without risk of processing duplicate refunds.
      *
+     * Example:
+     * ```php
+     * $client->refunds->processRefund(
+     *     new RefundRequest([
+     *         'idempotencyKey' => '083910ef-04e4-4bd1-a0bf-3737fe005ca8',
+     *         'orderId' => 123456,
+     *         'orderItemIds' => [
+     *             987654,
+     *         ],
+     *     ]),
+     * );
+     * ```
+     *
      * @param RefundRequest $request
      * @param ?array{
      *   baseUrl?: string,

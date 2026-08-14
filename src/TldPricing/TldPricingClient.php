@@ -62,6 +62,15 @@ class TldPricingClient
      * - Availability: If a pricing value is returned as null, that product type is not currently supported for the TLD. (Example: registrationPrice = null means registrations are not currently available.)
      * - If you do not have account level pricing, the retail price will always match your account level price. (e.g., registration price = registration retail price)
      *
+     * Example:
+     * ```php
+     * $client->tldPricing->tldPriceList(
+     *     new TldPriceListRequest([
+     *         'duration' => 1,
+     *     ]),
+     * );
+     * ```
+     *
      * @param TldPriceListRequest $request
      * @param ?array{
      *   baseUrl?: string,

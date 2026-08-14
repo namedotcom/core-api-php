@@ -54,6 +54,13 @@ class OrdersClient
     /**
      * Retrieves a list of all orders placed in the account.
      *
+     * Example:
+     * ```php
+     * $client->orders->listOrders(
+     *     new ListOrdersRequest([]),
+     * );
+     * ```
+     *
      * @param ListOrdersRequest $request
      * @param ?array{
      *   baseUrl?: string,
@@ -130,6 +137,13 @@ class OrdersClient
 
     /**
      * Fetches full details about a specific order using its ID. This includes domains, prices, and timestamps.  Useful for confirming transactions, receipts, or generating invoices.
+     *
+     * Example:
+     * ```php
+     * $client->orders->getOrder(
+     *     1,
+     * );
+     * ```
      *
      * @param int $orderId OrderId is the unique identifier of the requested order.
      * @param ?array{

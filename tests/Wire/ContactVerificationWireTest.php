@@ -6,6 +6,7 @@ use Namecom\Tests\Wire\WireMockTestCase;
 use Namecom\NamecomClient;
 use Namecom\ContactVerification\Requests\UnverifiedContactsListRequest;
 use Namecom\ContactVerification\Requests\VerifyContactRequest;
+use Namecom\Types\EmptyObject;
 use Namecom\ContactVerification\Requests\ResendContactVerificationEmailRequest;
 
 class ContactVerificationWireTest extends WireMockTestCase
@@ -47,6 +48,7 @@ class ContactVerificationWireTest extends WireMockTestCase
             1,
             new VerifyContactRequest([
                 'idempotencyKey' => '083910ef-04e4-4bd1-a0bf-3737fe005ca8',
+                'body' => new EmptyObject([]),
             ]),
             [
                 'headers' => [
@@ -71,6 +73,7 @@ class ContactVerificationWireTest extends WireMockTestCase
             1,
             new ResendContactVerificationEmailRequest([
                 'idempotencyKey' => '083910ef-04e4-4bd1-a0bf-3737fe005ca8',
+                'body' => new EmptyObject([]),
             ]),
             [
                 'headers' => [

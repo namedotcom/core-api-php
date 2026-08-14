@@ -57,6 +57,16 @@ class ContactVerificationClient
      * Returns a list of contacts, related to domains within your account, that require verification as per ICANN procedures.
      * When a new domain is created, unverified contacts are not immediately available in API responses.  Records are added by a scheduled process that runs approximately every 10 minutes.  As a result, there may be up to a 10-minute delay before unverified contacts appear in the API. This delay also applies to related events such as webhooks or other downstream systems that depend on contact verification data.
      *
+     * Example:
+     * ```php
+     * $client->contactVerification->unverifiedContactsList(
+     *     new UnverifiedContactsListRequest([
+     *         'perPage' => 100,
+     *         'page' => 2,
+     *     ]),
+     * );
+     * ```
+     *
      * @param UnverifiedContactsListRequest $request
      * @param ?array{
      *   baseUrl?: string,
@@ -114,6 +124,17 @@ class ContactVerificationClient
      * Use this API to verify a contact.
      * This API is only available to approved reseller accounts. Contact name.com support to request access.
      *
+     * Example:
+     * ```php
+     * $client->contactVerification->verifyContact(
+     *     1,
+     *     new VerifyContactRequest([
+     *         'idempotencyKey' => '083910ef-04e4-4bd1-a0bf-3737fe005ca8',
+     *         'body' => new EmptyObject([]),
+     *     ]),
+     * );
+     * ```
+     *
      * @param int $verificationId The VerificationId required to verify a specific contact.
      * @param VerifyContactRequest $request
      * @param ?array{
@@ -127,7 +148,7 @@ class ContactVerificationClient
      * @throws NamecomException
      * @throws NamecomApiException
      */
-    public function verifyContact(int $verificationId, VerifyContactRequest $request = new VerifyContactRequest(), ?array $options = null): void
+    public function verifyContact(int $verificationId, VerifyContactRequest $request, ?array $options = null): void
     {
         $options = array_merge($this->options, $options ?? []);
         $headers = [];
@@ -141,6 +162,7 @@ class ContactVerificationClient
                     path: "core/v1/contacts/verify/{$verificationId}",
                     method: HttpMethod::POST,
                     headers: $headers,
+                    body: $request->body,
                 ),
                 $options,
             );
@@ -170,6 +192,17 @@ class ContactVerificationClient
      *
      * On `429`, the response uses the standard error envelope, and `details` contains the earliest retry time (RFC3339 UTC).
      *
+     * Example:
+     * ```php
+     * $client->contactVerification->resendContactVerificationEmail(
+     *     1,
+     *     new ResendContactVerificationEmailRequest([
+     *         'idempotencyKey' => '083910ef-04e4-4bd1-a0bf-3737fe005ca8',
+     *         'body' => new EmptyObject([]),
+     *     ]),
+     * );
+     * ```
+     *
      * @param int $verificationId The verificationId for the pending contact verification record.
      * @param ResendContactVerificationEmailRequest $request
      * @param ?array{
@@ -184,7 +217,7 @@ class ContactVerificationClient
      * @throws NamecomException
      * @throws NamecomApiException
      */
-    public function resendContactVerificationEmail(int $verificationId, ResendContactVerificationEmailRequest $request = new ResendContactVerificationEmailRequest(), ?array $options = null): ?ContactVerificationResendResponse
+    public function resendContactVerificationEmail(int $verificationId, ResendContactVerificationEmailRequest $request, ?array $options = null): ?ContactVerificationResendResponse
     {
         $options = array_merge($this->options, $options ?? []);
         $headers = [];
@@ -198,6 +231,7 @@ class ContactVerificationClient
                     path: "core/v1/contacts/verify/{$verificationId}:resend",
                     method: HttpMethod::POST,
                     headers: $headers,
+                    body: $request->body,
                 ),
                 $options,
             );

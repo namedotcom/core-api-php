@@ -9,11 +9,18 @@ use Namecom\Domains\Requests\CreateDomainRequest;
 use Namecom\Types\DomainCreatePayload;
 use Namecom\Domains\Requests\UpdateDomainRequest;
 use Namecom\Domains\Types\UpdateDomainRequestBodyAutorenewEnabled;
+use Namecom\Domains\Requests\DisableAutorenewRequest;
+use Namecom\Types\EmptyObject;
+use Namecom\Domains\Requests\DisableWhoisPrivacyRequest;
+use Namecom\Domains\Requests\EnableAutorenewRequest;
+use Namecom\Domains\Requests\EnableWhoisPrivacyRequest;
 use Namecom\Domains\Requests\GetPricingForDomainRequest;
+use Namecom\Domains\Requests\LockDomainRequest;
 use Namecom\Domains\Requests\DomainsPurchasePrivacyBody;
 use Namecom\Domains\Requests\DomainsRenewDomainBody;
 use Namecom\Domains\Requests\DomainsSetContactsBody;
 use Namecom\Domains\Requests\DomainsSetNameserversBody;
+use Namecom\Domains\Requests\UnlockDomainRequest;
 use Namecom\Domains\Requests\AvailabilityRequest;
 use Namecom\Domains\Requests\SearchRequest;
 use Namecom\Domains\Requests\ZoneCheckRequest;
@@ -125,6 +132,9 @@ class DomainsWireTest extends WireMockTestCase
         $testId = 'domains.disable_autorenew.0';
         $this->client->domains->disableAutorenew(
             'example.com',
+            new DisableAutorenewRequest([
+                'body' => new EmptyObject([]),
+            ]),
             [
                 'headers' => [
                     'X-Test-Id' => 'domains.disable_autorenew.0',
@@ -146,6 +156,9 @@ class DomainsWireTest extends WireMockTestCase
         $testId = 'domains.disable_whois_privacy.0';
         $this->client->domains->disableWhoisPrivacy(
             'example.com',
+            new DisableWhoisPrivacyRequest([
+                'body' => new EmptyObject([]),
+            ]),
             [
                 'headers' => [
                     'X-Test-Id' => 'domains.disable_whois_privacy.0',
@@ -167,6 +180,9 @@ class DomainsWireTest extends WireMockTestCase
         $testId = 'domains.enable_autorenew.0';
         $this->client->domains->enableAutorenew(
             'example.com',
+            new EnableAutorenewRequest([
+                'body' => new EmptyObject([]),
+            ]),
             [
                 'headers' => [
                     'X-Test-Id' => 'domains.enable_autorenew.0',
@@ -188,6 +204,9 @@ class DomainsWireTest extends WireMockTestCase
         $testId = 'domains.enable_whois_privacy.0';
         $this->client->domains->enableWhoisPrivacy(
             'domainName',
+            new EnableWhoisPrivacyRequest([
+                'body' => new EmptyObject([]),
+            ]),
             [
                 'headers' => [
                     'X-Test-Id' => 'domains.enable_whois_privacy.0',
@@ -254,6 +273,9 @@ class DomainsWireTest extends WireMockTestCase
         $testId = 'domains.lock_domain.0';
         $this->client->domains->lockDomain(
             'example.com',
+            new LockDomainRequest([
+                'body' => new EmptyObject([]),
+            ]),
             [
                 'headers' => [
                     'X-Test-Id' => 'domains.lock_domain.0',
@@ -370,6 +392,9 @@ class DomainsWireTest extends WireMockTestCase
         $testId = 'domains.unlock_domain.0';
         $this->client->domains->unlockDomain(
             'domainName',
+            new UnlockDomainRequest([
+                'body' => new EmptyObject([]),
+            ]),
             [
                 'headers' => [
                     'X-Test-Id' => 'domains.unlock_domain.0',

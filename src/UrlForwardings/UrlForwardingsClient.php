@@ -58,6 +58,17 @@ class UrlForwardingsClient
     /**
      * Returns all URL forwarding settings configured for a domain. **Deprecated.** Use [List URL Forwardings by domain](/api/v1/reference/url-forwardings/list-urlforwardings-by-domain) instead, which returns entries with an `id` for use with by-ID endpoints.
      *
+     * Example:
+     * ```php
+     * $client->urlForwardings->listUrlForwardings(
+     *     'example.com',
+     *     new ListUrlForwardingsRequest([
+     *         'perPage' => 100,
+     *         'page' => 1,
+     *     ]),
+     * );
+     * ```
+     *
      * @param string $domainName DomainName is the domain to list URL forwarding entries for.
      * @param ListUrlForwardingsRequest $request
      * @param ?array{
@@ -115,6 +126,20 @@ class UrlForwardingsClient
     /**
      * Sets up a new URL forwarding (redirect) for a domain or subdomain. If this is the first URL forwarding entry, it may modify the A records for the domain accordingly. Note that changes may take up to 24 hours to fully propagate.
      *
+     * Example:
+     * ```php
+     * $client->urlForwardings->createUrlForwarding(
+     *     'example.com',
+     *     new CreateUrlForwardingRequest([
+     *         'body' => new UrlForwardingInput([
+     *             'forwardsTo' => 'https://destination-site.com',
+     *             'host' => 'www',
+     *             'type' => UrlForwardingInputType::Masked->value,
+     *         ]),
+     *     ]),
+     * );
+     * ```
+     *
      * @param string $domainName DomainName is the domain part of the hostname to forward.
      * @param CreateUrlForwardingRequest $request
      * @param ?array{
@@ -165,6 +190,14 @@ class UrlForwardingsClient
     /**
      * Retrieves the details of a specific URL forwarding configuration. **Deprecated.** Use [Get URL Forwarding by ID](/api/v1/reference/url-forwardings/get-urlforwarding-by-id) instead.
      *
+     * Example:
+     * ```php
+     * $client->urlForwardings->getUrlForwarding(
+     *     'example.com',
+     *     'www.example.org',
+     * );
+     * ```
+     *
      * @param string $domainName DomainName is the domain to get the URL forwarding entry for.
      * @param string $host The full hostname, including subdomain.
      * @param ?array{
@@ -213,6 +246,21 @@ class UrlForwardingsClient
 
     /**
      * Modifies an existing URL forwarding rule. Changes may take up to 24 hours to fully propagate. **Deprecated.** Use [Update URL Forwarding by ID](/api/v1/reference/url-forwardings/update-urlforwarding-by-id) instead.
+     *
+     * Example:
+     * ```php
+     * $client->urlForwardings->updateUrlForwarding(
+     *     'example.com',
+     *     'www.example.org',
+     *     new UpdateUrlForwardingRequest([
+     *         'body' => new UrlForwardingInput([
+     *             'forwardsTo' => 'https://destination-site.com',
+     *             'host' => 'www',
+     *             'type' => UrlForwardingInputType::Masked->value,
+     *         ]),
+     *     ]),
+     * );
+     * ```
      *
      * @param string $domainName DomainName is the domain part of the hostname to forward.
      * @param string $host The full hostname, including subdomain.
@@ -265,6 +313,14 @@ class UrlForwardingsClient
     /**
      * Removes a URL forwarding configuration from the domain. This operation cannot be undone. **Deprecated.** Use [Delete URL Forwarding by ID](/api/v1/reference/url-forwardings/delete-urlforwarding-by-id) instead.
      *
+     * Example:
+     * ```php
+     * $client->urlForwardings->deleteUrlForwarding(
+     *     'example.com',
+     *     'www.example.org',
+     * );
+     * ```
+     *
      * @param string $domainName DomainName is the domain to delete the URL forwarding entry from.
      * @param string $host The full hostname, including subdomain.
      * @param ?array{
@@ -306,6 +362,17 @@ class UrlForwardingsClient
 
     /**
      * Returns all URL forwarding settings configured for a domain. Each entry includes an `id` that can be used with the URL Forwarding by-ID endpoints to get, update, or delete records.
+     *
+     * Example:
+     * ```php
+     * $client->urlForwardings->listUrlForwardingsByDomain(
+     *     'example.com',
+     *     new ListUrlForwardingsByDomainRequest([
+     *         'perPage' => 100,
+     *         'page' => 1,
+     *     ]),
+     * );
+     * ```
      *
      * @param string $domainName DomainName is the domain to list URL forwarding entries for. The domain must be owned by the authenticated account.
      * @param ListUrlForwardingsByDomainRequest $request
@@ -364,6 +431,14 @@ class UrlForwardingsClient
     /**
      * Retrieves the details of a specific URL forwarding configuration by ID.  The domain must be owned by the authenticated account.
      *
+     * Example:
+     * ```php
+     * $client->urlForwardings->getUrlForwardingById(
+     *     'example.com',
+     *     12345,
+     * );
+     * ```
+     *
      * @param string $domainName DomainName is the domain that owns the URL forwarding entry. Must be owned by the authenticated account.
      * @param int $id ID is the server-assigned unique identifier for the URL forwarding record (returned in list responses).
      * @param ?array{
@@ -413,6 +488,14 @@ class UrlForwardingsClient
     /**
      * Removes a URL forwarding configuration by ID. The domain must be owned by the authenticated account. This operation cannot be undone.
      *
+     * Example:
+     * ```php
+     * $client->urlForwardings->deleteUrlForwardingById(
+     *     'example.com',
+     *     12345,
+     * );
+     * ```
+     *
      * @param string $domainName DomainName is the domain that owns the URL forwarding entry. Must be owned by the authenticated account.
      * @param int $id ID is the server-assigned unique identifier for the URL forwarding record (returned in list responses).
      * @param ?array{
@@ -454,6 +537,21 @@ class UrlForwardingsClient
 
     /**
      * Modifies an existing URL forwarding rule by ID.  The domain must be owned by the authenticated account. Changes may take up to 24 hours to fully propagate.
+     *
+     * Example:
+     * ```php
+     * $client->urlForwardings->updateUrlForwardingById(
+     *     'example.com',
+     *     12345,
+     *     new UpdateUrlForwardingByIdRequest([
+     *         'body' => new UrlForwardingInput([
+     *             'forwardsTo' => 'https://destination-site.com',
+     *             'host' => 'www',
+     *             'type' => UrlForwardingInputType::Masked->value,
+     *         ]),
+     *     ]),
+     * );
+     * ```
      *
      * @param string $domainName DomainName is the domain that owns the URL forwarding entry. Must be owned by the authenticated account.
      * @param int $id ID is the server-assigned unique identifier for the URL forwarding record (returned in list responses).

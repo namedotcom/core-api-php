@@ -54,6 +54,13 @@ class DnsseCsClient
     /**
      * Lists all DNSSEC (DS) records configured for a domain.
      *
+     * Example:
+     * ```php
+     * $client->dnsseCs->listDnsseCs(
+     *     'domainName',
+     * );
+     * ```
+     *
      * @param string $domainName DomainName is the domain name to list keys for.
      * @param ?array{
      *   baseUrl?: string,
@@ -101,6 +108,19 @@ class DnsseCsClient
 
     /**
      * Adds (registers) a new DNSSEC DS record for a domain.
+     *
+     * Example:
+     * ```php
+     * $client->dnsseCs->createDnssec(
+     *     'domainName',
+     *     new CreateDnssecBody([
+     *         'algorithm' => 1,
+     *         'digest' => 'digest',
+     *         'digestType' => 1,
+     *         'keyTag' => 1,
+     *     ]),
+     * );
+     * ```
      *
      * @param string $domainName DomainName is the domain name to create keys for.
      * @param CreateDnssecBody $request
@@ -152,6 +172,14 @@ class DnsseCsClient
     /**
      * Retrieves details of a specific DNSSEC record for a domain.
      *
+     * Example:
+     * ```php
+     * $client->dnsseCs->getDnssec(
+     *     'domainName',
+     *     'digest',
+     * );
+     * ```
+     *
      * @param string $domainName DomainName is the domain name.
      * @param string $digest Digest is the digest for the DNSKEY RR to retrieve.
      * @param ?array{
@@ -200,6 +228,14 @@ class DnsseCsClient
 
     /**
      * Deletes a DNSSEC record from a domain.
+     *
+     * Example:
+     * ```php
+     * $client->dnsseCs->deleteDnssec(
+     *     'domainName',
+     *     'digest',
+     * );
+     * ```
      *
      * @param string $domainName DomainName is the domain name the key is registered for.
      * @param string $digest Digest is the digest for the DNSKEY RR to remove from the registry.

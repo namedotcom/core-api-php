@@ -56,6 +56,17 @@ class VanityNameserversClient
     /**
      * Lists all vanity nameserver hostnames configured for a domain.
      *
+     * Example:
+     * ```php
+     * $client->vanityNameservers->listVanityNameservers(
+     *     'example.com',
+     *     new ListVanityNameserversRequest([
+     *         'perPage' => 50,
+     *         'page' => 2,
+     *     ]),
+     * );
+     * ```
+     *
      * @param string $domainName The domain name to list vanity nameservers for.
      * @param ListVanityNameserversRequest $request
      * @param ?array{
@@ -113,6 +124,20 @@ class VanityNameserversClient
     /**
      * Register a new vanity nameserver for the specified domain.
      *
+     * Example:
+     * ```php
+     * $client->vanityNameservers->createVanityNameserver(
+     *     'example.com',
+     *     new CreateVanityNameserverBody([
+     *         'hostname' => 'ns1',
+     *         'ips' => [
+     *             '192.168.1.10',
+     *             '2001:0db8:85a3:0000:0000:8a2e:0370:7334',
+     *         ],
+     *     ]),
+     * );
+     * ```
+     *
      * @param string $domainName The domain name to create a vanity nameserver for.
      * @param CreateVanityNameserverBody $request
      * @param ?array{
@@ -163,6 +188,14 @@ class VanityNameserversClient
     /**
      * Retrieves details for a of a specific vanity nameserver (including its IP addresses).
      *
+     * Example:
+     * ```php
+     * $client->vanityNameservers->getVanityNameserver(
+     *     'example.com',
+     *     'ns1.example.com',
+     * );
+     * ```
+     *
      * @param string $domainName The domain name associated with the vanity nameserver.
      * @param string $hostname The hostname of the vanity nameserver to retrieve.
      * @param ?array{
@@ -211,6 +244,15 @@ class VanityNameserversClient
 
     /**
      * Updates the glue record IP addresses for a vanity nameserver.
+     *
+     * Example:
+     * ```php
+     * $client->vanityNameservers->updateVanityNameserver(
+     *     'example.com',
+     *     'ns1.example.com',
+     *     new UpdateVanityNameserverBody([]),
+     * );
+     * ```
      *
      * @param string $domainName The domain name associated with the vanity nameserver.
      * @param string $hostname The hostname of the vanity nameserver to update.
@@ -262,6 +304,14 @@ class VanityNameserversClient
 
     /**
      * Deletes a vanity nameserver from the domain’s registry settings. This operation might fail if the registry detects the nameserver is still in use.
+     *
+     * Example:
+     * ```php
+     * $client->vanityNameservers->deleteVanityNameserver(
+     *     'example.com',
+     *     'ns1.example.com',
+     * );
+     * ```
      *
      * @param string $domainName The domain name associated with the vanity nameserver.
      * @param string $hostname The hostname of the vanity nameserver to delete.

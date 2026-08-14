@@ -53,6 +53,11 @@ class PremiumDomainsClient
      * Gets a pre-signed URL that will allow a user to download a list of premium domains, with their registration and renewal pricing.
      * **Please Note:** The pre-signed URL will only be valid for 10 minutes. This endpoint is only available to approved reseller accounts. Contact name.com support to request access.
      *
+     * Example:
+     * ```php
+     * $client->premiumDomains->premiumDomainLists();
+     * ```
+     *
      * @param ?array{
      *   baseUrl?: string,
      *   maxRetries?: int,

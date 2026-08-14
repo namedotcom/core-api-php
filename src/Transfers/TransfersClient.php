@@ -16,6 +16,8 @@ use Psr\Http\Client\ClientExceptionInterface;
 use Namecom\Transfers\Requests\CreateTransferRequest;
 use Namecom\Types\CreateTransferResponse;
 use Namecom\Types\Transfer;
+use Namecom\Transfers\Requests\CancelTransferRequest;
+use Namecom\Transfers\Requests\CancelOutboundTransferRequest;
 use Namecom\Types\CancelTransferOutResponse;
 use Namecom\Transfers\Requests\CreateInternalTransferInRequest;
 use Namecom\Types\DomainResponsePayload;
@@ -59,6 +61,13 @@ class TransfersClient
 
     /**
      * Returns all domain transfer requests for the account, including in-progress and recent transfers.
+     *
+     * Example:
+     * ```php
+     * $client->transfers->listTransfers(
+     *     new ListTransfersRequest([]),
+     * );
+     * ```
      *
      * @param ListTransfersRequest $request
      * @param ?array{
@@ -117,6 +126,16 @@ class TransfersClient
      * Initiates a domain transfer into your name.com account from another registrar. You must provide the domain name and its valid transfer authorization code (EPP code). The domain must not be locked or under any transfer restrictions (e.g. clientTransferProhibited). If successful, the transfer is submitted and tracked through the ICANN transfer process. Once a transfer has been created, you can track its progress via the [GetTransfer](/api/v1/reference/transfers/get-transfer) endpoint.
      * **Transfer pricing:** Omit `purchasePrice` for standard (non-premium) transfers. For premium transfers, pass `transferPrice` from [Get Pricing For Domain](/api/v1/reference/domains/get-pricing-for-domain) as `purchasePrice`. If sent, it must match Get Pricing `transferPrice` exactly or the request will fail. Premium transfers without `purchasePrice` will fail. See the [Domain pricing guide](/guides/domain-pricing) for how [Get Pricing](/api/v1/reference/domains/get-pricing-for-domain) `transferPrice` relates to the `years` query parameter.
      *
+     * Example:
+     * ```php
+     * $client->transfers->createTransfer(
+     *     new CreateTransferRequest([
+     *         'authCode' => 'ABC123',
+     *         'domainName' => 'example.com',
+     *     ]),
+     * );
+     * ```
+     *
      * @param CreateTransferRequest $request
      * @param ?array{
      *   baseUrl?: string,
@@ -165,6 +184,13 @@ class TransfersClient
 
     /**
      * Retrieves details of a specific domain transfer request.
+     *
+     * Example:
+     * ```php
+     * $client->transfers->getTransfer(
+     *     'domainName',
+     * );
+     * ```
      *
      * @param string $domainName DomainName is the domain you want to get the transfer information for.
      * @param ?array{
@@ -231,7 +257,18 @@ class TransfersClient
      * - canceled
      * - canceled_pending_refund
      *
+     * Example:
+     * ```php
+     * $client->transfers->cancelTransfer(
+     *     'domainName',
+     *     new CancelTransferRequest([
+     *         'body' => new EmptyObject([]),
+     *     ]),
+     * );
+     * ```
+     *
      * @param string $domainName DomainName is the domain to cancel the transfer for.
+     * @param CancelTransferRequest $request
      * @param ?array{
      *   baseUrl?: string,
      *   maxRetries?: int,
@@ -244,7 +281,7 @@ class TransfersClient
      * @throws NamecomException
      * @throws NamecomApiException
      */
-    public function cancelTransfer(string $domainName, ?array $options = null): ?Transfer
+    public function cancelTransfer(string $domainName, CancelTransferRequest $request, ?array $options = null): ?Transfer
     {
         $options = array_merge($this->options, $options ?? []);
         try {
@@ -253,6 +290,7 @@ class TransfersClient
                     baseUrl: $options['baseUrl'] ?? $this->client->options['baseUrl'] ?? Environments::Sandbox->value,
                     path: "core/v1/transfers/{$domainName}:cancel",
                     method: HttpMethod::POST,
+                    body: $request->body,
                 ),
                 $options,
             );
@@ -281,7 +319,18 @@ class TransfersClient
      * On success, subscribers receive `domain.transfer_out.status_change` with status `canceled`.
      * The endpoint validates that the domain exists and belongs to the authenticated account. Only domains in a pending transfer (out) state can be canceled.
      *
+     * Example:
+     * ```php
+     * $client->transfers->cancelOutboundTransfer(
+     *     'example.com',
+     *     new CancelOutboundTransferRequest([
+     *         'body' => new EmptyObject([]),
+     *     ]),
+     * );
+     * ```
+     *
      * @param string $domainName DomainName is the domain whose transfer out should be canceled.
+     * @param CancelOutboundTransferRequest $request
      * @param ?array{
      *   baseUrl?: string,
      *   maxRetries?: int,
@@ -294,7 +343,7 @@ class TransfersClient
      * @throws NamecomException
      * @throws NamecomApiException
      */
-    public function cancelOutboundTransfer(string $domainName, ?array $options = null): ?CancelTransferOutResponse
+    public function cancelOutboundTransfer(string $domainName, CancelOutboundTransferRequest $request, ?array $options = null): ?CancelTransferOutResponse
     {
         $options = array_merge($this->options, $options ?? []);
         try {
@@ -303,6 +352,7 @@ class TransfersClient
                     baseUrl: $options['baseUrl'] ?? $this->client->options['baseUrl'] ?? Environments::Sandbox->value,
                     path: "core/v1/transfers/external/out/{$domainName}:cancel",
                     method: HttpMethod::POST,
+                    body: $request->body,
                 ),
                 $options,
             );
@@ -338,6 +388,16 @@ class TransfersClient
      * If `contacts` is omitted, the gaining account's default contacts are applied. If `contacts` is provided, any roles included in the request are applied and omitted roles use the gaining account's default contacts (same pattern as [Create Domain](/api/v1/reference/domains/create-domain) and [Set Contacts](/api/v1/reference/domains/set-contacts)). The 60-day contact-change transfer lock is enforced based on the **gaining** account's settings, consistent with Set Contacts.
      * #### Access
      * Restricted to approved enterprise resellers; other callers receive `403 Forbidden`.
+     *
+     * Example:
+     * ```php
+     * $client->transfers->createInternalTransferIn(
+     *     new CreateInternalTransferInRequest([
+     *         'domainName' => 'example.com',
+     *         'authCode' => 'ABC123',
+     *     ]),
+     * );
+     * ```
      *
      * @param CreateInternalTransferInRequest $request
      * @param ?array{
@@ -397,6 +457,13 @@ class TransfersClient
      * #### Privacy
      *
      * This endpoint never reveals which account a domain is in. To check whether a domain is in your own account, use [Get Domain](/api/v1/reference/domains/get-domain) instead.
+     *
+     * Example:
+     * ```php
+     * $client->transfers->getTransferEligibility(
+     *     'domainName',
+     * );
+     * ```
      *
      * @param string $domainName The domain to check transfer eligibility for. Punycode is normalized server-side, so either ASCII or UTF-8 is accepted.
      * @param ?array{
