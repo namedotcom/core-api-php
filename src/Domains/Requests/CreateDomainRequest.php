@@ -11,11 +11,6 @@ use Namecom\Types\DomainClaimsInfo;
 class CreateDomainRequest extends JsonSerializableType
 {
     /**
-     * @var ?string $idempotencyKey A unique string (e.g., a UUID v4) to make the request idempotent. This key ensures that if the request is retried, the operation will not be performed multiple times. Subsequent requests with the same key will return the original result.
-     */
-    public ?string $idempotencyKey;
-
-    /**
      * @var DomainCreatePayload $domain
      */
     #[JsonProperty('domain')]
@@ -65,7 +60,6 @@ class CreateDomainRequest extends JsonSerializableType
     /**
      * @param array{
      *   domain: DomainCreatePayload,
-     *   idempotencyKey?: ?string,
      *   purchasePrice?: ?float,
      *   purchaseType?: ?string,
      *   tldRequirements?: ?array<string, string>,
@@ -77,7 +71,6 @@ class CreateDomainRequest extends JsonSerializableType
     public function __construct(
         array $values,
     ) {
-        $this->idempotencyKey = $values['idempotencyKey'] ?? null;
         $this->domain = $values['domain'];
         $this->purchasePrice = $values['purchasePrice'] ?? null;
         $this->purchaseType = $values['purchaseType'] ?? null;

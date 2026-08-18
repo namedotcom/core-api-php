@@ -75,7 +75,6 @@ class RefundsClient
      * ```php
      * $client->refunds->processRefund(
      *     new RefundRequest([
-     *         'idempotencyKey' => '083910ef-04e4-4bd1-a0bf-3737fe005ca8',
      *         'orderId' => 123456,
      *         'orderItemIds' => [
      *             987654,
@@ -100,17 +99,12 @@ class RefundsClient
     public function processRefund(RefundRequest $request, ?array $options = null): ?RefundResponse
     {
         $options = array_merge($this->options, $options ?? []);
-        $headers = [];
-        if ($request->idempotencyKey != null) {
-            $headers['X-Idempotency-Key'] = $request->idempotencyKey;
-        }
         try {
             $response = $this->client->sendRequest(
                 new JsonApiRequest(
                     baseUrl: $options['baseUrl'] ?? $this->client->options['baseUrl'] ?? Environments::Sandbox->value,
                     path: "core/v1/refund",
                     method: HttpMethod::POST,
-                    headers: $headers,
                     body: $request,
                 ),
                 $options,

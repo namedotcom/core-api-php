@@ -59,7 +59,6 @@ class DomainsWireTest extends WireMockTestCase
         $testId = 'domains.create_domain.0';
         $this->client->domains->createDomain(
             new CreateDomainRequest([
-                'idempotencyKey' => '083910ef-04e4-4bd1-a0bf-3737fe005ca8',
                 'domain' => new DomainCreatePayload([
                     'domainName' => 'example.com',
                 ]),
@@ -297,9 +296,7 @@ class DomainsWireTest extends WireMockTestCase
         $testId = 'domains.purchase_privacy.0';
         $this->client->domains->purchasePrivacy(
             'domainName',
-            new DomainsPurchasePrivacyBody([
-                'idempotencyKey' => '083910ef-04e4-4bd1-a0bf-3737fe005ca8',
-            ]),
+            new DomainsPurchasePrivacyBody([]),
             [
                 'headers' => [
                     'X-Test-Id' => 'domains.purchase_privacy.0',

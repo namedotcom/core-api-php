@@ -5,12 +5,12 @@
 
 Official SDK for the name.com Core API.
 
-List endpoints are paginated: pass the `page` query parameter to page through
-results, and read the response `links` header for next/previous page links.
+List endpoints are paginated: use the `page` and `perPage` query parameters.
+Responses include `totalCount`, `nextPage`, and `lastPage`, and most list
+endpoints also return a `Link` header with `next`/`prev`/`last` URLs.
 
-Write endpoints that accept an `X-Idempotency-Key` header are safe to retry —
-reusing the same key returns the original result instead of repeating the
-operation. Keys are valid for 12 hours.
+Write endpoints that accept an idempotency key are safe to retry — reusing
+the same key returns the original result instead of repeating the operation.
 
 See https://docs.name.com for full guides and the API reference.
 

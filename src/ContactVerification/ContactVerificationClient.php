@@ -129,7 +129,6 @@ class ContactVerificationClient
      * $client->contactVerification->verifyContact(
      *     1,
      *     new VerifyContactRequest([
-     *         'idempotencyKey' => '083910ef-04e4-4bd1-a0bf-3737fe005ca8',
      *         'body' => new EmptyObject([]),
      *     ]),
      * );
@@ -151,17 +150,12 @@ class ContactVerificationClient
     public function verifyContact(int $verificationId, VerifyContactRequest $request, ?array $options = null): void
     {
         $options = array_merge($this->options, $options ?? []);
-        $headers = [];
-        if ($request->idempotencyKey != null) {
-            $headers['X-Idempotency-Key'] = $request->idempotencyKey;
-        }
         try {
             $response = $this->client->sendRequest(
                 new JsonApiRequest(
                     baseUrl: $options['baseUrl'] ?? $this->client->options['baseUrl'] ?? Environments::Sandbox->value,
                     path: "core/v1/contacts/verify/{$verificationId}",
                     method: HttpMethod::POST,
-                    headers: $headers,
                     body: $request->body,
                 ),
                 $options,
@@ -197,7 +191,6 @@ class ContactVerificationClient
      * $client->contactVerification->resendContactVerificationEmail(
      *     1,
      *     new ResendContactVerificationEmailRequest([
-     *         'idempotencyKey' => '083910ef-04e4-4bd1-a0bf-3737fe005ca8',
      *         'body' => new EmptyObject([]),
      *     ]),
      * );
@@ -220,17 +213,12 @@ class ContactVerificationClient
     public function resendContactVerificationEmail(int $verificationId, ResendContactVerificationEmailRequest $request, ?array $options = null): ?ContactVerificationResendResponse
     {
         $options = array_merge($this->options, $options ?? []);
-        $headers = [];
-        if ($request->idempotencyKey != null) {
-            $headers['X-Idempotency-Key'] = $request->idempotencyKey;
-        }
         try {
             $response = $this->client->sendRequest(
                 new JsonApiRequest(
                     baseUrl: $options['baseUrl'] ?? $this->client->options['baseUrl'] ?? Environments::Sandbox->value,
                     path: "core/v1/contacts/verify/{$verificationId}:resend",
                     method: HttpMethod::POST,
-                    headers: $headers,
                     body: $request->body,
                 ),
                 $options,

@@ -229,7 +229,6 @@ class DomainsClient
      * ```php
      * $client->domains->createDomain(
      *     new CreateDomainRequest([
-     *         'idempotencyKey' => '083910ef-04e4-4bd1-a0bf-3737fe005ca8',
      *         'domain' => new DomainCreatePayload([
      *             'domainName' => 'example.com',
      *         ]),
@@ -253,17 +252,12 @@ class DomainsClient
     public function createDomain(CreateDomainRequest $request, ?array $options = null): ?CreateDomainResponse
     {
         $options = array_merge($this->options, $options ?? []);
-        $headers = [];
-        if ($request->idempotencyKey != null) {
-            $headers['X-Idempotency-Key'] = $request->idempotencyKey;
-        }
         try {
             $response = $this->client->sendRequest(
                 new JsonApiRequest(
                     baseUrl: $options['baseUrl'] ?? $this->client->options['baseUrl'] ?? Environments::Sandbox->value,
                     path: "core/v1/domains",
                     method: HttpMethod::POST,
-                    headers: $headers,
                     body: $request,
                 ),
                 $options,
@@ -843,9 +837,7 @@ class DomainsClient
      * ```php
      * $client->domains->purchasePrivacy(
      *     'domainName',
-     *     new DomainsPurchasePrivacyBody([
-     *         'idempotencyKey' => '083910ef-04e4-4bd1-a0bf-3737fe005ca8',
-     *     ]),
+     *     new DomainsPurchasePrivacyBody([]),
      * );
      * ```
      *
@@ -866,17 +858,12 @@ class DomainsClient
     public function purchasePrivacy(string $domainName, DomainsPurchasePrivacyBody $request = new DomainsPurchasePrivacyBody(), ?array $options = null): ?PrivacyResponse
     {
         $options = array_merge($this->options, $options ?? []);
-        $headers = [];
-        if ($request->idempotencyKey != null) {
-            $headers['X-Idempotency-Key'] = $request->idempotencyKey;
-        }
         try {
             $response = $this->client->sendRequest(
                 new JsonApiRequest(
                     baseUrl: $options['baseUrl'] ?? $this->client->options['baseUrl'] ?? Environments::Sandbox->value,
                     path: "core/v1/domains/{$domainName}:purchasePrivacy",
                     method: HttpMethod::POST,
-                    headers: $headers,
                     body: $request,
                 ),
                 $options,

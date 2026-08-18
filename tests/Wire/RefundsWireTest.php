@@ -19,7 +19,6 @@ class RefundsWireTest extends WireMockTestCase
         $testId = 'refunds.process_refund.0';
         $this->client->refunds->processRefund(
             new RefundRequest([
-                'idempotencyKey' => '083910ef-04e4-4bd1-a0bf-3737fe005ca8',
                 'orderId' => 123456,
                 'orderItemIds' => [
                     987654,

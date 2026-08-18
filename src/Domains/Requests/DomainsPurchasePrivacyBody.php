@@ -8,11 +8,6 @@ use Namecom\Core\Json\JsonProperty;
 class DomainsPurchasePrivacyBody extends JsonSerializableType
 {
     /**
-     * @var ?string $idempotencyKey A unique string (e.g., a UUID v4) to make the request idempotent. This key ensures that if the request is retried, the operation will not be performed multiple times. Subsequent requests with the same key will return the original result.
-     */
-    public ?string $idempotencyKey;
-
-    /**
      * @var ?float $purchasePrice PurchasePrice is the (prorated) amount you expect to pay.
      */
     #[JsonProperty('purchasePrice')]
@@ -26,7 +21,6 @@ class DomainsPurchasePrivacyBody extends JsonSerializableType
 
     /**
      * @param array{
-     *   idempotencyKey?: ?string,
      *   purchasePrice?: ?float,
      *   years?: ?int,
      * } $values
@@ -34,7 +28,6 @@ class DomainsPurchasePrivacyBody extends JsonSerializableType
     public function __construct(
         array $values = [],
     ) {
-        $this->idempotencyKey = $values['idempotencyKey'] ?? null;
         $this->purchasePrice = $values['purchasePrice'] ?? null;
         $this->years = $values['years'] ?? null;
     }

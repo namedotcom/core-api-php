@@ -429,7 +429,6 @@ When a new domain registration is created and a contact is submitted, name.com m
 ```php
 $client->domains->createDomain(
     new CreateDomainRequest([
-        'idempotencyKey' => '083910ef-04e4-4bd1-a0bf-3737fe005ca8',
         'domain' => new DomainCreatePayload([
             'domainName' => 'example.com',
         ]),
@@ -445,14 +444,6 @@ $client->domains->createDomain(
 
 <dl>
 <dd>
-
-<dl>
-<dd>
-
-**$idempotencyKey:** `?string` — A unique string (e.g., a UUID v4) to make the request idempotent. This key ensures that if the request is retried, the operation will not be performed multiple times. Subsequent requests with the same key will return the original result.
-    
-</dd>
-</dl>
 
 <dl>
 <dd>
@@ -1146,9 +1137,7 @@ Adds or renews WHOIS privacy protection for a domain. This is used to ensure per
 ```php
 $client->domains->purchasePrivacy(
     'domainName',
-    new DomainsPurchasePrivacyBody([
-        'idempotencyKey' => '083910ef-04e4-4bd1-a0bf-3737fe005ca8',
-    ]),
+    new DomainsPurchasePrivacyBody([]),
 );
 ```
 </dd>
@@ -1165,14 +1154,6 @@ $client->domains->purchasePrivacy(
 <dd>
 
 **$domainName:** `string` — DomainName is the domain to purchase Whois Privacy for.
-    
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**$idempotencyKey:** `?string` — A unique string (e.g., a UUID v4) to make the request idempotent. This key ensures that if the request is retried, the operation will not be performed multiple times. Subsequent requests with the same key will return the original result.
     
 </dd>
 </dl>
@@ -4303,7 +4284,6 @@ This endpoint supports idempotent requests via the `X-Idempotency-Key` header. I
 ```php
 $client->refunds->processRefund(
     new RefundRequest([
-        'idempotencyKey' => '083910ef-04e4-4bd1-a0bf-3737fe005ca8',
         'orderId' => 123456,
         'orderItemIds' => [
             987654,
@@ -4320,14 +4300,6 @@ $client->refunds->processRefund(
 
 <dl>
 <dd>
-
-<dl>
-<dd>
-
-**$idempotencyKey:** `?string` — A unique string (e.g., a UUID v4) to make the request idempotent. This key ensures that if the request is retried, the operation will not be performed multiple times. Subsequent requests with the same key will return the original result. Idempotency keys are valid for 12 hours.
-    
-</dd>
-</dl>
 
 <dl>
 <dd>
@@ -5272,7 +5244,6 @@ This API is only available to approved reseller accounts. Contact name.com suppo
 $client->contactVerification->verifyContact(
     1,
     new VerifyContactRequest([
-        'idempotencyKey' => '083910ef-04e4-4bd1-a0bf-3737fe005ca8',
         'body' => new EmptyObject([]),
     ]),
 );
@@ -5291,14 +5262,6 @@ $client->contactVerification->verifyContact(
 <dd>
 
 **$verificationId:** `int` — The VerificationId required to verify a specific contact.
-    
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**$idempotencyKey:** `?string` — A unique string (e.g., a UUID v4) to make the request idempotent. This key ensures that if the request is retried, the operation will not be performed multiple times. Subsequent requests with the same key will return the original result.
     
 </dd>
 </dl>
@@ -5357,7 +5320,6 @@ On `429`, the response uses the standard error envelope, and `details` contains 
 $client->contactVerification->resendContactVerificationEmail(
     1,
     new ResendContactVerificationEmailRequest([
-        'idempotencyKey' => '083910ef-04e4-4bd1-a0bf-3737fe005ca8',
         'body' => new EmptyObject([]),
     ]),
 );
@@ -5376,14 +5338,6 @@ $client->contactVerification->resendContactVerificationEmail(
 <dd>
 
 **$verificationId:** `int` — The verificationId for the pending contact verification record.
-    
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**$idempotencyKey:** `?string` — A unique string (e.g., a UUID v4) to make the request idempotent. This key ensures that if the request is retried, the operation will not be performed multiple times. Subsequent requests with the same key will return the original result.
     
 </dd>
 </dl>

@@ -47,7 +47,6 @@ class ContactVerificationWireTest extends WireMockTestCase
         $this->client->contactVerification->verifyContact(
             1,
             new VerifyContactRequest([
-                'idempotencyKey' => '083910ef-04e4-4bd1-a0bf-3737fe005ca8',
                 'body' => new EmptyObject([]),
             ]),
             [
@@ -72,7 +71,6 @@ class ContactVerificationWireTest extends WireMockTestCase
         $this->client->contactVerification->resendContactVerificationEmail(
             1,
             new ResendContactVerificationEmailRequest([
-                'idempotencyKey' => '083910ef-04e4-4bd1-a0bf-3737fe005ca8',
                 'body' => new EmptyObject([]),
             ]),
             [
