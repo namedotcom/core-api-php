@@ -20,7 +20,7 @@ class CreateTransferRequest extends JsonSerializableType
     public string $domainName;
 
     /**
-     * @var ?bool $privacyEnabled PrivacyEnabled is a flag on whether to purchase Whois Privacy with the transfer. If this flag is omitted from the request, the system will check the account's Whois Privacy auto-add settings. If auto-add is enabled in your account settings, Whois Privacy will be added by default, provided the TLD supports it.
+     * @var ?bool $privacyEnabled Whether to include Whois Privacy with the transfer. Whois Privacy is free. If omitted, the account default from account settings is used. Privacy is only added when the TLD supports it.
      */
     #[JsonProperty('privacyEnabled')]
     public ?bool $privacyEnabled;

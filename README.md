@@ -103,6 +103,29 @@ $client->domains->search(
 namespace Example;
 
 use Namecom\NamecomClient;
+use Namecom\Domains\Requests\CreateDomainRequest;
+use Namecom\Types\DomainCreatePayload;
+
+$client = new NamecomClient(
+    username: '<username>',
+    password: '<password>',
+);
+$client->domains->createDomain(
+    new CreateDomainRequest([
+        'domain' => new DomainCreatePayload([
+            'domainName' => 'example.com',
+        ]),
+    ]),
+);
+
+```
+
+```php
+<?php
+
+namespace Example;
+
+use Namecom\NamecomClient;
 use Namecom\Domains\Requests\ListDomainsRequest;
 
 $client = new NamecomClient(

@@ -6,7 +6,7 @@ use Namecom\Core\Json\JsonSerializableType;
 use Namecom\Core\Json\JsonProperty;
 
 /**
- * PrivacyResponse contains the updated domain info as well as the order info for the newly purchased Whois Privacy.
+ * PrivacyResponse contains the updated domain info as well as the order info for the Whois Privacy that was enabled or extended.
  */
 class PrivacyResponse extends JsonSerializableType
 {
@@ -23,7 +23,7 @@ class PrivacyResponse extends JsonSerializableType
     public int $order;
 
     /**
-     * @var float $totalPaid TotalPaid is the total amount paid, including VAT.
+     * @var float $totalPaid TotalPaid is the total amount paid, including VAT when applicable. Whois Privacy is free and is not included in this amount.
      */
     #[JsonProperty('totalPaid')]
     public float $totalPaid;

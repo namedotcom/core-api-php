@@ -456,7 +456,7 @@ $client->domains->createDomain(
 <dl>
 <dd>
 
-**$purchasePrice:** `?float` — PurchasePrice is the price in USD for purchasing this domain for the minimum time period (typically 1 year). PurchasePrice is required if purchaseType is not "registration" or if it is a premium domain. If privacyEnabled is set, the regular price for Whois Privacy protection will be added automatically. If VAT tax applies, it will also be added automatically.
+**$purchasePrice:** `?float` — PurchasePrice is the price in USD for purchasing this domain for the minimum time period (typically 1 year). PurchasePrice is required if purchaseType is not "registration" or if it is a premium domain. Whois Privacy is free and does not affect purchasePrice. If privacyEnabled is omitted, the account default from account settings is used. If VAT tax applies, it will also be added automatically.
     
 </dd>
 </dl>
@@ -1120,7 +1120,7 @@ $client->domains->lockDomain(
 <dl>
 <dd>
 
-Adds or renews WHOIS privacy protection for a domain. This is used to ensure personal contact details remain hidden from public WHOIS lookups.  If WHOIS privacy is already enabled, this will extend the protection. If it’s not yet active, this will both purchase and enable the service.  This is a billable action unless covered by a bundled privacy plan.
+Adds or renews WHOIS privacy protection for a domain. This is used to ensure personal contact details remain hidden from public WHOIS lookups.  If WHOIS privacy is already enabled, this will extend the protection. If it’s not yet active, this will enable the service.  WHOIS privacy is free for API users and does not add a fee.
 </dd>
 </dl>
 </dd>
@@ -1153,7 +1153,7 @@ $client->domains->purchasePrivacy(
 <dl>
 <dd>
 
-**$domainName:** `string` — DomainName is the domain to purchase Whois Privacy for.
+**$domainName:** `string` — DomainName is the domain to enable or extend Whois Privacy for.
     
 </dd>
 </dl>
@@ -1161,7 +1161,7 @@ $client->domains->purchasePrivacy(
 <dl>
 <dd>
 
-**$purchasePrice:** `?float` — PurchasePrice is the (prorated) amount you expect to pay.
+**$purchasePrice:** `?float` — WHOIS privacy is free for API users. This field does not add a privacy fee.
     
 </dd>
 </dl>
@@ -1169,7 +1169,7 @@ $client->domains->purchasePrivacy(
 <dl>
 <dd>
 
-**$years:** `?int` — Years is the number of years you wish to purchase Whois Privacy for. Years defaults to 1 and cannot be more then the domain expiration date.
+**$years:** `?int` — Years is the number of years to enable or extend Whois Privacy for. Years defaults to 1 and cannot be more then the domain expiration date.
     
 </dd>
 </dl>
@@ -4453,7 +4453,7 @@ $client->transfers->createTransfer(
 <dl>
 <dd>
 
-**$privacyEnabled:** `?bool` — PrivacyEnabled is a flag on whether to purchase Whois Privacy with the transfer. If this flag is omitted from the request, the system will check the account's Whois Privacy auto-add settings. If auto-add is enabled in your account settings, Whois Privacy will be added by default, provided the TLD supports it.
+**$privacyEnabled:** `?bool` — Whether to include Whois Privacy with the transfer. Whois Privacy is free. If omitted, the account default from account settings is used. Privacy is only added when the TLD supports it.
     
 </dd>
 </dl>

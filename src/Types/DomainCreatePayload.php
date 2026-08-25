@@ -14,6 +14,12 @@ use Namecom\Core\Types\ArrayType;
 class DomainCreatePayload extends JsonSerializableType
 {
     /**
+     * @var ?bool $privacyEnabled Whether to include Whois Privacy with the registration. Whois Privacy is free. If omitted, the account default from account settings is used. Privacy is only added when the TLD supports it.
+     */
+    #[JsonProperty('privacyEnabled')]
+    public ?bool $privacyEnabled;
+
+    /**
      * @var ?ContactsRequest $contacts
      */
     #[JsonProperty('contacts')]
@@ -62,12 +68,6 @@ class DomainCreatePayload extends JsonSerializableType
     public ?DateTime $transferLockExpiresAt;
 
     /**
-     * @var ?bool $privacyEnabled Indicates if Whois Privacy is enabled for this domain.
-     */
-    #[JsonProperty('privacyEnabled')]
-    public ?bool $privacyEnabled;
-
-    /**
      * @var ?array<string> $nameservers The list of nameservers assigned to this domain. If unspecified, it defaults to the account's default nameservers.
      */
     #[JsonProperty('nameservers'), ArrayType(['string'])]
@@ -81,6 +81,7 @@ class DomainCreatePayload extends JsonSerializableType
 
     /**
      * @param array{
+     *   privacyEnabled?: ?bool,
      *   contacts?: ?ContactsRequest,
      *   domainName?: ?string,
      *   createDate?: ?DateTime,
@@ -89,7 +90,6 @@ class DomainCreatePayload extends JsonSerializableType
      *   locked?: ?bool,
      *   locks?: ?array<string>,
      *   transferLockExpiresAt?: ?DateTime,
-     *   privacyEnabled?: ?bool,
      *   nameservers?: ?array<string>,
      *   renewalPrice?: ?float,
      * } $values
@@ -97,6 +97,7 @@ class DomainCreatePayload extends JsonSerializableType
     public function __construct(
         array $values = [],
     ) {
+        $this->privacyEnabled = $values['privacyEnabled'] ?? null;
         $this->contacts = $values['contacts'] ?? null;
         $this->domainName = $values['domainName'] ?? null;
         $this->createDate = $values['createDate'] ?? null;
@@ -105,7 +106,6 @@ class DomainCreatePayload extends JsonSerializableType
         $this->locked = $values['locked'] ?? null;
         $this->locks = $values['locks'] ?? null;
         $this->transferLockExpiresAt = $values['transferLockExpiresAt'] ?? null;
-        $this->privacyEnabled = $values['privacyEnabled'] ?? null;
         $this->nameservers = $values['nameservers'] ?? null;
         $this->renewalPrice = $values['renewalPrice'] ?? null;
     }

@@ -1,7 +1,7 @@
 {
   "cliVersion": "5.95.0",
   "generatorName": "fernapi/fern-php-sdk",
-  "generatorVersion": "2.20.1",
+  "generatorVersion": "2.20.4",
   "generatorConfig": {
     "namespace": "Namecom",
     "clientName": "NamecomClient",
@@ -13,7 +13,7 @@
     }
   },
   "invokedBy": "ci",
-  "requestedVersion": "1.33.2",
+  "requestedVersion": "1.33.3",
   "ciProvider": "gitlab",
-  "sdkVersion": "1.33.2"
+  "sdkVersion": "1.33.3"
 }

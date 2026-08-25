@@ -17,7 +17,7 @@ class CreateDomainRequest extends JsonSerializableType
     public DomainCreatePayload $domain;
 
     /**
-     * @var ?float $purchasePrice PurchasePrice is the price in USD for purchasing this domain for the minimum time period (typically 1 year). PurchasePrice is required if purchaseType is not "registration" or if it is a premium domain. If privacyEnabled is set, the regular price for Whois Privacy protection will be added automatically. If VAT tax applies, it will also be added automatically.
+     * @var ?float $purchasePrice PurchasePrice is the price in USD for purchasing this domain for the minimum time period (typically 1 year). PurchasePrice is required if purchaseType is not "registration" or if it is a premium domain. Whois Privacy is free and does not affect purchasePrice. If privacyEnabled is omitted, the account default from account settings is used. If VAT tax applies, it will also be added automatically.
      */
     #[JsonProperty('purchasePrice')]
     public ?float $purchasePrice;

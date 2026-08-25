@@ -17,7 +17,7 @@ class CreateTransferResponse extends JsonSerializableType
     public int $order;
 
     /**
-     * @var float $totalPaid TotalPaid is the total amount paid, including VAT and Whois Privacy.
+     * @var float $totalPaid TotalPaid is the total amount paid, including VAT when applicable. Whois Privacy is free and is not included in this amount.
      */
     #[JsonProperty('totalPaid')]
     public float $totalPaid;

@@ -8,13 +8,13 @@ use Namecom\Core\Json\JsonProperty;
 class DomainsPurchasePrivacyBody extends JsonSerializableType
 {
     /**
-     * @var ?float $purchasePrice PurchasePrice is the (prorated) amount you expect to pay.
+     * @var ?float $purchasePrice WHOIS privacy is free for API users. This field does not add a privacy fee.
      */
     #[JsonProperty('purchasePrice')]
     public ?float $purchasePrice;
 
     /**
-     * @var ?int $years Years is the number of years you wish to purchase Whois Privacy for. Years defaults to 1 and cannot be more then the domain expiration date.
+     * @var ?int $years Years is the number of years to enable or extend Whois Privacy for. Years defaults to 1 and cannot be more then the domain expiration date.
      */
     #[JsonProperty('years')]
     public ?int $years;
