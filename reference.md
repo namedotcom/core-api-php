@@ -2909,12 +2909,10 @@ Sets up a new URL forwarding (redirect) for a domain or subdomain. If this is th
 ```php
 $client->urlForwardings->createUrlForwarding(
     'example.com',
-    new CreateUrlForwardingRequest([
-        'body' => new UrlForwardingInput([
-            'forwardsTo' => 'https://destination-site.com',
-            'host' => 'www',
-            'type' => UrlForwardingInputType::Masked->value,
-        ]),
+    new UrlForwardingInput([
+        'forwardsTo' => 'https://destination-site.com',
+        'host' => 'www',
+        'type' => UrlForwardingInputType::Masked->value,
     ]),
 );
 ```
@@ -2939,7 +2937,51 @@ $client->urlForwardings->createUrlForwarding(
 <dl>
 <dd>
 
-**$request:** `UrlForwardingInput` 
+**$forwardsTo:** `string` — The destination URL to which this hostname will be forwarded.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$host:** `string` — The subdomain portion of the hostname that is being forwarded. Use an empty string for the apex.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$meta:** `?string` 
+
+Meta tags to include in the HTML page when using "masked" forwarding.
+Ignored for other forwarding types.
+Example: `<meta name='keywords' content='fish, denver, platte'>`
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$title:** `?string` 
+
+The title to be used for the HTML page when using "masked" forwarding.
+Ignored for other forwarding types.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$type:** `string` 
+
+The type of URL forwarding. Valid values:
+  - `masked`: Retains the original domain in the address bar, preventing the user from seeing the actual destination URL. Sometimes called iframe forwarding.
+  - `redirect`: Uses a standard HTTP redirect (301), which changes the address bar to the destination URL.
+  - `302`: Uses a temporary HTTP redirect (302), which changes the address bar to the destination URL but indicates the resource is temporarily located elsewhere.
     
 </dd>
 </dl>
@@ -3047,11 +3089,7 @@ $client->urlForwardings->updateUrlForwarding(
     'example.com',
     'www.example.org',
     new UpdateUrlForwardingRequest([
-        'body' => new UrlForwardingInput([
-            'forwardsTo' => 'https://destination-site.com',
-            'host' => 'www',
-            'type' => UrlForwardingInputType::Masked->value,
-        ]),
+        'body' => new UrlForwardingUpdate([]),
     ]),
 );
 ```
@@ -3084,7 +3122,7 @@ $client->urlForwardings->updateUrlForwarding(
 <dl>
 <dd>
 
-**$request:** `UrlForwardingInput` 
+**$request:** `UrlForwardingUpdate` 
     
 </dd>
 </dl>
@@ -3398,11 +3436,7 @@ $client->urlForwardings->updateUrlForwardingById(
     'example.com',
     12345,
     new UpdateUrlForwardingByIdRequest([
-        'body' => new UrlForwardingInput([
-            'forwardsTo' => 'https://destination-site.com',
-            'host' => 'www',
-            'type' => UrlForwardingInputType::Masked->value,
-        ]),
+        'body' => new UrlForwardingUpdate([]),
     ]),
 );
 ```
@@ -3435,7 +3469,7 @@ $client->urlForwardings->updateUrlForwardingById(
 <dl>
 <dd>
 
-**$request:** `UrlForwardingInput` 
+**$request:** `UrlForwardingUpdate` 
     
 </dd>
 </dl>

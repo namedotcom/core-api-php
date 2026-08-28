@@ -3,18 +3,18 @@
 namespace Namecom\UrlForwardings\Requests;
 
 use Namecom\Core\Json\JsonSerializableType;
-use Namecom\Types\UrlForwardingInput;
+use Namecom\Types\UrlForwardingUpdate;
 
 class UpdateUrlForwardingByIdRequest extends JsonSerializableType
 {
     /**
-     * @var UrlForwardingInput $body
+     * @var UrlForwardingUpdate $body
      */
-    public UrlForwardingInput $body;
+    public UrlForwardingUpdate $body;
 
     /**
      * @param array{
-     *   body: UrlForwardingInput,
+     *   body: UrlForwardingUpdate,
      * } $values
      */
     public function __construct(

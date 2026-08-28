@@ -13,7 +13,7 @@ use Namecom\Environments;
 use Namecom\Core\Client\HttpMethod;
 use JsonException;
 use Psr\Http\Client\ClientExceptionInterface;
-use Namecom\UrlForwardings\Requests\CreateUrlForwardingRequest;
+use Namecom\UrlForwardings\Requests\UrlForwardingInput;
 use Namecom\Types\UrlForwardingResponse;
 use Namecom\UrlForwardings\Requests\UpdateUrlForwardingRequest;
 use Namecom\UrlForwardings\Requests\ListUrlForwardingsByDomainRequest;
@@ -130,18 +130,16 @@ class UrlForwardingsClient
      * ```php
      * $client->urlForwardings->createUrlForwarding(
      *     'example.com',
-     *     new CreateUrlForwardingRequest([
-     *         'body' => new UrlForwardingInput([
-     *             'forwardsTo' => 'https://destination-site.com',
-     *             'host' => 'www',
-     *             'type' => UrlForwardingInputType::Masked->value,
-     *         ]),
+     *     new UrlForwardingInput([
+     *         'forwardsTo' => 'https://destination-site.com',
+     *         'host' => 'www',
+     *         'type' => UrlForwardingInputType::Masked->value,
      *     ]),
      * );
      * ```
      *
      * @param string $domainName DomainName is the domain part of the hostname to forward.
-     * @param CreateUrlForwardingRequest $request
+     * @param UrlForwardingInput $request
      * @param ?array{
      *   baseUrl?: string,
      *   maxRetries?: int,
@@ -154,7 +152,7 @@ class UrlForwardingsClient
      * @throws NamecomException
      * @throws NamecomApiException
      */
-    public function createUrlForwarding(string $domainName, CreateUrlForwardingRequest $request, ?array $options = null): ?UrlForwardingResponse
+    public function createUrlForwarding(string $domainName, UrlForwardingInput $request, ?array $options = null): ?UrlForwardingResponse
     {
         $options = array_merge($this->options, $options ?? []);
         try {
@@ -163,7 +161,7 @@ class UrlForwardingsClient
                     baseUrl: $options['baseUrl'] ?? $this->client->options['baseUrl'] ?? Environments::Sandbox->value,
                     path: "core/v1/domains/{$domainName}/url/forwarding",
                     method: HttpMethod::POST,
-                    body: $request->body,
+                    body: $request,
                 ),
                 $options,
             );
@@ -253,11 +251,7 @@ class UrlForwardingsClient
      *     'example.com',
      *     'www.example.org',
      *     new UpdateUrlForwardingRequest([
-     *         'body' => new UrlForwardingInput([
-     *             'forwardsTo' => 'https://destination-site.com',
-     *             'host' => 'www',
-     *             'type' => UrlForwardingInputType::Masked->value,
-     *         ]),
+     *         'body' => new UrlForwardingUpdate([]),
      *     ]),
      * );
      * ```
@@ -544,11 +538,7 @@ class UrlForwardingsClient
      *     'example.com',
      *     12345,
      *     new UpdateUrlForwardingByIdRequest([
-     *         'body' => new UrlForwardingInput([
-     *             'forwardsTo' => 'https://destination-site.com',
-     *             'host' => 'www',
-     *             'type' => UrlForwardingInputType::Masked->value,
-     *         ]),
+     *         'body' => new UrlForwardingUpdate([]),
      *     ]),
      * );
      * ```

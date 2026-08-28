@@ -13,7 +13,7 @@
     }
   },
   "invokedBy": "ci",
-  "requestedVersion": "1.33.3",
+  "requestedVersion": "1.33.4",
   "ciProvider": "gitlab",
-  "sdkVersion": "1.33.3"
+  "sdkVersion": "1.33.4"
 }

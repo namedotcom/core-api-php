@@ -5,10 +5,10 @@ namespace Namecom\Tests;
 use Namecom\Tests\Wire\WireMockTestCase;
 use Namecom\NamecomClient;
 use Namecom\UrlForwardings\Requests\ListUrlForwardingsRequest;
-use Namecom\UrlForwardings\Requests\CreateUrlForwardingRequest;
-use Namecom\Types\UrlForwardingInput;
-use Namecom\Types\UrlForwardingInputType;
+use Namecom\UrlForwardings\Requests\UrlForwardingInput;
+use Namecom\UrlForwardings\Types\UrlForwardingInputType;
 use Namecom\UrlForwardings\Requests\UpdateUrlForwardingRequest;
+use Namecom\Types\UrlForwardingUpdate;
 use Namecom\UrlForwardings\Requests\ListUrlForwardingsByDomainRequest;
 use Namecom\UrlForwardings\Requests\UpdateUrlForwardingByIdRequest;
 
@@ -50,12 +50,10 @@ class UrlForwardingsWireTest extends WireMockTestCase
         $testId = 'url_forwardings.create_url_forwarding.0';
         $this->client->urlForwardings->createUrlForwarding(
             'example.com',
-            new CreateUrlForwardingRequest([
-                'body' => new UrlForwardingInput([
-                    'forwardsTo' => 'https://destination-site.com',
-                    'host' => 'www',
-                    'type' => UrlForwardingInputType::Masked->value,
-                ]),
+            new UrlForwardingInput([
+                'forwardsTo' => 'https://destination-site.com',
+                'host' => 'www',
+                'type' => UrlForwardingInputType::Masked->value,
             ]),
             [
                 'headers' => [
@@ -102,11 +100,7 @@ class UrlForwardingsWireTest extends WireMockTestCase
             'example.com',
             'www.example.org',
             new UpdateUrlForwardingRequest([
-                'body' => new UrlForwardingInput([
-                    'forwardsTo' => 'https://destination-site.com',
-                    'host' => 'www',
-                    'type' => UrlForwardingInputType::Masked->value,
-                ]),
+                'body' => new UrlForwardingUpdate([]),
             ]),
             [
                 'headers' => [
@@ -222,11 +216,7 @@ class UrlForwardingsWireTest extends WireMockTestCase
             'example.com',
             12345,
             new UpdateUrlForwardingByIdRequest([
-                'body' => new UrlForwardingInput([
-                    'forwardsTo' => 'https://destination-site.com',
-                    'host' => 'www',
-                    'type' => UrlForwardingInputType::Masked->value,
-                ]),
+                'body' => new UrlForwardingUpdate([]),
             ]),
             [
                 'headers' => [

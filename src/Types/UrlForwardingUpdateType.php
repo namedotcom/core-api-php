@@ -2,7 +2,7 @@
 
 namespace Namecom\Types;
 
-enum UrlForwardingInputType: string
+enum UrlForwardingUpdateType: string
 {
     case Masked = "masked";
     case Redirect = "redirect";
