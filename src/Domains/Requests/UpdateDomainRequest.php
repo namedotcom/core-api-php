@@ -3,33 +3,40 @@
 namespace Namecom\Domains\Requests;
 
 use Namecom\Core\Json\JsonSerializableType;
-use Namecom\Domains\Types\UpdateDomainRequestBodyAutorenewEnabled;
-use Namecom\Domains\Types\UpdateDomainRequestBodyPrivacyEnabled;
-use Namecom\Domains\Types\UpdateDomainRequestBodyLocked;
+use Namecom\Core\Json\JsonProperty;
 
 class UpdateDomainRequest extends JsonSerializableType
 {
     /**
-     * @var (
-     *    UpdateDomainRequestBodyAutorenewEnabled
-     *   |UpdateDomainRequestBodyPrivacyEnabled
-     *   |UpdateDomainRequestBodyLocked
-     * ) $body
+     * @var ?bool $autorenewEnabled Enable or disable automatic renewal for the domain.
      */
-    public UpdateDomainRequestBodyAutorenewEnabled|UpdateDomainRequestBodyPrivacyEnabled|UpdateDomainRequestBodyLocked $body;
+    #[JsonProperty('autorenewEnabled')]
+    public ?bool $autorenewEnabled;
+
+    /**
+     * @var ?bool $privacyEnabled Enable or disable Whois privacy for the domain.
+     */
+    #[JsonProperty('privacyEnabled')]
+    public ?bool $privacyEnabled;
+
+    /**
+     * @var ?bool $locked Set the transfer lock status for the domain
+     */
+    #[JsonProperty('locked')]
+    public ?bool $locked;
 
     /**
      * @param array{
-     *   body: (
-     *    UpdateDomainRequestBodyAutorenewEnabled
-     *   |UpdateDomainRequestBodyPrivacyEnabled
-     *   |UpdateDomainRequestBodyLocked
-     * ),
+     *   autorenewEnabled?: ?bool,
+     *   privacyEnabled?: ?bool,
+     *   locked?: ?bool,
      * } $values
      */
     public function __construct(
-        array $values,
+        array $values = [],
     ) {
-        $this->body = $values['body'];
+        $this->autorenewEnabled = $values['autorenewEnabled'] ?? null;
+        $this->privacyEnabled = $values['privacyEnabled'] ?? null;
+        $this->locked = $values['locked'] ?? null;
     }
 }

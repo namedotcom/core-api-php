@@ -11,6 +11,12 @@ use Namecom\Core\Json\JsonProperty;
 class RegistrantContactRequest extends JsonSerializableType
 {
     /**
+     * @var ?string $fax Fax number of the contact. Should follow the E.164 international format: "+[country code][number]".
+     */
+    #[JsonProperty('fax')]
+    public ?string $fax;
+
+    /**
      * @var ?string $firstName First name of the contact.
      */
     #[JsonProperty('firstName')]
@@ -23,10 +29,22 @@ class RegistrantContactRequest extends JsonSerializableType
     public ?string $lastName;
 
     /**
+     * @var ?string $companyName Company name of the contact. Leave blank if the contact is an individual. Please be advised that ICANN policy links the "Company Name" field (Organization) in your domain's contact details to its legal ownership. If this field contains information, the listed organization is considered the legal "Registered Name Holder" (domain owner).
+     */
+    #[JsonProperty('companyName')]
+    public ?string $companyName;
+
+    /**
      * @var ?string $address1 The first line of the contact's address.
      */
     #[JsonProperty('address1')]
     public ?string $address1;
+
+    /**
+     * @var ?string $address2 The second line of the contact's address (optional).
+     */
+    #[JsonProperty('address2')]
+    public ?string $address2;
 
     /**
      * @var ?string $city City of the contact's address.
@@ -41,7 +59,7 @@ class RegistrantContactRequest extends JsonSerializableType
     public ?string $state;
 
     /**
-     * @var ?string $zip ZIP or Postal Code of the contact's address. This field is required and must be a non-empty string.
+     * @var ?string $zip ZIP or Postal Code of the contact's address.
      */
     #[JsonProperty('zip')]
     public ?string $zip;
@@ -65,24 +83,6 @@ class RegistrantContactRequest extends JsonSerializableType
     public ?string $phone;
 
     /**
-     * @var ?string $fax Fax number of the contact. Should follow the E.164 international format: "+[country code][number]".
-     */
-    #[JsonProperty('fax')]
-    public ?string $fax;
-
-    /**
-     * @var ?string $companyName Company name of the contact. Leave blank if the contact is an individual. Please be advised that ICANN policy links the "Company Name" field (Organization) in your domain's contact details to its legal ownership. If this field contains information, the listed organization is considered the legal "Registered Name Holder" (domain owner).
-     */
-    #[JsonProperty('companyName')]
-    public ?string $companyName;
-
-    /**
-     * @var ?string $address2 The second line of the contact's address (optional).
-     */
-    #[JsonProperty('address2')]
-    public ?string $address2;
-
-    /**
      * @var ?bool $isVerified Indicates if the contact has been verified as per ICANN requirements. If the value is `false` it indicates that the contact has not completed the required verification process. This property is read-only and will be included in responses but should not be included in requests.
      */
     #[JsonProperty('isVerified')]
@@ -96,18 +96,18 @@ class RegistrantContactRequest extends JsonSerializableType
 
     /**
      * @param array{
+     *   fax?: ?string,
      *   firstName?: ?string,
      *   lastName?: ?string,
+     *   companyName?: ?string,
      *   address1?: ?string,
+     *   address2?: ?string,
      *   city?: ?string,
      *   state?: ?string,
      *   zip?: ?string,
      *   country?: ?string,
      *   email?: ?string,
      *   phone?: ?string,
-     *   fax?: ?string,
-     *   companyName?: ?string,
-     *   address2?: ?string,
      *   isVerified?: ?bool,
      *   verificationId?: ?int,
      * } $values
@@ -115,18 +115,18 @@ class RegistrantContactRequest extends JsonSerializableType
     public function __construct(
         array $values = [],
     ) {
+        $this->fax = $values['fax'] ?? null;
         $this->firstName = $values['firstName'] ?? null;
         $this->lastName = $values['lastName'] ?? null;
+        $this->companyName = $values['companyName'] ?? null;
         $this->address1 = $values['address1'] ?? null;
+        $this->address2 = $values['address2'] ?? null;
         $this->city = $values['city'] ?? null;
         $this->state = $values['state'] ?? null;
         $this->zip = $values['zip'] ?? null;
         $this->country = $values['country'] ?? null;
         $this->email = $values['email'] ?? null;
         $this->phone = $values['phone'] ?? null;
-        $this->fax = $values['fax'] ?? null;
-        $this->companyName = $values['companyName'] ?? null;
-        $this->address2 = $values['address2'] ?? null;
         $this->isVerified = $values['isVerified'] ?? null;
         $this->verificationId = $values['verificationId'] ?? null;
     }

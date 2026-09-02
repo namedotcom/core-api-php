@@ -344,11 +344,7 @@ class DomainsClient
      * ```php
      * $client->domains->updateDomain(
      *     'domainName',
-     *     new UpdateDomainRequest([
-     *         'body' => new UpdateDomainRequestBodyAutorenewEnabled([
-     *             'autorenewEnabled' => true,
-     *         ]),
-     *     ]),
+     *     new UpdateDomainRequest([]),
      * );
      * ```
      *
@@ -366,7 +362,7 @@ class DomainsClient
      * @throws NamecomException
      * @throws NamecomApiException
      */
-    public function updateDomain(string $domainName, UpdateDomainRequest $request, ?array $options = null): ?DomainResponsePayload
+    public function updateDomain(string $domainName, UpdateDomainRequest $request = new UpdateDomainRequest(), ?array $options = null): ?DomainResponsePayload
     {
         $options = array_merge($this->options, $options ?? []);
         try {
@@ -375,7 +371,7 @@ class DomainsClient
                     baseUrl: $options['baseUrl'] ?? $this->client->options['baseUrl'] ?? Environments::Sandbox->value,
                     path: "core/v1/domains/{$domainName}",
                     method: HttpMethod::PATCH,
-                    body: $request->body,
+                    body: $request,
                 ),
                 $options,
             );

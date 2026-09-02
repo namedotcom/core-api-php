@@ -7,7 +7,6 @@ use Namecom\NamecomClient;
 use Namecom\WebhookNotifications\Requests\SubscribeToNotification;
 use Namecom\Types\AvailableWebhooks;
 use Namecom\WebhookNotifications\Requests\ModifySubscriptionRequest;
-use Namecom\WebhookNotifications\Types\ModifySubscriptionRequestBodyUrl;
 
 class WebhookNotificationsWireTest extends WireMockTestCase
 {
@@ -67,11 +66,7 @@ class WebhookNotificationsWireTest extends WireMockTestCase
         $testId = 'webhook_notifications.modify_subscription.0';
         $this->client->webhookNotifications->modifySubscription(
             1,
-            new ModifySubscriptionRequest([
-                'body' => new ModifySubscriptionRequestBodyUrl([
-                    'url' => 'url',
-                ]),
-            ]),
+            new ModifySubscriptionRequest([]),
             [
                 'headers' => [
                     'X-Test-Id' => 'webhook_notifications.modify_subscription.0',

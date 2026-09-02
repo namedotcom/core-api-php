@@ -8,7 +8,6 @@ use Namecom\Domains\Requests\ListDomainsRequest;
 use Namecom\Domains\Requests\CreateDomainRequest;
 use Namecom\Types\DomainCreatePayload;
 use Namecom\Domains\Requests\UpdateDomainRequest;
-use Namecom\Domains\Types\UpdateDomainRequestBodyAutorenewEnabled;
 use Namecom\Domains\Requests\DisableAutorenewRequest;
 use Namecom\Types\EmptyObject;
 use Namecom\Domains\Requests\DisableWhoisPrivacyRequest;
@@ -105,11 +104,7 @@ class DomainsWireTest extends WireMockTestCase
         $testId = 'domains.update_domain.0';
         $this->client->domains->updateDomain(
             'domainName',
-            new UpdateDomainRequest([
-                'body' => new UpdateDomainRequestBodyAutorenewEnabled([
-                    'autorenewEnabled' => true,
-                ]),
-            ]),
+            new UpdateDomainRequest([]),
             [
                 'headers' => [
                     'X-Test-Id' => 'domains.update_domain.0',

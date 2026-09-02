@@ -3,30 +3,32 @@
 namespace Namecom\WebhookNotifications\Requests;
 
 use Namecom\Core\Json\JsonSerializableType;
-use Namecom\WebhookNotifications\Types\ModifySubscriptionRequestBodyUrl;
-use Namecom\WebhookNotifications\Types\ModifySubscriptionRequestBodyActive;
+use Namecom\Core\Json\JsonProperty;
 
 class ModifySubscriptionRequest extends JsonSerializableType
 {
     /**
-     * @var (
-     *    ModifySubscriptionRequestBodyUrl
-     *   |ModifySubscriptionRequestBodyActive
-     * ) $body
+     * @var ?string $url Optionally update the URL we send the webhook data to
      */
-    public ModifySubscriptionRequestBodyUrl|ModifySubscriptionRequestBodyActive $body;
+    #[JsonProperty('url')]
+    public ?string $url;
+
+    /**
+     * @var ?bool $active Optionally update if the subscription is currently active
+     */
+    #[JsonProperty('active')]
+    public ?bool $active;
 
     /**
      * @param array{
-     *   body: (
-     *    ModifySubscriptionRequestBodyUrl
-     *   |ModifySubscriptionRequestBodyActive
-     * ),
+     *   url?: ?string,
+     *   active?: ?bool,
      * } $values
      */
     public function __construct(
-        array $values,
+        array $values = [],
     ) {
-        $this->body = $values['body'];
+        $this->url = $values['url'] ?? null;
+        $this->active = $values['active'] ?? null;
     }
 }

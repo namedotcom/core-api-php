@@ -8,7 +8,7 @@ use Namecom\Core\Json\JsonProperty;
 class CreateEmailForwardingRequest extends JsonSerializableType
 {
     /**
-     * @var string $emailBox EmailBox is the user portion of the email address to forward. If your email is "admin@example.com", it would just be "admin"
+     * @var string $emailBox EmailBox is the user portion of the email address to forward. If your email is "admin@example.com", it would just be "admin". Wildcard and catch-all values (such as "*") are not supported.
      */
     #[JsonProperty('emailBox')]
     public string $emailBox;

@@ -1,5 +1,5 @@
 {
-  "cliVersion": "5.95.0",
+  "cliVersion": "5.111.0",
   "generatorName": "fernapi/fern-php-sdk",
   "generatorVersion": "2.20.4",
   "generatorConfig": {
@@ -13,7 +13,7 @@
     }
   },
   "invokedBy": "ci",
-  "requestedVersion": "1.33.4",
+  "requestedVersion": "1.33.5",
   "ciProvider": "gitlab",
-  "sdkVersion": "1.33.4"
+  "sdkVersion": "1.33.5"
 }

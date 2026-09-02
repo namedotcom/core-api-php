@@ -598,11 +598,7 @@ Allows updating of the autorenew, WhoIs Privacy and lock status of the specified
 ```php
 $client->domains->updateDomain(
     'domainName',
-    new UpdateDomainRequest([
-        'body' => new UpdateDomainRequestBodyAutorenewEnabled([
-            'autorenewEnabled' => true,
-        ]),
-    ]),
+    new UpdateDomainRequest([]),
 );
 ```
 </dd>
@@ -626,7 +622,23 @@ $client->domains->updateDomain(
 <dl>
 <dd>
 
-**$request:** `UpdateDomainRequestBodyAutorenewEnabled|UpdateDomainRequestBodyPrivacyEnabled|UpdateDomainRequestBodyLocked` 
+**$autorenewEnabled:** `?bool` — Enable or disable automatic renewal for the domain.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$privacyEnabled:** `?bool` — Enable or disable Whois privacy for the domain.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$locked:** `?bool` — Set the transfer lock status for the domain
     
 </dd>
 </dl>
@@ -2083,7 +2095,7 @@ $client->emailForwardings->listEmailForwardings(
 <dl>
 <dd>
 
-Creates a new email forwarding rule for a domain, such as redirecting info@example.com to an external inbox.  If this is the first email forwarding rule created for the domain, the API may also update your MX records automatically to enable mail routing.  The alias must not conflict with existing email services or MX records.  To modify a forwarding rule later, use [UpdateEmailForwarding](/api/v1/reference/email-forwardings/update-email-forwarding).
+Creates a new email forwarding rule for a domain, such as redirecting info@example.com to an external inbox.  If this is the first email forwarding rule created for the domain, the API may also update your MX records automatically to enable mail routing.  The alias must not conflict with existing email services or MX records.  Wildcard and catch-all forwarding is not supported, so an `emailBox` containing `*` is rejected with a `400 Bad Request`.  To modify a forwarding rule later, use [UpdateEmailForwarding](/api/v1/reference/email-forwardings/update-email-forwarding).
 </dd>
 </dl>
 </dd>
@@ -2127,7 +2139,7 @@ $client->emailForwardings->createEmailForwarding(
 <dl>
 <dd>
 
-**$emailBox:** `string` — EmailBox is the user portion of the email address to forward. If your email is "admin@example.com", it would just be "admin"
+**$emailBox:** `string` — EmailBox is the user portion of the email address to forward. If your email is "admin@example.com", it would just be "admin". Wildcard and catch-all values (such as "*") are not supported.
     
 </dd>
 </dl>
@@ -3997,11 +4009,7 @@ Updates an existing webhook’s configuration.  This may include changing the ca
 ```php
 $client->webhookNotifications->modifySubscription(
     1,
-    new ModifySubscriptionRequest([
-        'body' => new ModifySubscriptionRequestBodyUrl([
-            'url' => 'url',
-        ]),
-    ]),
+    new ModifySubscriptionRequest([]),
 );
 ```
 </dd>
@@ -4025,7 +4033,15 @@ $client->webhookNotifications->modifySubscription(
 <dl>
 <dd>
 
-**$request:** `ModifySubscriptionRequestBodyUrl|ModifySubscriptionRequestBodyActive` 
+**$url:** `?string` — Optionally update the URL we send the webhook data to
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**$active:** `?bool` — Optionally update if the subscription is currently active
     
 </dd>
 </dl>

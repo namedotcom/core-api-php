@@ -183,11 +183,7 @@ class WebhookNotificationsClient
      * ```php
      * $client->webhookNotifications->modifySubscription(
      *     1,
-     *     new ModifySubscriptionRequest([
-     *         'body' => new ModifySubscriptionRequestBodyUrl([
-     *             'url' => 'url',
-     *         ]),
-     *     ]),
+     *     new ModifySubscriptionRequest([]),
      * );
      * ```
      *
@@ -205,7 +201,7 @@ class WebhookNotificationsClient
      * @throws NamecomException
      * @throws NamecomApiException
      */
-    public function modifySubscription(int $id, ModifySubscriptionRequest $request, ?array $options = null): ?ModifySubscriptionResponse
+    public function modifySubscription(int $id, ModifySubscriptionRequest $request = new ModifySubscriptionRequest(), ?array $options = null): ?ModifySubscriptionResponse
     {
         $options = array_merge($this->options, $options ?? []);
         try {
@@ -214,7 +210,7 @@ class WebhookNotificationsClient
                     baseUrl: $options['baseUrl'] ?? $this->client->options['baseUrl'] ?? Environments::Sandbox->value,
                     path: "core/v1/notifications/{$id}",
                     method: HttpMethod::PUT,
-                    body: $request->body,
+                    body: $request,
                 ),
                 $options,
             );
