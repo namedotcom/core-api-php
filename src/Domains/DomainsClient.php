@@ -951,7 +951,9 @@ class DomainsClient
      * ```php
      * $client->domains->setContacts(
      *     'example.com',
-     *     new DomainsSetContactsBody([]),
+     *     new DomainsSetContactsBody([
+     *         'contacts' => new ContactsRequest([]),
+     *     ]),
      * );
      * ```
      *
@@ -969,7 +971,7 @@ class DomainsClient
      * @throws NamecomException
      * @throws NamecomApiException
      */
-    public function setContacts(string $domainName, DomainsSetContactsBody $request = new DomainsSetContactsBody(), ?array $options = null): ?DomainResponsePayload
+    public function setContacts(string $domainName, DomainsSetContactsBody $request, ?array $options = null): ?DomainResponsePayload
     {
         $options = array_merge($this->options, $options ?? []);
         try {

@@ -6,7 +6,7 @@ use Namecom\Core\Json\JsonSerializableType;
 use Namecom\Core\Json\JsonProperty;
 
 /**
- * Fields for updating a URL forwarding entry. Omit a property to leave it unchanged. An empty `host` string is the apex, not "unchanged".
+ * Fields for updating a URL forwarding entry. Omit a property to leave it unchanged. An empty `host` string is the apex, not "unchanged". At least one property must be present; an empty body is rejected.
  */
 class UrlForwardingUpdate extends JsonSerializableType
 {

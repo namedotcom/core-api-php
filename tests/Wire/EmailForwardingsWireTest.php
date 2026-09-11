@@ -94,7 +94,9 @@ class EmailForwardingsWireTest extends WireMockTestCase
         $this->client->emailForwardings->updateEmailForwarding(
             'domainName',
             'emailBox',
-            new EmailForwardingsUpdateEmailForwardingBody([]),
+            new EmailForwardingsUpdateEmailForwardingBody([
+                'emailTo' => 'emailTo',
+            ]),
             [
                 'headers' => [
                     'X-Test-Id' => 'email_forwardings.update_email_forwarding.0',

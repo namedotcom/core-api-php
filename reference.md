@@ -1297,7 +1297,9 @@ When registrant contact information is updated, validation may be triggered if t
 ```php
 $client->domains->setContacts(
     'example.com',
-    new DomainsSetContactsBody([]),
+    new DomainsSetContactsBody([
+        'contacts' => new ContactsRequest([]),
+    ]),
 );
 ```
 </dd>
@@ -1321,7 +1323,7 @@ $client->domains->setContacts(
 <dl>
 <dd>
 
-**$contacts:** `?ContactsRequest` 
+**$contacts:** `ContactsRequest` 
     
 </dd>
 </dl>
@@ -2254,7 +2256,9 @@ Updates the destination email address for an existing forwarding rule.
 $client->emailForwardings->updateEmailForwarding(
     'domainName',
     'emailBox',
-    new EmailForwardingsUpdateEmailForwardingBody([]),
+    new EmailForwardingsUpdateEmailForwardingBody([
+        'emailTo' => 'emailTo',
+    ]),
 );
 ```
 </dd>
@@ -2286,7 +2290,7 @@ $client->emailForwardings->updateEmailForwarding(
 <dl>
 <dd>
 
-**$emailTo:** `?string` — EmailTo is the entire email address to forward email to.
+**$emailTo:** `string` — EmailTo is the entire email address to forward email to.
     
 </dd>
 </dl>
@@ -3744,7 +3748,12 @@ Updates the glue record IP addresses for a vanity nameserver.
 $client->vanityNameservers->updateVanityNameserver(
     'example.com',
     'ns1.example.com',
-    new UpdateVanityNameserverBody([]),
+    new UpdateVanityNameserverBody([
+        'ips' => [
+            '192.168.1.10',
+            '2001:0db8:85a3:0000:0000:8a2e:0370:7334',
+        ],
+    ]),
 );
 ```
 </dd>
@@ -3776,7 +3785,7 @@ $client->vanityNameservers->updateVanityNameserver(
 <dl>
 <dd>
 
-**$ips:** `?array` — IPs is the updated list of IP addresses to be used for glue records for this vanity nameserver. Providing an empty array will remove all existing IPs.
+**$ips:** `array` — IPs is the updated list of IP addresses to be used for glue records for this vanity nameserver. Providing an empty array will remove all existing IPs.
     
 </dd>
 </dl>

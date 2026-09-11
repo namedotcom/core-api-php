@@ -247,7 +247,9 @@ class EmailForwardingsClient
      * $client->emailForwardings->updateEmailForwarding(
      *     'domainName',
      *     'emailBox',
-     *     new EmailForwardingsUpdateEmailForwardingBody([]),
+     *     new EmailForwardingsUpdateEmailForwardingBody([
+     *         'emailTo' => 'emailTo',
+     *     ]),
      * );
      * ```
      *
@@ -266,7 +268,7 @@ class EmailForwardingsClient
      * @throws NamecomException
      * @throws NamecomApiException
      */
-    public function updateEmailForwarding(string $domainName, string $emailBox, EmailForwardingsUpdateEmailForwardingBody $request = new EmailForwardingsUpdateEmailForwardingBody(), ?array $options = null): ?EmailForwarding
+    public function updateEmailForwarding(string $domainName, string $emailBox, EmailForwardingsUpdateEmailForwardingBody $request, ?array $options = null): ?EmailForwarding
     {
         $options = array_merge($this->options, $options ?? []);
         try {

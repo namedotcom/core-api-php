@@ -9,19 +9,19 @@ use Namecom\Core\Json\JsonProperty;
 class DomainsSetContactsBody extends JsonSerializableType
 {
     /**
-     * @var ?ContactsRequest $contacts
+     * @var ContactsRequest $contacts
      */
     #[JsonProperty('contacts')]
-    public ?ContactsRequest $contacts;
+    public ContactsRequest $contacts;
 
     /**
      * @param array{
-     *   contacts?: ?ContactsRequest,
+     *   contacts: ContactsRequest,
      * } $values
      */
     public function __construct(
-        array $values = [],
+        array $values,
     ) {
-        $this->contacts = $values['contacts'] ?? null;
+        $this->contacts = $values['contacts'];
     }
 }

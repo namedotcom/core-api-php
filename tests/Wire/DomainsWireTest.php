@@ -18,6 +18,7 @@ use Namecom\Domains\Requests\LockDomainRequest;
 use Namecom\Domains\Requests\DomainsPurchasePrivacyBody;
 use Namecom\Domains\Requests\DomainsRenewDomainBody;
 use Namecom\Domains\Requests\DomainsSetContactsBody;
+use Namecom\Types\ContactsRequest;
 use Namecom\Domains\Requests\DomainsSetNameserversBody;
 use Namecom\Domains\Requests\UnlockDomainRequest;
 use Namecom\Domains\Requests\AvailabilityRequest;
@@ -335,7 +336,9 @@ class DomainsWireTest extends WireMockTestCase
         $testId = 'domains.set_contacts.0';
         $this->client->domains->setContacts(
             'example.com',
-            new DomainsSetContactsBody([]),
+            new DomainsSetContactsBody([
+                'contacts' => new ContactsRequest([]),
+            ]),
             [
                 'headers' => [
                     'X-Test-Id' => 'domains.set_contacts.0',

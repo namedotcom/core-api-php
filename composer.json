@@ -1,6 +1,6 @@
 {
   "name": "namecom/core-api",
-  "version": "1.33.5",
+  "version": "1.33.6",
   "description": "Official PHP SDK for the name.com Core API",
   "keywords": [
     "namecom",

@@ -250,7 +250,12 @@ class VanityNameserversClient
      * $client->vanityNameservers->updateVanityNameserver(
      *     'example.com',
      *     'ns1.example.com',
-     *     new UpdateVanityNameserverBody([]),
+     *     new UpdateVanityNameserverBody([
+     *         'ips' => [
+     *             '192.168.1.10',
+     *             '2001:0db8:85a3:0000:0000:8a2e:0370:7334',
+     *         ],
+     *     ]),
      * );
      * ```
      *
@@ -269,7 +274,7 @@ class VanityNameserversClient
      * @throws NamecomException
      * @throws NamecomApiException
      */
-    public function updateVanityNameserver(string $domainName, string $hostname, UpdateVanityNameserverBody $request = new UpdateVanityNameserverBody(), ?array $options = null): ?VanityNameserverResponse
+    public function updateVanityNameserver(string $domainName, string $hostname, UpdateVanityNameserverBody $request, ?array $options = null): ?VanityNameserverResponse
     {
         $options = array_merge($this->options, $options ?? []);
         try {

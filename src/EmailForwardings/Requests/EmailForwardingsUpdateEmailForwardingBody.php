@@ -8,19 +8,19 @@ use Namecom\Core\Json\JsonProperty;
 class EmailForwardingsUpdateEmailForwardingBody extends JsonSerializableType
 {
     /**
-     * @var ?string $emailTo EmailTo is the entire email address to forward email to.
+     * @var string $emailTo EmailTo is the entire email address to forward email to.
      */
     #[JsonProperty('emailTo')]
-    public ?string $emailTo;
+    public string $emailTo;
 
     /**
      * @param array{
-     *   emailTo?: ?string,
+     *   emailTo: string,
      * } $values
      */
     public function __construct(
-        array $values = [],
+        array $values,
     ) {
-        $this->emailTo = $values['emailTo'] ?? null;
+        $this->emailTo = $values['emailTo'];
     }
 }
