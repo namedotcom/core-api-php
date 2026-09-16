@@ -13,5 +13,6 @@ enum AvailableWebhooks: string
     case DomainTransferInternalIn = "domain.transfer.internal_in";
     case DomainTransferInternalOut = "domain.transfer.internal_out";
     case DomainRegistryRejection = "domain.registry.rejection";
+    case DomainRegistryComplianceNotice = "domain.registry.compliance_notice";
     case DomainExpiration = "domain.expiration";
 }

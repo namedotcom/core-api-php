@@ -117,6 +117,7 @@ class WebhookNotificationsClient
      * - `domain.transfer.internal_out` - name.com domain transfers out of the subscribing account via internal transfer.
      * - `contact.verification.status_change` - contact verification status changes (verified or unverified).
      * - `domain.registry.rejection` – domain **create** failed after asynchronous registry processing (uncommon; most creates succeed at request time).
+     * - `domain.registry.compliance_notice` – a registry requires policy remediation for a domain. Default is a registrant email (whitelabeled when configured); subscribe to send it yourself. If you have signed an addendum to assume all email responsibility, name.com does not send this email and the webhook is the only delivery path.
      * - `domain.expiration` – domain has expired and entered the post-expiry grace period. This is informational only.
      *
      * Example:
