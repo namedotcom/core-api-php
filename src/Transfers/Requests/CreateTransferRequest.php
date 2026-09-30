@@ -4,6 +4,7 @@ namespace Namecom\Transfers\Requests;
 
 use Namecom\Core\Json\JsonSerializableType;
 use Namecom\Core\Json\JsonProperty;
+use Namecom\Types\ContactsRequest;
 
 class CreateTransferRequest extends JsonSerializableType
 {
@@ -32,11 +33,18 @@ class CreateTransferRequest extends JsonSerializableType
     public ?float $purchasePrice;
 
     /**
+     * @var ?ContactsRequest $contacts WHOIS contacts to apply when the domain lands in the account. If omitted, the gaining account's default contacts are applied. If provided, include any roles to override; omitted roles use the gaining account's default contacts. Each supplied role must include complete contact fields. A registrar contact-change transfer lock may apply according to the gaining account's settings.
+     */
+    #[JsonProperty('contacts')]
+    public ?ContactsRequest $contacts;
+
+    /**
      * @param array{
      *   authCode: string,
      *   domainName: string,
      *   privacyEnabled?: ?bool,
      *   purchasePrice?: ?float,
+     *   contacts?: ?ContactsRequest,
      * } $values
      */
     public function __construct(
@@ -46,5 +54,6 @@ class CreateTransferRequest extends JsonSerializableType
         $this->domainName = $values['domainName'];
         $this->privacyEnabled = $values['privacyEnabled'] ?? null;
         $this->purchasePrice = $values['purchasePrice'] ?? null;
+        $this->contacts = $values['contacts'] ?? null;
     }
 }

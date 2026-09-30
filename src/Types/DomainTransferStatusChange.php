@@ -29,10 +29,17 @@ class DomainTransferStatusChange extends JsonSerializableType
     public string $status;
 
     /**
+     * @var ?string $warning Included only when `status` is `completed` and one or more submitted contacts could not be applied and were replaced by account default contacts.  Omitted otherwise.
+     */
+    #[JsonProperty('warning')]
+    public ?string $warning;
+
+    /**
      * @param array{
      *   eventName: value-of<DomainTransferStatusChangeEventName>,
      *   domainName: string,
      *   status: value-of<TransferStatus>,
+     *   warning?: ?string,
      * } $values
      */
     public function __construct(
@@ -41,6 +48,7 @@ class DomainTransferStatusChange extends JsonSerializableType
         $this->eventName = $values['eventName'];
         $this->domainName = $values['domainName'];
         $this->status = $values['status'];
+        $this->warning = $values['warning'] ?? null;
     }
 
     /**
