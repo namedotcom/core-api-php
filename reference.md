@@ -501,7 +501,7 @@ This parameter is required for registering domains that contain non-ASCII charac
 <dl>
 <dd>
 
-**$promoCode:** `?string` — PromoCode is an optional promotional code to apply to the domain purchase. Only one promo code can be applied per request.
+**$promoCode:** `?string` — PromoCode is an optional promotional code to apply to the domain purchase. Only one promo code can be applied per request. Promo codes specify eligibility criteria, including duration. If the supplied promo applies no discount, the request fails with `400` and `"Promo code does not apply a discount to this purchase"`. The order is not created.
     
 </dd>
 </dl>
