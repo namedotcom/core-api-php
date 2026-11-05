@@ -2067,7 +2067,7 @@
       },
       "response": {
         "status": 200,
-        "body": "{\n  \"lastPage\": 1,\n  \"nextPage\": 1,\n  \"totalCount\": 1,\n  \"from\": 1,\n  \"to\": 1,\n  \"transfers\": [\n    {\n      \"domainName\": \"example.com\",\n      \"email\": \"admin@example.com\",\n      \"status\": \"canceled\"\n    }\n  ]\n}",
+        "body": "{\n  \"lastPage\": 1,\n  \"nextPage\": 1,\n  \"totalCount\": 1,\n  \"from\": 1,\n  \"to\": 1,\n  \"transfers\": [\n    {\n      \"domainName\": \"example.com\",\n      \"status\": \"canceled\"\n    }\n  ]\n}",
         "headers": {
           "Content-Type": "application/json"
         }
@@ -2099,7 +2099,7 @@
       },
       "response": {
         "status": 200,
-        "body": "{\n  \"order\": 12345,\n  \"totalPaid\": 12.99,\n  \"transfer\": {\n    \"domainName\": \"example.com\",\n    \"email\": \"admin@example.com\",\n    \"status\": \"canceled\"\n  },\n  \"warnings\": {\n    \"message\": \"Domain has registry statuses that may prevent a successful transfer. Please ensure the domain is unlocked and eligible at the losing registrar.\",\n    \"statuses\": [\n      \"clientTransferProhibited\",\n      \"clientUpdateProhibited\"\n    ]\n  }\n}",
+        "body": "{\n  \"order\": 12345,\n  \"totalPaid\": 12.99,\n  \"transfer\": {\n    \"domainName\": \"example.com\",\n    \"status\": \"canceled\"\n  },\n  \"warnings\": {\n    \"message\": \"Domain has registry statuses that may prevent a successful transfer. Please ensure the domain is unlocked and eligible at the losing registrar.\",\n    \"statuses\": [\n      \"clientTransferProhibited\",\n      \"clientUpdateProhibited\"\n    ]\n  }\n}",
         "headers": {
           "Content-Type": "application/json"
         }
@@ -2135,7 +2135,7 @@
       },
       "response": {
         "status": 200,
-        "body": "{\n  \"domainName\": \"example.com\",\n  \"email\": \"admin@example.com\",\n  \"status\": \"canceled\"\n}",
+        "body": "{\n  \"domainName\": \"example.com\",\n  \"status\": \"canceled\"\n}",
         "headers": {
           "Content-Type": "application/json"
         }
@@ -2171,7 +2171,7 @@
       },
       "response": {
         "status": 200,
-        "body": "{\n  \"domainName\": \"example.com\",\n  \"email\": \"admin@example.com\",\n  \"status\": \"canceled\"\n}",
+        "body": "{\n  \"domainName\": \"example.com\",\n  \"status\": \"canceled\"\n}",
         "headers": {
           "Content-Type": "application/json"
         }

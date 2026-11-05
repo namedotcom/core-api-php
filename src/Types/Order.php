@@ -18,7 +18,7 @@ class Order extends JsonSerializableType
     public ?float $authAmount;
 
     /**
-     * @var ?string $createDate CreateDate is the date the order was placed.
+     * @var ?string $createDate CreateDate is the UTC date and time the order was placed.
      */
     #[JsonProperty('createDate')]
     public ?string $createDate;
