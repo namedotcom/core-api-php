@@ -145,8 +145,8 @@ class NamecomClient
         $defaultHeaders = [
             'X-Fern-Language' => 'PHP',
             'X-Fern-SDK-Name' => 'Namecom',
-            'X-Fern-SDK-Version' => '1.36.2',
-            'User-Agent' => 'namecom/core-api/1.36.2',
+            'X-Fern-SDK-Version' => '1.36.3',
+            'User-Agent' => 'namecom/core-api/1.36.3',
         ];
         $defaultHeaders['Authorization'] = "Basic " . base64_encode($username . ":" . $password);
 
